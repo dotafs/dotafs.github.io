@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>never ending learning</title>
+    <link href="/2022/06/07/article-title/"/>
+    <url>/2022/06/07/article-title/</url>
+    
+    <content type="html"><![CDATA[<p> NELL 早期采用 Carlson et al. 模型。它的作用是阅读Web来获取信息。<br><p>输入：<br></p><ol><li>一个初始的 ontology 里面存放着很多categories （运动，运动员）。一个二原组的realtion 表示着 categories之间的关系。 比如：  哪个运动员在玩什么运动（x,y）。<br></li><li>每一个relation 或者是 categories 都有差不多12个labels， 比如运动有足球篮球一类的名词。<br></li><li>Web 从ClueWeb（一个有着1亿个网页的数据集）中获得。并且Google授权了NELL 10万个搜索问题的api。<br></li><li>偶尔会有人为参与。<br></li></ol><p>做什么：<br></p><ol><li>抓去更多的信息从web 并且移除老的不正确的信息。在这个过程中数据集不断的增长并且每一个information都有着出处和可信度。</li><li>每天学习如何比昨天读得更好</li></ol><p>总体来讲，NELL软件层面上的架构是：beliefs通过NEIL，OntExt 等一些辨别手段来选出一些候选的beliefs 再通过knowledge integrator 来对原有的beliefs 进行更新。</p><p>期望最大化算法（EM）:在概率模型中寻找最大似然<br><br>似然 (likelihood):对于模型的不同参数出现目标样本的概率是多少<br><br>知识整合 (Knowledge Integration): 就是将多个知识模型转化为一个公用的模型。像是通过多种角度判断一个游戏的好坏，比如画面模型，剧情模型。 将这些模型整合起来来得到一个评判游戏的好坏程度的模型。</p><p>NELL 的学习过程类似于EM用于半监督学习。每一次循环都有E-like step 和 M-like step。<br></p><ol><li>E-like step : 所有的beliefs 都需要重新被估计。在NELL中的每一个reading和inference 模型 都需要更新到KB之中（曾加或者减少一些beliefs）。通过知识整合（KI）我们将一大堆独立的建议转化为对每一个潜在kb 里面的 belief 的可信度。</li><li>M-like step :对上面更新的每一个模型都做一个针对于他们的学习算法。得到了一个上千个互相关联的learning task。</p></li></ol>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="/2022/06/07/hello-world/"/>
+    <url>/2022/06/07/hello-world/</url>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  
+</search>
