@@ -1,5 +1,4 @@
 /* global CONFIG */
-// eslint-disable-next-line no-console
 
 (function(window, document) {
   // 查询存储的记录
@@ -23,12 +22,14 @@
                 }
                 resolve(record);
               }).catch(error => {
-                console.error('Failed to create: ', error);
+              // eslint-disable-next-line no-console
+                console.error('Failed to create', error);
                 reject(error);
               });
           }
         }).catch((error) => {
-          console.error('LeanCloud Counter Error: ', error);
+        // eslint-disable-next-line no-console
+          console.error('LeanCloud Counter Error:', error);
           reject(error);
         });
     });
@@ -46,7 +47,8 @@
         }
         resolve(res);
       }).catch((error) => {
-        console.error('Failed to save visitor count: ', error);
+        // eslint-disable-next-line no-console
+        console.error('Failed to save visitor count', error);
         reject(error);
       });
     });
