@@ -24,7 +24,7 @@
 <meta property="og:description" content="NELL 早期采用 Carlson et al. 模型。它的作用是阅读Web来获取信息。  输入：  一个初始的 ontology 里面存放着很多categories （运动，运动员）。一个二原组的realtion 表示着 categories之间的关系。 比如：  哪个运动员在玩什么运动（x,y）。 每一个relation 或者是 categories 都有差不多12个labels， 比如运动">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-06-07T11:41:57.000Z">
-<meta property="article:modified_time" content="2022-06-16T23:26:32.003Z">
+<meta property="article:modified_time" content="2022-06-17T11:36:54.053Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -216,7 +216,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          847 words
+          2.1k words
         
       </span>
     
@@ -227,7 +227,7 @@
         
         
         
-          8 mins
+          18 mins
         
       </span>
     
@@ -287,8 +287,29 @@
 <p>期望最大化算法（EM）:在概率模型中寻找最大似然<br><br>似然 (likelihood):对于模型的不同参数出现目标样本的概率是多少<br><br>知识整合 (Knowledge Integration): 就是将多个知识模型转化为一个公用的模型。像是通过多种角度判断一个游戏的好坏，比如画面模型，剧情模型。 将这些模型整合起来来得到一个评判游戏的好坏程度的模型。</p>
 <p>NELL 的学习过程类似于EM用于半监督学习。每一次循环都有E-like step 和 M-like step。<br></p>
 <ol>
-<li>E-like step : 所有的beliefs 都需要重新被估计。在NELL中的每一个reading和inference 模型 都需要更新到KB之中（曾加或者减少一些beliefs）。通过知识整合（KI）我们将一大堆独立的建议转化为对每一个潜在kb 里面的 belief 的可信度。</li>
-<li>M-like step :对上面更新的每一个模型都做一个针对于他们的学习算法。得到了一个上千个互相关联的learning task。</p></li>
+<li>E-like step : 所有的beliefs 都需要重新被估计。在NELL中的每一个reading和inference 模型 都需要更新到KB之中（曾加或者减少一些beliefs）。通过知识整合（KI）我们将一大堆独立的建议转化为对每一个潜在kb 里面的 belief 的可信度。<br></li>
+<li>M-like step :对上面更新的每一个模型都做一个针对于他们的学习算法。得到了一个上千个互相关联的学习任务。<br></li>
+</ol>
+<p>NELL因为做不到完全EM算法。所以我们在进行E-like的时候设置一个upperbound。那些有高可信度的新的belief才会被我们考虑并更新到KB之中。<br>并且当我们更新的时候，采用limited-radius fashion的方式。简单来说就是我们只考虑当前更新的belief直接相关的beliefs的更新，不再做进一步的考虑。</p>
+<h2 id="Knowledge-Integrator"><a href="#Knowledge-Integrator" class="headerlink" title="Knowledge Integrator"></a>Knowledge Integrator</h2><p>KI只考虑类别类型一致的beliefs。比如他只检验在relation triple中的实体类型是不是与realtion一致。而不是考虑用一个新的triple作为一个触发器来更新beliefs在同一次循环之中。</p>
+<h2 id="新增学习任务和实体"><a href="#新增学习任务和实体" class="headerlink" title="新增学习任务和实体"></a>新增学习任务和实体</h2><h3 id="OntExt"><a href="#OntExt" class="headerlink" title="OntExt"></a>OntExt</h3><p>OntExt 创建新realtion。他通过寻找像所有已经有的实体，去寻找那个最新最经常被考虑的relation，把他用于链接两个实体。实现这个过程分为三步：</p>
+<ol>
+<li>一个句子中如果有已经存在的category pair了。就将它直接提取出。像是&lt;动物，食物&gt;。狗在吃肉。 狗和肉就被提取出来了。</li>
+<li>把一个文章构建出一个2D矩阵用来寻找新的relation。</li>
+<li>OntExt自动发现新的relations。发现了之后立刻做为一个触发器用来适应于新的句子。</li>
+</ol>
+<h3 id="VerbKB"><a href="#VerbKB" class="headerlink" title="VerbKB"></a>VerbKB</h3><p>动词和动词短语经常用于表达名词之间的关系。有点像是一个动词的模式，用来分析主语，宾语还有动词短语之间的关系。作为一个三元组。&lt;主语category，动词短语，宾语category&gt;。NELL已经有6.5w个动词了。覆盖了ClueWeb2010的98%。现在正在寻找扩大这个动词规模的方法。</p>
+<h3 id="关于自我评估和自我反思"><a href="#关于自我评估和自我反思" class="headerlink" title="关于自我评估和自我反思"></a>关于自我评估和自我反思</h3><p>期望NELL可以针对于他应该着重学习的地方进行学习而不是像现在这样只会检测没有。目前的研究目标就是把未标记的数据用作数据集。我们可以这么来做：通过Platanios et al.32我们知道如果我们有三个或者更多的funciton用来求解。我们判断是否所有的函数得到的都是同一个名词，因为他们判断成功与否是独立的。所以可以通过他们的精准度来判断模型的好坏。通过这种方式精准度在逐年增加。<br>NELL对于不同种类的词语表现相差很多。比如对河流，身体部分这种精准度能到95% 但是对于国家的首都精准度就很低。原因有两种：</p>
+<ol>
+<li>有可能我们的目标得到的结果并不在我们想要的集合里面，我们就给他新定义一个集合。可能这个集合只能被他自己所用，并且会误导别的我们想要测试的目标的正确性。</li>
+<li>可能NELL已经弄错了，由于错误的传播谓语。就比如我们目前的NELL他判定所有的星球名字都以什么什么球为结尾。如果我们拿出来一个不是以球结尾的他就没法正确判断了。</li>
+</ol>
+<p>有一些很简单的词汇被复杂化了。比如开心 -&gt; 难以置信的开心。这使得学习任务变得越来越多。未来的研究就是让他有自我反思的能力。</p>
+<h2 id="汇总"><a href="#汇总" class="headerlink" title="汇总"></a>汇总</h2><p>NELL 作为一个早期的案例有很多我们吸取教训的地方：</p>
+<ol>
+<li>coupling constraints限制了后续学习其他任务。</li>
+<li>允许去学习新的coupling constraints。</li>
+<li></p></li>
 </ol>
 
               
