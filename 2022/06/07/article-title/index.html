@@ -24,7 +24,7 @@
 <meta property="og:description" content="NELL 早期采用 Carlson et al. 模型。它的作用是阅读Web来获取信息。  输入：  一个初始的 ontology 里面存放着很多categories （运动，运动员）。一个二原组的realtion 表示着 categories之间的关系。 比如：  哪个运动员在玩什么运动（x,y）。 每一个relation 或者是 categories 都有差不多12个labels， 比如运动">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-06-07T11:41:57.000Z">
-<meta property="article:modified_time" content="2022-06-17T11:36:54.053Z">
+<meta property="article:modified_time" content="2022-06-17T12:11:10.298Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -216,7 +216,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.1k words
+          2.3k words
         
       </span>
     
@@ -227,7 +227,7 @@
         
         
         
-          18 mins
+          20 mins
         
       </span>
     
@@ -309,7 +309,13 @@
 <ol>
 <li>coupling constraints限制了后续学习其他任务。</li>
 <li>允许去学习新的coupling constraints。</li>
-<li></p></li>
+<li>现阶段模型是a-b c-d ， a-b-c-d是一个全新的模型。未来需要做到的是把a-b 作为一个谓词短语 来使用。 已达成（a-b）- (c-d)的目的。</li>
+</ol>
+<p>NELL的限制：</p>
+<ol>
+<li>没有反思。他不会意识到自己做错了很久且没有任何进展。也没有监控自己性能的能力。</li>
+<li>有些方法是固定的。可塑性很差。比如寻找名词或者名词短语这种方法。我们是无法进行学习或者更改的。</li>
+<li>目前NELL只用了一个简单的frame base。 他没有框架去推到时间和空间。</p></li>
 </ol>
 
               
