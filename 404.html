@@ -81,7 +81,7 @@
 <div class="header-inner" style="height: 85vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="index.html">
       <strong>DOTAFS</strong>
     </a>
 
@@ -100,7 +100,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="index.html">
                 <i class="iconfont icon-home-fill"></i>
                 Home
               </a>
@@ -332,7 +332,7 @@
             var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?dotafs";
             var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
             var git_user ="dotafs";
-            var parent_div_git = document.getElementsByClassName('container')[1];
+            var parent_div_git = document.getElementsByClassName('container')[2];
             var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
             if(parent_div_git && location.pathname =='/about/'){
                 console.log('已挂载github calendar')
@@ -341,7 +341,7 @@
             };
             GithubCalendar(git_githubapiurl,git_color,git_user)
         }
-        if(document.getElementsByClassName('container')[1]){
+        if(document.getElementsByClassName('container')[2]){
             GithubCalendarConfig()
         }
     </script>

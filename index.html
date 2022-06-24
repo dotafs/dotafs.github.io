@@ -81,7 +81,7 @@
 <div class="header-inner" style="height: 100vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="index.html">
       <strong>DOTAFS</strong>
     </a>
 
@@ -100,7 +100,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="index.html">
                 <i class="iconfont icon-home-fill"></i>
                 Home
               </a>
@@ -218,16 +218,22 @@
   <div class="row mx-auto index-card">
     
     
-    <article class="col-12 col-md-12 mx-auto index-info">
+      <div class="col-12 col-md-4 m-auto index-img">
+        <a href="2022/06/24/BIG-bench/" target="_self">
+          <img src="BIG-bench.jpeg" srcset="/img/loading.gif" lazyload alt="BIG-bench">
+        </a>
+      </div>
+    
+    <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/06/24/BIG-bench/" target="_self">
+        <a href="2022/06/24/BIG-bench/" target="_self">
           BIG-bench
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/24/BIG-bench/" target="_self">
+      <a class="index-excerpt " href="2022/06/24/BIG-bench/" target="_self">
         <div>
           
         </div>
@@ -244,6 +250,13 @@
         
         
         
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="tags/%E6%88%91%E7%9A%84%E7%AC%94%E8%AE%B0/">#我的笔记</a>
+            
+          </div>
+        
       </div>
     </article>
   </div>
@@ -254,13 +267,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/06/21/%E5%AD%A6%E4%B9%A0%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8openai/" target="_self">
+        <a href="2022/06/21/%E5%AD%A6%E4%B9%A0%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8openai/" target="_self">
           学习如何使用openai
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/21/%E5%AD%A6%E4%B9%A0%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8openai/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="2022/06/21/%E5%AD%A6%E4%B9%A0%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8openai/" target="_self">
         <div>
           text-davinci-002
         </div>
@@ -287,13 +300,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/2022/06/07/never_ending_learning/" target="_self">
+        <a href="2022/06/07/never_ending_learning/" target="_self">
           never ending learning 笔记
         </a>
       </h1>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2022/06/07/never_ending_learning/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="2022/06/07/never_ending_learning/" target="_self">
         <div>
           NELL 早期采用 Carlson et al. 模型。它的作用是阅读Web来获取信息。  输入：  一个初始的 ontology 里面存放着很多categories （运动，运动员）。一个二原组的realtion 表示着 categories之间的关系。 比如：  哪个运动员在玩什么运动（x,y）。 每一个relation 或者是 categories 都有差不多12个labels， 比如运动
         </div>
@@ -313,7 +326,7 @@
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/%E6%88%91%E7%9A%84%E7%AC%94%E8%AE%B0/">#我的笔记</a>
+              <a href="tags/%E6%88%91%E7%9A%84%E7%AC%94%E8%AE%B0/">#我的笔记</a>
             
           </div>
         
@@ -449,7 +462,7 @@
             var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?dotafs";
             var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
             var git_user ="dotafs";
-            var parent_div_git = document.getElementsByClassName('container')[1];
+            var parent_div_git = document.getElementsByClassName('container')[2];
             var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
             if(parent_div_git && location.pathname =='/about/'){
                 console.log('已挂载github calendar')
@@ -458,7 +471,7 @@
             };
             GithubCalendar(git_githubapiurl,git_color,git_user)
         }
-        if(document.getElementsByClassName('container')[1]){
+        if(document.getElementsByClassName('container')[2]){
             GithubCalendarConfig()
         }
     </script>
