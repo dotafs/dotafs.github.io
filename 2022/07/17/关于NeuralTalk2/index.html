@@ -16,24 +16,21 @@
   <meta name="author" content="Chenxi Qu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="explainable AI （XAI）XAI指的是让人们明白这个模型是为什么得到这个结果的。因为AI有可能会作弊。比如通过看图片是否有copyright里面是不是有马的字段来判断图片是不是马。 XAI 我们就可以不断的人为优化模型。 black-box AI， 与XAI相反。 我们不知道模型通过什么得到的结果也不知道如何优化。 各种learning监督学习(supervised learning">
+    <meta name="description" content="环境配置参考的步骤进行配置 1https:&#x2F;&#x2F;github.com&#x2F;karpathy&#x2F;neuraltalk2&#x2F;tree&#x2F;3c81602809b8b9e5bd3e9e213bf955986485dda7\  我的环境是macOS + M1 12345$ curl -s https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;torch&#x2F;ezinstall&#x2F;master&#x2F;install-d">
 <meta property="og:type" content="article">
-<meta property="og:title" content="模型的透明度">
-<meta property="og:url" content="http://example.com/2022/06/24/%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%80%8F%E6%98%8E%E5%BA%A6/index.html">
+<meta property="og:title" content="关于NeuralTalk2">
+<meta property="og:url" content="http://example.com/2022/07/17/%E5%85%B3%E4%BA%8ENeuralTalk2/index.html">
 <meta property="og:site_name" content="dotafs">
-<meta property="og:description" content="explainable AI （XAI）XAI指的是让人们明白这个模型是为什么得到这个结果的。因为AI有可能会作弊。比如通过看图片是否有copyright里面是不是有马的字段来判断图片是不是马。 XAI 我们就可以不断的人为优化模型。 black-box AI， 与XAI相反。 我们不知道模型通过什么得到的结果也不知道如何优化。 各种learning监督学习(supervised learning">
+<meta property="og:description" content="环境配置参考的步骤进行配置 1https:&#x2F;&#x2F;github.com&#x2F;karpathy&#x2F;neuraltalk2&#x2F;tree&#x2F;3c81602809b8b9e5bd3e9e213bf955986485dda7\  我的环境是macOS + M1 12345$ curl -s https:&#x2F;&#x2F;raw.githubusercontent.com&#x2F;torch&#x2F;ezinstall&#x2F;master&#x2F;install-d">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/06/24/%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%80%8F%E6%98%8E%E5%BA%A6/1.jpeg">
-<meta property="og:image" content="http://example.com/2022/06/24/%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%80%8F%E6%98%8E%E5%BA%A6/2.jpeg">
-<meta property="article:published_time" content="2022-06-24T16:09:12.000Z">
-<meta property="article:modified_time" content="2022-06-29T00:40:14.338Z">
+<meta property="article:published_time" content="2022-07-17T16:57:30.000Z">
+<meta property="article:modified_time" content="2022-07-17T20:51:53.298Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/06/24/%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%80%8F%E6%98%8E%E5%BA%A6/1.jpeg">
   
   
   
-  <title>模型的透明度 - dotafs</title>
+  <title>关于NeuralTalk2 - dotafs</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +193,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="模型的透明度"></span>
+            <span id="subtitle" data-typed-text="关于NeuralTalk2"></span>
           
         </div>
 
@@ -207,8 +204,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-06-24 17:09" pubdate>
-          June 24, 2022 pm
+        <time datetime="2022-07-17 17:57" pubdate>
+          July 17, 2022 pm
         </time>
       </span>
     
@@ -252,33 +249,31 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">模型的透明度</h1>
+            <h1 style="display: none">关于NeuralTalk2</h1>
             
             <div class="markdown-body">
               
-              <h1 id="explainable-AI-（XAI）"><a href="#explainable-AI-（XAI）" class="headerlink" title="explainable AI （XAI）"></a>explainable AI （XAI）</h1><h3 id="XAI"><a href="#XAI" class="headerlink" title="XAI"></a>XAI</h3><p>指的是让人们明白这个模型是为什么得到这个结果的。因为AI有可能会作弊。比如通过看图片是否有copyright里面是不是有马的字段来判断图片是不是马。</p>
-<p>XAI 我们就可以不断的人为优化模型。</p>
-<p>black-box AI， 与XAI相反。 我们不知道模型通过什么得到的结果也不知道如何优化。</p>
-<h3 id="各种learning"><a href="#各种learning" class="headerlink" title="各种learning"></a>各种learning</h3><p>监督学习(supervised learning):<br>  每个数据都有对应的label。良性肿瘤和恶性肿瘤。</p>
-<p>无监督学习(unsupervised learning):<br>  数据没有labels。我们不知道每一个数据对应的什么意思。比如google有上千个新闻。我们没发给每一个加上label。我们就可以通过”聚类”的形式来将相似的定为一个专栏，达成新闻分类。</p>
-<p>表示学习(representation learning):<br>  不同方法来表示学习。比如hsv和rgb都可以表示颜色。</p>
-<center>
-<img src="/2022/06/24/%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%80%8F%E6%98%8E%E5%BA%A6/1.jpeg" srcset="/img/loading.gif" lazyload alt="各种学习的精准度和可解释度" width="256" height="256"> <br>
-各种学习的精准度和可解释度
-</center>
+              <h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>参考的步骤进行配置</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/karpathy/</span>neuraltalk2<span class="hljs-regexp">/tree/</span><span class="hljs-number">3</span>c81602809b8b9e5bd3e9e213bf955986485dda7\<br></code></pre></td></tr></table></figure>
+
+<p>我的环境是macOS + M1</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">$ curl -s https://raw.githubusercontent.com/torch/ezinstall/master/install-deps | bash<br>$ git clone https://github.com/torch/distro.git ~/torch --recursive<br>$ cd ~/torch; <br>$ ./install.sh      # and enter &quot;yes&quot; at the end to modify your bashrc<br>$ source ~/.bashrc <br></code></pre></td></tr></table></figure>
+
+<p>接下来</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">$ luarocks install nn<br>$ luarocks install nngraph <br>$ luarocks install image <br></code></pre></td></tr></table></figure>
+<p>在上面进行luarock安装的时候报错</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">Installing https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/torch/</span>rocks<span class="hljs-regexp">/master/</span>nn-scm-<span class="hljs-number">1</span>.rockspec...<br>Using https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/torch/</span>rocks<span class="hljs-regexp">/master/</span>nn-scm-<span class="hljs-number">1</span>.rockspec... switching to <span class="hljs-string">&#x27;build&#x27;</span> mode<br>正克隆到 <span class="hljs-string">&#x27;nn&#x27;</span>...<br>fatal: 无法连接到 github.com：<br>github.com[<span class="hljs-number">0</span>: <span class="hljs-number">140.82</span>.<span class="hljs-number">121.4</span>]: errno=Operation timed out<br></code></pre></td></tr></table></figure>
+<p>我的解决方案有两个步骤</p>
+<ol>
+<li>(我觉得这个问题和这个步骤没关系) 我首先安装了lua</li>
+</ol>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> <span class="hljs-built_in">curl</span> <span class="hljs-literal">-R</span> <span class="hljs-literal">-O</span> http://www.lua.org/ftp/lua<span class="hljs-literal">-5</span>.<span class="hljs-number">4.3</span>.tar.gz<br><span class="hljs-variable">$</span> tar <span class="hljs-literal">-zxvf</span> lua<span class="hljs-literal">-5</span>.<span class="hljs-number">4.3</span>.tar.gz<br><span class="hljs-variable">$</span> <span class="hljs-built_in">cd</span> lua<span class="hljs-literal">-5</span>.<span class="hljs-number">4.3</span><br><span class="hljs-variable">$</span> make<br></code></pre></td></tr></table></figure>
+<ol start="2">
+<li>还是stackoverflow好用（不是 ，加这个命令行就好了。</li>
+</ol>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">git config --global url.https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/.insteadOf git:/</span><span class="hljs-regexp">/github.com/</span><br></code></pre></td></tr></table></figure>
 
 
-
-<h3 id="各种model"><a href="#各种model" class="headerlink" title="各种model"></a>各种model</h3><h4 id="Interpretable-Models"><a href="#Interpretable-Models" class="headerlink" title="Interpretable Models"></a>Interpretable Models</h4><p>• Decision Trees, Lists a ,Sets and rules <br>基本的if else</p>
-<p>• GAMs <br>• GLMs <br>• Linear regression <br>• Logistic regression \</p>
-<center>
-<img src="/2022/06/24/%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%80%8F%E6%98%8E%E5%BA%A6/2.jpeg" srcset="/img/loading.gif" lazyload alt="GAM GLM ..." width="1300" height="150"> <br>
-GAM GLM ...
-</center>
-
-<p>• KNNs</p>
-<h3 id="End-to-End-XAI"><a href="#End-to-End-XAI" class="headerlink" title="End-to-End XAI"></a>End-to-End XAI</h3><p>比传统的represtation learning 多了更多的不同等级的特征。 比如：<br>simple feature -&gt; complex feature -&gt; more complex feature。<br>这种结构对模型参数的调节空间更大。</p>
-<h3 id="Shapley-Additive-Explanation"><a href="#Shapley-Additive-Explanation" class="headerlink" title="Shapley Additive Explanation"></a>Shapley Additive Explanation</h3>
               
             </div>
             <hr/>
@@ -294,8 +289,8 @@ GAM GLM ...
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>模型的透明度</div>
-      <div>http://example.com/2022/06/24/模型的透明度/</div>
+      <div>关于NeuralTalk2</div>
+      <div>http://example.com/2022/07/17/关于NeuralTalk2/</div>
     </div>
     <div class="license-meta">
       
@@ -307,13 +302,13 @@ GAM GLM ...
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>June 24, 2022</div>
+          <div>July 17, 2022</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>June 29, 2022</div>
+          <div>July 17, 2022</div>
         </div>
       
       <div class="license-meta-item">
@@ -342,18 +337,12 @@ GAM GLM ...
                   <article class="post-prev col-6">
                     
                     
-                      <a href="../../../07/02/openGL%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" title="openGL的学习笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">openGL的学习笔记</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="../BIG-bench/" title="BIG-bench">
-                        <span class="hidden-mobile">BIG-bench</span>
+                      <a href="../../08/openGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/" title="openGL学习笔记(1)">
+                        <span class="hidden-mobile">openGL学习笔记(1)</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -4,6 +4,45 @@
   
   
   <entry>
+    <title>关于NeuralTalk2</title>
+    <link href="/2022/07/17/%E5%85%B3%E4%BA%8ENeuralTalk2/"/>
+    <url>/2022/07/17/%E5%85%B3%E4%BA%8ENeuralTalk2/</url>
+    
+    <content type="html"><![CDATA[<h2 id="环境配置"><a href="#环境配置" class="headerlink" title="环境配置"></a>环境配置</h2><p>参考的步骤进行配置</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/karpathy/</span>neuraltalk2<span class="hljs-regexp">/tree/</span><span class="hljs-number">3</span>c81602809b8b9e5bd3e9e213bf955986485dda7\<br></code></pre></td></tr></table></figure><p>我的环境是macOS + M1</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">$ curl -s https://raw.githubusercontent.com/torch/ezinstall/master/install-deps | bash<br>$ git clone https://github.com/torch/distro.git ~/torch --recursive<br>$ cd ~/torch; <br>$ ./install.sh      # and enter &quot;yes&quot; at the end to modify your bashrc<br>$ source ~/.bashrc <br></code></pre></td></tr></table></figure><p>接下来</p><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">$ luarocks install nn<br>$ luarocks install nngraph <br>$ luarocks install image <br></code></pre></td></tr></table></figure><p>在上面进行luarock安装的时候报错</p><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">Installing https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/torch/</span>rocks<span class="hljs-regexp">/master/</span>nn-scm-<span class="hljs-number">1</span>.rockspec...<br>Using https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/torch/</span>rocks<span class="hljs-regexp">/master/</span>nn-scm-<span class="hljs-number">1</span>.rockspec... switching to <span class="hljs-string">&#x27;build&#x27;</span> mode<br>正克隆到 <span class="hljs-string">&#x27;nn&#x27;</span>...<br>fatal: 无法连接到 github.com：<br>github.com[<span class="hljs-number">0</span>: <span class="hljs-number">140.82</span>.<span class="hljs-number">121.4</span>]: errno=Operation timed out<br></code></pre></td></tr></table></figure><p>我的解决方案有两个步骤</p><ol><li>(我觉得这个问题和这个步骤没关系) 我首先安装了lua</li></ol><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> <span class="hljs-built_in">curl</span> <span class="hljs-literal">-R</span> <span class="hljs-literal">-O</span> http://www.lua.org/ftp/lua<span class="hljs-literal">-5</span>.<span class="hljs-number">4.3</span>.tar.gz<br><span class="hljs-variable">$</span> tar <span class="hljs-literal">-zxvf</span> lua<span class="hljs-literal">-5</span>.<span class="hljs-number">4.3</span>.tar.gz<br><span class="hljs-variable">$</span> <span class="hljs-built_in">cd</span> lua<span class="hljs-literal">-5</span>.<span class="hljs-number">4.3</span><br><span class="hljs-variable">$</span> make<br></code></pre></td></tr></table></figure><ol start="2"><li>还是stackoverflow好用（不是 ，加这个命令行就好了。</li></ol><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">git config --global url.https:<span class="hljs-regexp">//gi</span>thub.com<span class="hljs-regexp">/.insteadOf git:/</span><span class="hljs-regexp">/github.com/</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>openGL学习笔记(1)</title>
+    <link href="/2022/07/08/openGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/"/>
+    <url>/2022/07/08/openGL%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-1/</url>
+    
+    <content type="html"><![CDATA[<h1 id="“GLShaderManager-h”-和-“GLTools-h”"><a href="#“GLShaderManager-h”-和-“GLTools-h”" class="headerlink" title="“GLShaderManager.h” 和 “GLTools.h”"></a>“GLShaderManager.h” 和 “GLTools.h”</h1>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>openGL的学习笔记</title>
+    <link href="/2022/07/02/openGL%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <url>/2022/07/02/openGL%E7%9A%84%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>模型的透明度</title>
     <link href="/2022/06/24/%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%80%8F%E6%98%8E%E5%BA%A6/"/>
     <url>/2022/06/24/%E6%A8%A1%E5%9E%8B%E7%9A%84%E9%80%8F%E6%98%8E%E5%BA%A6/</url>
