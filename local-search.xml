@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>games101_笔记(光追)</title>
+    <link href="/2022/08/12/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E8%BF%BD/"/>
+    <url>/2022/08/12/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E8%BF%BD/</url>
+    
+    <content type="html"><![CDATA[<h2 id="intro-："><a href="#intro-：" class="headerlink" title="intro ："></a>intro ：</h2><p>因为光栅化(rasterization)没法做到很真实的物理效果，所以我们尝试使用光线追踪(ray tracing)， 因为光追会显现出来更加真实的物理效果，反之会消耗更多的时间去渲染。</p><h2 id="step-1-light-rays-："><a href="#step-1-light-rays-：" class="headerlink" title="step 1 (light rays)："></a>step 1 (light rays)：</h2><p>尽管光追能做到拟真是世界光源，但光线追踪和物理上光的反射不太一样，在cg中我们这么定义：</p><ol><li>光沿直线传播</li><li>光线相交互不影响</li><li>光路可逆，光线传入眼睛可以当作眼睛发出光线。</li></ol><center><img src="/2022/08/12/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E8%BF%BD/1.jpeg" alt="GAM GLM ..." width="1300" height="150"> <br>GAM GLM ...</center><h2 id="step-2（pinhole-camera-model"><a href="#step-2（pinhole-camera-model" class="headerlink" title="step 2（pinhole camera model):"></a>step 2（pinhole camera model):</h2>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>关于NeuralTalk2</title>
     <link href="/2022/07/17/%E5%85%B3%E4%BA%8ENeuralTalk2/"/>
     <url>/2022/07/17/%E5%85%B3%E4%BA%8ENeuralTalk2/</url>
