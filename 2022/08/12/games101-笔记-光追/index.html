@@ -24,8 +24,9 @@
 <meta property="og:description" content="intro ：因为光栅化(rasterization)没法做到很真实的物理效果，所以我们尝试使用光线追踪(ray tracing)， 因为光追会显现出来更加真实的物理效果，反之会消耗更多的时间去渲染。 step 1 (light rays)：尽管光追能做到拟真是世界光源，但光线追踪和物理上光的反射不太一样，在cg中我们这么定义：  光沿直线传播 光线相交互不影响 光路可逆，光线传入眼睛可以当作眼睛">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/08/12/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E8%BF%BD/1.jpeg">
+<meta property="og:image" content="http://example.com/2022/08/12/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E8%BF%BD/2.jpeg">
 <meta property="article:published_time" content="2022-08-12T14:21:53.000Z">
-<meta property="article:modified_time" content="2022-08-12T15:55:53.376Z">
+<meta property="article:modified_time" content="2022-08-13T12:57:22.267Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/08/12/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E8%BF%BD/1.jpeg">
@@ -262,13 +263,38 @@
 <li>光线相交互不影响</li>
 <li>光路可逆，光线传入眼睛可以当作眼睛发出光线。</li>
 </ol>
+<h2 id="step-2（pinhole-camera-model"><a href="#step-2（pinhole-camera-model" class="headerlink" title="step 2（pinhole camera model):"></a>step 2（pinhole camera model):</h2><p>每一个像素（pixel）投射一个光线，寻找这条光线所经过的路径，并判断与光源之间有没有被遮挡。如图所示，从light source返回一条光束，在之后通过镜面反射进入人眼。<br>但这个模型只有一次反射，和光栅化区别不大。于是whitted提出下面的模型。</p>
 <center>
-<img src="/2022/08/12/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E8%BF%BD/1.jpeg" srcset="/img/loading.gif" lazyload alt="GAM GLM ..." width="1300" height="150"> <br>
-GAM GLM ...
+<img src="/2022/08/12/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E8%BF%BD/1.jpeg" srcset="/img/loading.gif" lazyload alt="GAM GLM ..." width="450" height="300"> <br>
+
 </center>
 
 
-<h2 id="step-2（pinhole-camera-model"><a href="#step-2（pinhole-camera-model" class="headerlink" title="step 2（pinhole camera model):"></a>step 2（pinhole camera model):</h2>
+<h2 id="step-3-whitted-style"><a href="#step-3-whitted-style" class="headerlink" title="step 3 (whitted-style):"></a>step 3 (whitted-style):</h2><p>就是将单一的pinhole camera model 进行递归 ，从而模拟出光线多次反射的效果 ，命名为recurive ray tracing 。但需要注意以下两点：</p>
+<ol>
+<li>光线强度会随着反射次数的增加而逐渐衰减。 </li>
+<li>每个三角形的光都有可能是由很多个光源复合而成的。这里就涉及到了权重值问题，比如黄色光和红色光同时射入，这个三角形应该被渲染成橘色。但由于入射光的亮度可能不同，橘色的深浅也有不同。通过不断的累加颜色最终得到像素应该呈现的颜色。</li>
+</ol>
+<center>
+<img src="/2022/08/12/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E8%BF%BD/2.jpeg" srcset="/img/loading.gif" lazyload alt="GAM GLM ..." width="450" height="300"> <br>
+
+</center>
+
+<p>如上图所示，</p>
+<ol>
+<li>primary ray: 最终到达像素的光线。</li>
+<li>secondary ray: 中间所有一系列反射的光线。（我不确定是不是只限定于第二次反射）</li>
+<li>shadow ray: 从光源处发出的所有光线。</li>
+</ol>
+<h2 id="step-4-equation"><a href="#step-4-equation" class="headerlink" title="step 4 (equation):"></a>step 4 (equation):</h2><ol>
+<li>Ray: r(t) &#x3D; o + td, 0 &lt;&#x3D; t &lt;&#x3D; ♾️</li>
+</ol>
+<p>任何光线上一点，可以用光线初始强度o + 时间t * 方向d 来表示。</p>
+<ol start="2">
+<li>Sphere： p: (p-c)^2 - R^2 &#x3D; 0</li>
+</ol>
+<p>球上任何一个点p 到球心c 的距离为 R。</p>
+
               
             </div>
             <hr/>
@@ -303,7 +329,7 @@ GAM GLM ...
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>August 12, 2022</div>
+          <div>August 13, 2022</div>
         </div>
       
       <div class="license-meta-item">
