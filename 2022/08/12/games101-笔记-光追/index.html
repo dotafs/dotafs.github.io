@@ -25,8 +25,9 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/08/12/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E8%BF%BD/1.jpeg">
 <meta property="og:image" content="http://example.com/2022/08/12/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E8%BF%BD/2.jpeg">
+<meta property="og:image" content="http://example.com/2022/08/12/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E8%BF%BD/3.jpeg">
 <meta property="article:published_time" content="2022-08-12T14:21:53.000Z">
-<meta property="article:modified_time" content="2022-08-13T12:57:22.267Z">
+<meta property="article:modified_time" content="2022-08-13T15:29:16.270Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/08/12/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E8%BF%BD/1.jpeg">
@@ -294,7 +295,23 @@
 <li>Sphere： p: (p-c)^2 - R^2 &#x3D; 0</li>
 </ol>
 <p>球上任何一个点p 到球心c 的距离为 R。</p>
+<ol start="3">
+<li>联立上面两个公式得到：p: (o + td-c)^2 - R^2 &#x3D; 0</li>
+</ol>
+<p>公式之中只有t 是未知量。 直接可以求得。</p>
+<ol start="4">
+<li>Plane Equation: p: (p - p’) . N &#x3D; 0</li>
+</ol>
+<p>通过法线N 和 平面上确定一点p‘ 来确定一个平面。 判断目标点p 到 p’的 向量是否垂直于法线N 来判断p 是否在目标平面上。</p>
+<ol start="5">
+<li>把plane 和 ray equation 结合起来呢？</li>
+</ol>
+<p>我们得知光线上任意一点可以用r(t)来表示。如果这个点在我们的平面上， 也就是r(t)&#x3D;p。我们可以通过这个等式求得光在什么时间(t)能打到平面上进行折射。联立可以得到：t &#x3D; (p’ - o) . N &#x2F; d . N</p>
+<p>注意： 我们需要检查一下t是不是非负数。</p>
+<h2 id="step-5-Moller-Trumbore-Algorithm"><a href="#step-5-Moller-Trumbore-Algorithm" class="headerlink" title="step 5 (Moller Trumbore Algorithm):"></a>step 5 (Moller Trumbore Algorithm):</h2><center>
+<img src="/2022/08/12/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E8%BF%BD/3.jpeg" srcset="/img/loading.gif" lazyload alt="GAM GLM ..." width="450" height="300"> <br>
 
+</center>
               
             </div>
             <hr/>
