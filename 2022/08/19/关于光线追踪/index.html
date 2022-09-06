@@ -16,21 +16,21 @@
   <meta name="author" content="Chenxi Qu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="intro；  光线追踪相对主流在目前。相对于光栅化有什么优点。 但缺点是时间复杂度过高。 与正常世界光源的区别。  讲述一下正常他的工作原理。 比较经典的模型 whitted。">
+    <meta name="description" content="abstruct:光线追踪是一种可以模拟出近似与现实光照的方法，相较于传统光栅化它消耗的算力更为巨大但模拟的光源也更接近于现实。 近些年来随着硬件发展的迅速，计算机的算力已经可以允许我们大规模使用复杂的光线追踪进行渲染。把光线追踪分为。。。。 本文列举一些当前比较主流的光线追踪算法，并且详细描述了不同方法的优缺点与对整个CG领域的贡献。并在结尾总结了光线追踪的未来发展趋势。 introducti">
 <meta property="og:type" content="article">
-<meta property="og:title" content="关于光线追踪">
+<meta property="og:title" content="基于图形学中渲染的光线追踪算法综述">
 <meta property="og:url" content="http://example.com/2022/08/19/%E5%85%B3%E4%BA%8E%E5%85%89%E7%BA%BF%E8%BF%BD%E8%B8%AA/index.html">
 <meta property="og:site_name" content="dotafs">
-<meta property="og:description" content="intro；  光线追踪相对主流在目前。相对于光栅化有什么优点。 但缺点是时间复杂度过高。 与正常世界光源的区别。  讲述一下正常他的工作原理。 比较经典的模型 whitted。">
+<meta property="og:description" content="abstruct:光线追踪是一种可以模拟出近似与现实光照的方法，相较于传统光栅化它消耗的算力更为巨大但模拟的光源也更接近于现实。 近些年来随着硬件发展的迅速，计算机的算力已经可以允许我们大规模使用复杂的光线追踪进行渲染。把光线追踪分为。。。。 本文列举一些当前比较主流的光线追踪算法，并且详细描述了不同方法的优缺点与对整个CG领域的贡献。并在结尾总结了光线追踪的未来发展趋势。 introducti">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-19T17:29:30.000Z">
-<meta property="article:modified_time" content="2022-08-22T12:49:28.834Z">
+<meta property="article:modified_time" content="2022-08-28T11:41:51.942Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>关于光线追踪 - dotafs</title>
+  <title>基于图形学中渲染的光线追踪算法综述 - dotafs</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -193,7 +193,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="关于光线追踪"></span>
+            <span id="subtitle" data-typed-text="基于图形学中渲染的光线追踪算法综述"></span>
           
         </div>
 
@@ -249,18 +249,46 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">关于光线追踪</h1>
+            <h1 style="display: none">基于图形学中渲染的光线追踪算法综述</h1>
             
             <div class="markdown-body">
               
-              <p>intro；</p>
+              <h3 id="abstruct"><a href="#abstruct" class="headerlink" title="abstruct:"></a>abstruct:</h3><p>光线追踪是一种可以模拟出近似与现实光照的方法，相较于传统光栅化它消耗的算力更为巨大但模拟的光源也更接近于现实。 近些年来随着硬件发展的迅速，计算机的算力已经可以允许我们大规模使用复杂的光线追踪进行渲染。把光线追踪分为。。。。 本文列举一些当前比较主流的光线追踪算法，并且详细描述了不同方法的优缺点与对整个CG领域的贡献。并在结尾总结了光线追踪的未来发展趋势。</p>
+<h3 id="introduction"><a href="#introduction" class="headerlink" title="introduction:"></a>introduction:</h3><p>关于现实生活中的光线得到历史。。</p>
+<p>关于ray tarcing 的历史 。。最早的ray tracing 模型 LINKS-1 Computer 的简要介绍。。 </p>
+<p>目前主流的ray tracing model 介绍 ： whitted-style。。 通常ray tracing 需要大量的算力进行计算。 但我们可以用一些加速方法。 比如BVH 。。。。</p>
+<p>总的来说ray tracing 的基本流程是。。  我们首先有一个model 首先选用合适的加速方法。。 然后进行光追渲染。。。</p>
+<h3 id="light-in-CG-VS-light-in-real-life"><a href="#light-in-CG-VS-light-in-real-life" class="headerlink" title="light in CG  VS light in real life"></a>light in CG  VS light in real life</h3><p>尽管光追能做到拟真是世界光源，但光线追踪和物理上光的反射不太一样，在cg中我们这么定义：</p>
 <ol>
-<li>光线追踪相对主流在目前。相对于光栅化有什么优点。</li>
-<li>但缺点是时间复杂度过高。</li>
-<li>与正常世界光源的区别。</li>
+<li>光沿直线传播</li>
+<li>光线相交互不影响</li>
+<li>光路可逆，光线传入眼睛可以当作眼睛发出光线。</li>
 </ol>
-<p>讲述一下正常他的工作原理。 比较经典的模型 whitted。</p>
-
+<p>但现实中的光源特点：</p>
+<ol>
+<li>接近于无限反射。直到电磁波消耗殆尽。</li>
+<li>现实中的光是由一种电磁波。</li>
+<li>不可能被计算机模拟。</li>
+</ol>
+<h3 id="光栅化-VS-光线追踪"><a href="#光栅化-VS-光线追踪" class="headerlink" title="光栅化 VS 光线追踪"></a>光栅化 VS 光线追踪</h3><p>因为光栅化没法做到很真实的物理效果，所以我们尝试使用光线追踪， 因为光追会显现出来更加真实的物理效果，反之会消耗更多的时间去渲染。</p>
+<ol>
+<li>光栅化只能反射2次。但光线追踪可以反射任意多次。</li>
+</ol>
+<h3 id="第一种类别的model-（whitted-style）"><a href="#第一种类别的model-（whitted-style）" class="headerlink" title="第一种类别的model （whitted-style）"></a>第一种类别的model （whitted-style）</h3><p>（在这里应该写出来这种model 属于那种类别。 对此类别进行分析 。 距离处whitted-style的优缺点）</p>
+<p>就是将单一的pinhole camera model 进行递归 ，从而模拟出光线多次反射的效果 ，命名为recurive ray tracing 。但需要注意以下两点：</p>
+<ol>
+<li>光线强度会随着反射次数的增加而逐渐衰减。 </li>
+<li>每个三角形的光都有可能是由很多个光源复合而成的。这里就涉及到了权重值问题，比如黄色光和红色光同时射入，这个三角形应该被渲染成橘色。但由于入射光的亮度可能不同，橘色的深浅也有不同。通过不断的累加颜色最终得到像素应该呈现的颜色。</li>
+</ol>
+<p>优点是：</p>
+<p>缺点是：</p>
+<h3 id="第二种类别的model-（）："><a href="#第二种类别的model-（）：" class="headerlink" title="第二种类别的model （）："></a>第二种类别的model （）：</h3><h3 id="关于model的加速结构-："><a href="#关于model的加速结构-：" class="headerlink" title="关于model的加速结构 ："></a>关于model的加速结构 ：</h3><p>BVM: </p>
+<p>Oct-Tree (八叉树): 有不同的分法。比如不停的划分，直到其中有一块包围盒不包含物品位置。</p>
+<p>KD-Tree(二叉树): 拼多多树，先横砍一刀沿物品切线。再每个包围盒竖直砍一刀。 目的是保持包围盒的均匀。三纬xyzxyz不断重复切。</p>
+<p>BSP-Tree(二叉树): 也是不断砍。但是不好计算。之前我们提到的包围盒AABB就是因为沿着xyz轴的包围盒好被计算。</p>
+<p>其他加速结构：</p>
+<h3 id="应用辐射度量学来增强光线追踪的真实性："><a href="#应用辐射度量学来增强光线追踪的真实性：" class="headerlink" title="应用辐射度量学来增强光线追踪的真实性："></a>应用辐射度量学来增强光线追踪的真实性：</h3><h3 id="神经网络用于-ray-tracing-加速"><a href="#神经网络用于-ray-tracing-加速" class="headerlink" title="神经网络用于 ray tracing 加速"></a>神经网络用于 ray tracing 加速</h3><p>面临问题： 算法过于复杂。无法解决 。但我们可以引入机器学习model来加速</p>
+<h3 id="总结与展望："><a href="#总结与展望：" class="headerlink" title="总结与展望："></a>总结与展望：</h3>
               
             </div>
             <hr/>
@@ -276,7 +304,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>关于光线追踪</div>
+      <div>基于图形学中渲染的光线追踪算法综述</div>
       <div>http://example.com/2022/08/19/关于光线追踪/</div>
     </div>
     <div class="license-meta">
@@ -295,7 +323,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>August 22, 2022</div>
+          <div>August 28, 2022</div>
         </div>
       
       <div class="license-meta-item">
