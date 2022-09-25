@@ -16,21 +16,22 @@
   <meta name="author" content="Chenxi Qu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="orthographic projection（正交投影）: 忽略深度信息。相机无限远 perspective projection （透视）: 有近大远小的效果 先变为正交投影。然后透视。 早期的屏幕：（Cathode Ray Tube）阴极射线管。电子打出来射到屏幕上。工作原理是每一行每一行从上往下打电子。隔行扫描（raster scan）我第一帧扫描1，3，5行。第二帧扫描第2，4，6行。问">
+    <meta name="description" content="Dijkstra考虑移动成本的搜索。文明中单位经过不同地形移动的举例不同。 用一个 priority queue。 优先队列里存放着各个地点。因为有可能多个路径经过同一个地点，所以如果当前loop中该地点在queue中已经有值，则只存放相对较好的值。 注： 相对于 Dijkstra ， BFS 就无法判断成本，只能寻找最短路径。 1priority &#x3D; new_cost  Heuristic se">
 <meta property="og:type" content="article">
-<meta property="og:title" content="games101-笔记-光栅化">
-<meta property="og:url" content="http://example.com/2022/08/30/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E6%A0%85%E5%8C%96/index.html">
+<meta property="og:title" content="games 笔记1">
+<meta property="og:url" content="http://example.com/2022/09/24/game-%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="dotafs">
-<meta property="og:description" content="orthographic projection（正交投影）: 忽略深度信息。相机无限远 perspective projection （透视）: 有近大远小的效果 先变为正交投影。然后透视。 早期的屏幕：（Cathode Ray Tube）阴极射线管。电子打出来射到屏幕上。工作原理是每一行每一行从上往下打电子。隔行扫描（raster scan）我第一帧扫描1，3，5行。第二帧扫描第2，4，6行。问">
+<meta property="og:description" content="Dijkstra考虑移动成本的搜索。文明中单位经过不同地形移动的举例不同。 用一个 priority queue。 优先队列里存放着各个地点。因为有可能多个路径经过同一个地点，所以如果当前loop中该地点在queue中已经有值，则只存放相对较好的值。 注： 相对于 Dijkstra ， BFS 就无法判断成本，只能寻找最短路径。 1priority &#x3D; new_cost  Heuristic se">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-08-30T12:58:13.000Z">
-<meta property="article:modified_time" content="2022-08-30T20:06:41.470Z">
+<meta property="article:published_time" content="2022-09-24T14:31:14.480Z">
+<meta property="article:modified_time" content="2022-09-25T12:15:44.823Z">
 <meta property="article:author" content="Chenxi Qu">
+<meta property="article:tag" content="ai&amp;games">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>games101-笔记-光栅化 - dotafs</title>
+  <title>games 笔记1 - dotafs</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -193,7 +194,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="games101-笔记-光栅化"></span>
+            <span id="subtitle" data-typed-text="games 笔记1"></span>
           
         </div>
 
@@ -204,8 +205,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-08-30 13:58" pubdate>
-          August 30, 2022 pm
+        <time datetime="2022-09-24 15:31" pubdate>
+          September 24, 2022 pm
         </time>
       </span>
     
@@ -249,29 +250,36 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">games101-笔记-光栅化</h1>
+            <h1 style="display: none">games 笔记1</h1>
             
             <div class="markdown-body">
               
-              <p>orthographic projection（正交投影）:</p>
-<p>忽略深度信息。相机无限远</p>
-<p>perspective projection （透视）:</p>
-<p>有近大远小的效果</p>
-<p>先变为正交投影。然后透视。</p>
-<p>早期的屏幕：（Cathode Ray Tube）阴极射线管。电子打出来射到屏幕上。工作原理是每一行每一行从上往下打电子。隔行扫描（raster scan）我第一帧扫描1，3，5行。第二帧扫描第2，4，6行。问题：对于高速运动视频会造成严重的画面撕裂。</p>
-<p>中期：（Liquid Crystal Display）液晶显示器。<br>(LED) 发光二极管。 只有发光和不发光。之前灯已经确定好颜色了。</p>
-<h3 id="三角形："><a href="#三角形：" class="headerlink" title="三角形："></a>三角形：</h3><ol>
-<li>最基础多边形且三个点肯定在一个平面内。</li>
-<li>任何多边形都可以拆解成三角形。</li>
-</ol>
-<h3 id="判断："><a href="#判断：" class="headerlink" title="判断："></a>判断：</h3><p>像素的中心点与三角形的位置关系。</p>
+              <h1 id="Dijkstra"><a href="#Dijkstra" class="headerlink" title="Dijkstra"></a>Dijkstra</h1><p>考虑移动成本的搜索。文明中单位经过不同地形移动的举例不同。 用一个 priority queue。</p>
+<p>优先队列里存放着各个地点。因为有可能多个路径经过同一个地点，所以如果当前loop中该地点在queue中已经有值，则只存放相对较好的值。</p>
+<p>注： 相对于 Dijkstra ， BFS 就无法判断成本，只能寻找最短路径。</p>
+<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">priority</span> <span class="hljs-operator">=</span> new_cost<br></code></pre></td></tr></table></figure>
 
+<h1 id="Heuristic-search-（Greedy-Best-First-Search）"><a href="#Heuristic-search-（Greedy-Best-First-Search）" class="headerlink" title="Heuristic search （Greedy Best First Search）"></a>Heuristic search （Greedy Best First Search）</h1><p>经典的贪婪。 Dijkstra 可以寻找多个路径，但我们往往只需要一个。优先队列，但不加入cost so far 改为distance to goal （两点间距离公式）。</p>
+<p>也不判断成本，且结果不一定最好，不适合复杂路径，但速度快很多。</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">priority</span> = heuristic(goal, next)<br></code></pre></td></tr></table></figure>
+
+<p>注： heuristic(启发式)这里采用了距离公式，每种类型的图启发式是不一样的，需要自己寻找。</p>
+<h1 id="A"><a href="#A" class="headerlink" title="A*"></a>A*</h1><p>A* will tell you to move from one location to another but it won’t tell you how.</p>
+<p>把前两个合起来。比Dijstra快且结果是正确的。</p>
+<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haxe">priority = <span class="hljs-keyword">new</span><span class="hljs-type">_cost</span> + heuristic(goal, next)<br></code></pre></td></tr></table></figure>
               
             </div>
             <hr/>
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="../../../../tags/ai-games/">#ai&games</a>
+      
+    </div>
   
 </div>
 
@@ -281,8 +289,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>games101-笔记-光栅化</div>
-      <div>http://example.com/2022/08/30/games101-笔记-光栅化/</div>
+      <div>games 笔记1</div>
+      <div>http://example.com/2022/09/24/game-笔记/</div>
     </div>
     <div class="license-meta">
       
@@ -294,13 +302,13 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>August 30, 2022</div>
+          <div>September 24, 2022</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>August 30, 2022</div>
+          <div>September 25, 2022</div>
         </div>
       
       <div class="license-meta-item">
@@ -329,18 +337,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="../../../09/24/game-%E7%AC%94%E8%AE%B0/" title="games 笔记1">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">games 笔记1</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="../../26/%E8%92%99%E7%89%B9%E5%8D%A1%E7%BD%97%E7%A7%AF%E5%88%86/" title="蒙特卡罗积分">
-                        <span class="hidden-mobile">蒙特卡罗积分</span>
+                      <a href="../../../08/30/games101-%E7%AC%94%E8%AE%B0-%E5%85%89%E6%A0%85%E5%8C%96/" title="games101-笔记-光栅化">
+                        <span class="hidden-mobile">games101-笔记-光栅化</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
