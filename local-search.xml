@@ -4,6 +4,51 @@
   
   
   <entry>
+    <title>exp 笔记1</title>
+    <link href="/2022/09/26/exp-%E7%AC%94%E8%AE%B01/"/>
+    <url>/2022/09/26/exp-%E7%AC%94%E8%AE%B01/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ag 笔记1</title>
+    <link href="/2022/09/25/ag-%E7%AC%94%E8%AE%B01/"/>
+    <url>/2022/09/25/ag-%E7%AC%94%E8%AE%B01/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Strongly-connected-components"><a href="#Strongly-connected-components" class="headerlink" title="Strongly connected components"></a>Strongly connected components</h1><h2 id="13-1"><a href="#13-1" class="headerlink" title="13.1"></a>13.1</h2><p>directed graph (digraph） edge are all directed.</p><p>undirected graph </p><p>mixed graph 既有directed edge 也有 undirected edge.</p><p>注： mixed 和 undirected 可以转化为directed graph</p><p>例13.3: 城市地图可以用一个图来模拟，该图的顶点是交叉口或死胡同，其边是没有交叉口的街道的延伸部分。这个图有两个定向边，分别对应于长长的通衢大道，以及有向边，对应于长长的单行道。因此，模拟城市地图的图是一个混合图。</p><p>例13.4: 图的实际例子存在于一栋大楼的电线和管道网络中。这样的网络可以被建模为图，其中每个连接器、夹具或插座被看作是一个顶点，而每条不间断的电线或管道被看作是一条边。这种图实际上是更大的图的组成部分，即当地的电力和水分配网络。根据我们感兴趣的这些图的具体方面，我们可以把它们的边看作是无向的或有向的，因为原则上，水可以在管道中流动，电流可以在电线中向任何方向流动。</p><h2 id="simple-graph"><a href="#simple-graph" class="headerlink" title="simple graph"></a>simple graph</h2><p>The definition of a graph groups edges in a collection, not a set。 我们将假设一个图是简单的(simple graph)。简单图不把包含平行边和自循环(自己连接自己)。</p><h2 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h2><ol><li><p>acyclic digraph 无环有向图</p></li><li><p>directed cycle 有向环: 一个图中的几个vertices能组成一个环</p></li></ol><h2 id="Theorem-13-17"><a href="#Theorem-13-17" class="headerlink" title="Theorem 13.17:"></a>Theorem 13.17:</h2><p>假设G是一个有n个顶点和m条边的又向图。以下问题可由一个运行时间为O(n(n+m)) 来解决。</p><ul><li>对于G的每个vertex v，计算从v可到达的subgraph </li><li>测试G是否是strongly connected</li><li>计算G 的 transitive closure G*</li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>modeling 笔记</title>
+    <link href="/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/"/>
+    <url>/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="modeling"><a href="#modeling" class="headerlink" title="modeling"></a>modeling</h1><h2 id="line"><a href="#line" class="headerlink" title="line"></a>line</h2><p>polyline: 连续的折线</p><p>line: 不管啥样的线都是1D的。line 包含curve。</p><center><img src="/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/1.jpeg" width="400" height="50"> <br></center><p>左边的公式适用于在曲线上生成点（为了pipeline）</p><p>右边的公式适用于描述trajectories(轨道)。可以用来延续一条curve。</p><center><img src="/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/2.jpeg" width="400" height="50"> <br></center><p>define 1D curve in 3D space.</p><h2 id="Speedline"><a href="#Speedline" class="headerlink" title="Speedline"></a>Speedline</h2><p>curve上取两个及以上个数的点。</p><p>interpolation : curve经过了所有的specify points</p><p>approxmiation : curve没有必要经过所有的点</p><p>convex hull </p><p>GBT(t)&#x3D; d</p><h2 id="QB"><a href="#QB" class="headerlink" title="QB"></a>QB</h2>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>37111</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>games 笔记1</title>
     <link href="/2022/09/24/game-%E7%AC%94%E8%AE%B0/"/>
     <url>/2022/09/24/game-%E7%AC%94%E8%AE%B0/</url>
@@ -14,7 +59,7 @@
     
     <tags>
       
-      <tag>ai&amp;games</tag>
+      <tag>34111</tag>
       
     </tags>
     
