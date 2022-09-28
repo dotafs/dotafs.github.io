@@ -25,8 +25,14 @@
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/1.jpeg">
 <meta property="og:image" content="http://example.com/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/2.jpeg">
+<meta property="og:image" content="http://example.com/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/3.jpeg">
+<meta property="og:image" content="http://example.com/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/4.jpeg">
+<meta property="og:image" content="http://example.com/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/5.jpeg">
+<meta property="og:image" content="http://example.com/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/6.jpeg">
+<meta property="og:image" content="http://example.com/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/7.jpeg">
+<meta property="og:image" content="http://example.com/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/8.jpeg">
 <meta property="article:published_time" content="2022-09-25T12:33:32.795Z">
-<meta property="article:modified_time" content="2022-09-26T15:02:51.256Z">
+<meta property="article:modified_time" content="2022-09-28T14:08:02.426Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta property="article:tag" content="37111">
 <meta name="twitter:card" content="summary_large_image">
@@ -273,9 +279,48 @@
 <h2 id="Speedline"><a href="#Speedline" class="headerlink" title="Speedline"></a>Speedline</h2><p>curve上取两个及以上个数的点。</p>
 <p>interpolation : curve经过了所有的specify points</p>
 <p>approxmiation : curve没有必要经过所有的点</p>
-<p>convex hull </p>
-<p>GBT(t)&#x3D; d</p>
-<h2 id="QB"><a href="#QB" class="headerlink" title="QB"></a>QB</h2>
+<h2 id="cubic-bezier-curves"><a href="#cubic-bezier-curves" class="headerlink" title="cubic bezier curves"></a>cubic bezier curves</h2><center>
+<img src="/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/3.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+<p>这种曲线总是被control points 组成的convex包裹着 </p>
+<p>注： 曲线在endpoint 正切</p>
+<center>
+<img src="/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/4.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+<p>图像描述了每一个基于T的点的权重值</p>
+<p>性质: partition of unity : 相加得1 ; T [0,1] .  所以被convew包裹着</p>
+<center>
+<img src="/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/5.jpeg" srcset="/img/loading.gif" lazyload width="400" height="50"> <br>
+</center>
+
+<p>matrix1： control points</p>
+<p>matrix2: coefficient</p>
+<p>matrix3: Bernstein polynomials</p>
+<center>
+<img src="/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/6.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+<p>使曲线变得更复杂。如图采取中点。给曲线由3个control points 变成7 个。 </p>
+<p>注: 也可以不是中点 而是任意的radio。</p>
+<h2 id="continuity"><a href="#continuity" class="headerlink" title="continuity"></a>continuity</h2><center>
+<img src="/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/7.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+
+<p>C0 : 两条curve相交点是sharp kink。</p>
+<p>G1 : 两条curve相交点tan是同一个direction。</p>
+<p>C1 : 两条curve相交点tan完全相同。</p>
+<p>C2 : 两条curve相交点tan完全相同，导数也完全相同。</p>
+<h2 id="cubic-BSP-line"><a href="#cubic-BSP-line" class="headerlink" title="cubic BSP line"></a>cubic BSP line</h2><center>
+<img src="/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/8.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+
+<h2 id="BSP-vs-Bezier"><a href="#BSP-vs-Bezier" class="headerlink" title="BSP vs Bezier"></a>BSP vs Bezier</h2><p>BSP 不经过endpoints</p>
+<p>Bezier 经过</p>
+
               
             </div>
             <hr/>
@@ -317,7 +362,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>September 26, 2022</div>
+          <div>September 28, 2022</div>
         </div>
       
       <div class="license-meta-item">
