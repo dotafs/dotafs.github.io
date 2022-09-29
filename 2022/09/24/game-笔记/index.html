@@ -23,11 +23,13 @@
 <meta property="og:site_name" content="dotafs">
 <meta property="og:description" content="Dijkstra考虑移动成本的搜索。文明中单位经过不同地形移动的举例不同。 用一个 priority queue。 优先队列里存放着各个地点。因为有可能多个路径经过同一个地点，所以如果当前loop中该地点在queue中已经有值，则只存放相对较好的值。 注： 相对于 Dijkstra ， BFS 就无法判断成本，只能寻找最短路径。 1priority &#x3D; new_cost  Heuristic se">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/09/24/game-%E7%AC%94%E8%AE%B0/1.jpeg">
 <meta property="article:published_time" content="2022-09-24T14:31:14.480Z">
-<meta property="article:modified_time" content="2022-09-27T16:11:13.193Z">
+<meta property="article:modified_time" content="2022-09-29T12:27:14.473Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta property="article:tag" content="34111">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/09/24/game-%E7%AC%94%E8%AE%B0/1.jpeg">
   
   
   
@@ -263,10 +265,21 @@
 <p>也不判断成本，且结果不一定最好，不适合复杂路径，但速度快很多。</p>
 <figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">priority</span> = heuristic(goal, next)<br></code></pre></td></tr></table></figure>
 
-<p>注： heuristic(启发式)这里采用了距离公式，每种类型的图启发式是不一样的，需要自己寻找。</p>
+<p>在这里用property queue </p>
+<p>注： </p>
+<ol>
+<li>heuristic(启发式)这里采用了距离公式，每种类型的图启发式是不一样的，需要自己寻找。</li>
+<li>有可能找不到解，甚至是一个。</li>
+<li>没有backtrack，有可能stack。</li>
+</ol>
 <h1 id="A"><a href="#A" class="headerlink" title="A*"></a>A*</h1><p>A* will tell you to move from one location to another but it won’t tell you how.</p>
 <p>把前两个合起来。比Dijstra快且结果是正确的。</p>
 <figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haxe">priority = <span class="hljs-keyword">new</span><span class="hljs-type">_cost</span> + heuristic(goal, next)<br></code></pre></td></tr></table></figure>
+
+<h3 id="good-heuristic-monotoic"><a href="#good-heuristic-monotoic" class="headerlink" title="good heuristic - monotoic"></a>good heuristic - monotoic</h3><center>
+<img src="/2022/09/24/game-%E7%AC%94%E8%AE%B0/1.jpeg" srcset="/img/loading.gif" lazyload width="400" height="300"> <br>
+</center>
+
               
             </div>
             <hr/>
@@ -308,7 +321,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Updated on</div>
-          <div>September 27, 2022</div>
+          <div>September 29, 2022</div>
         </div>
       
       <div class="license-meta-item">
