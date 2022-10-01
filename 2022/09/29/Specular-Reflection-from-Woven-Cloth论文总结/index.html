@@ -16,24 +16,23 @@
   <meta name="author" content="Chenxi Qu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Dijkstra考虑移动成本的搜索。文明中单位经过不同地形移动的举例不同。 用一个 priority queue。 优先队列里存放着各个地点。因为有可能多个路径经过同一个地点，所以如果当前loop中该地点在queue中已经有值，则只存放相对较好的值。 注： 相对于 Dijkstra ， BFS 就无法判断成本，只能寻找最短路径。 1priority &#x3D; new_cost  Heuristic se">
+    <meta name="description" content="这篇文章提出了什么模型特定织物的外观是由大尺度反射率和小尺度纹理的变化产生的，因为整个表面的观察角度和光照角度都在变化。 This article presents a study of the reflectance and texture of woven cloth that aims to identify and model im- portant optical features of">
 <meta property="og:type" content="article">
-<meta property="og:title" content="games 笔记1">
-<meta property="og:url" content="http://example.com/2022/09/24/game-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:title" content="Specular Reflection from Woven Cloth 论文总结">
+<meta property="og:url" content="http://example.com/2022/09/29/Specular-Reflection-from-Woven-Cloth%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="dotafs">
-<meta property="og:description" content="Dijkstra考虑移动成本的搜索。文明中单位经过不同地形移动的举例不同。 用一个 priority queue。 优先队列里存放着各个地点。因为有可能多个路径经过同一个地点，所以如果当前loop中该地点在queue中已经有值，则只存放相对较好的值。 注： 相对于 Dijkstra ， BFS 就无法判断成本，只能寻找最短路径。 1priority &#x3D; new_cost  Heuristic se">
+<meta property="og:description" content="这篇文章提出了什么模型特定织物的外观是由大尺度反射率和小尺度纹理的变化产生的，因为整个表面的观察角度和光照角度都在变化。 This article presents a study of the reflectance and texture of woven cloth that aims to identify and model im- portant optical features of">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/09/24/game-%E7%AC%94%E8%AE%B0/1.jpeg">
-<meta property="article:published_time" content="2022-09-24T14:31:14.480Z">
-<meta property="article:modified_time" content="2022-09-29T12:27:14.473Z">
+<meta property="og:image" content="http://example.com/2022/09/29/Specular-Reflection-from-Woven-Cloth%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/1.jpeg">
+<meta property="article:published_time" content="2022-09-29T15:40:25.137Z">
+<meta property="article:modified_time" content="2022-10-01T01:30:23.007Z">
 <meta property="article:author" content="Chenxi Qu">
-<meta property="article:tag" content="34111">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/09/24/game-%E7%AC%94%E8%AE%B0/1.jpeg">
+<meta name="twitter:image" content="http://example.com/2022/09/29/Specular-Reflection-from-Woven-Cloth%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/1.jpeg">
   
   
   
-  <title>games 笔记1 - dotafs</title>
+  <title>Specular Reflection from Woven Cloth 论文总结 - dotafs</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -196,7 +195,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="games 笔记1"></span>
+            <span id="subtitle" data-typed-text="Specular Reflection from Woven Cloth 论文总结"></span>
           
         </div>
 
@@ -212,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          603 words
+          3.7k words
         
       </span>
     
@@ -252,33 +251,39 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">games 笔记1</h1>
+            <h1 style="display: none">Specular Reflection from Woven Cloth 论文总结</h1>
             
             <div class="markdown-body">
               
-              <h1 id="Dijkstra"><a href="#Dijkstra" class="headerlink" title="Dijkstra"></a>Dijkstra</h1><p>考虑移动成本的搜索。文明中单位经过不同地形移动的举例不同。 用一个 priority queue。</p>
-<p>优先队列里存放着各个地点。因为有可能多个路径经过同一个地点，所以如果当前loop中该地点在queue中已经有值，则只存放相对较好的值。</p>
-<p>注： 相对于 Dijkstra ， BFS 就无法判断成本，只能寻找最短路径。</p>
-<figure class="highlight abnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs abnf"><span class="hljs-attribute">priority</span> <span class="hljs-operator">=</span> new_cost<br></code></pre></td></tr></table></figure>
-
-<h1 id="Heuristic-search-（Greedy-Best-First-Search）"><a href="#Heuristic-search-（Greedy-Best-First-Search）" class="headerlink" title="Heuristic search （Greedy Best First Search）"></a>Heuristic search （Greedy Best First Search）</h1><p>经典的贪婪。 Dijkstra 可以寻找多个路径，但我们往往只需要一个。优先队列，但不加入cost so far 改为distance to goal （两点间距离公式）。</p>
-<p>也不判断成本，且结果不一定最好，不适合复杂路径，但速度快很多。</p>
-<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">priority</span> = heuristic(goal, next)<br></code></pre></td></tr></table></figure>
-
-<p>在这里用property queue </p>
-<p>注： </p>
+              <h2 id="这篇文章提出了什么模型"><a href="#这篇文章提出了什么模型" class="headerlink" title="这篇文章提出了什么模型"></a>这篇文章提出了什么模型</h2><p>特定织物的外观是由大尺度反射率和小尺度纹理的变化产生的，因为整个表面的观察角度和光照角度都在变化。</p>
+<p>This article presents a study of the reflectance and texture of woven cloth that aims to identify and model im- portant optical features of cloth appearance. </p>
 <ol>
-<li>heuristic(启发式)这里采用了距离公式，每种类型的图启发式是不一样的，需要自己寻找。</li>
-<li>有可能找不到解，甚至是一个。</li>
-<li>没有backtrack，有可能stack。</li>
+<li>New measurements are reported for a range of fabrics including natural and synthetic fibers as well as staple and filament yarns.</li>
+<li>A new scattering model for woven cloth is introduced that describes the reflectance and the texture based on an analysis of specular reflection from the fibers.</li>
 </ol>
-<h1 id="A"><a href="#A" class="headerlink" title="A*"></a>A*</h1><p>A* will tell you to move from one location to another but it won’t tell you how.</p>
-<p>把前两个合起来。比Dijstra快且结果是正确的。</p>
-<figure class="highlight haxe"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs haxe">priority = <span class="hljs-keyword">new</span><span class="hljs-type">_cost</span> + heuristic(goal, next)<br></code></pre></td></tr></table></figure>
-
-<h3 id="good-heuristic-monotoic"><a href="#good-heuristic-monotoic" class="headerlink" title="good heuristic - monotoic"></a>good heuristic - monotoic</h3><center>
-<img src="/2022/09/24/game-%E7%AC%94%E8%AE%B0/1.jpeg" srcset="/img/loading.gif" lazyload width="400" height="300"> <br>
+<p>procedural model 特点： Unlike data-based models, our procedural model doesn’t require image data. It can handle a wide range of fabrics using a small set of physically meaningful parameters that describe the characteris- tics of the fibers, the geometry of the yarns, and the pattern of the weave. </p>
+<p>最后： The model is validated against the measurements and evaluated by comparisons to high-resolution video of the real fabrics and to BTF models of two of the fabrics.</p>
+<h2 id="梗概"><a href="#梗概" class="headerlink" title="梗概"></a>梗概</h2><h3 id="cloth-在-cg-中重要性"><a href="#cloth-在-cg-中重要性" class="headerlink" title="cloth 在 cg 中重要性"></a>cloth 在 cg 中重要性</h3><p>Cloth is an important material to render convincingly because it is so often important in computer graphics scenes, especially those involving virtual humans in everyday environments. </p>
+<h3 id="作者想要实现的"><a href="#作者想要实现的" class="headerlink" title="作者想要实现的"></a>作者想要实现的</h3><p>Our goal is to develop a simple, easy-to-use procedural model for the appearance of cloth that efficiently captures the important features of its appearance based on physically meaningful parameters.</p>
+<h3 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h3><p>This work makes two contributions: a set of measurements and a model to fit them. </p>
+<ol>
+<li>We present new, detailed measurements of the anisotropic Bidirectional Reflectance Distribution Function (BRDF) of six fabrics representing four textile fibers and the three most common weave patterns, as well as texture measurements for some of the fabrics. To study the appearance of the fabrics in con- text, we also took high-resolution video of the fabrics in a draped configuration under controlled conditions.</li>
+<li>Our second contribution is a new reflection model for woven fabrics. The model is based on an analysis of specular scattering from fibers that are spun into yarns and then woven into fabric based on a given weaving pattern. Its parameters are all physically meaningful, describing the scattering properties of the fibers and the geometry of the yarns and weave. The model predicts both BRDF and, by a simple mapping of specular highlights onto the cloth surface, the texture of specular highlights. It defines a spatially varying BRDF that fits into standard realistic rendering systems and can be integrated over incident light using standard methods.</li>
+</ol>
+<h3 id="和传统Bidirectional-Texture-Functions的区别"><a href="#和传统Bidirectional-Texture-Functions的区别" class="headerlink" title="和传统Bidirectional Texture Functions的区别"></a>和传统Bidirectional Texture Functions的区别</h3><p>We present new, detailed measurements of the anisotropic Bidirectional Reflectance Distribution Function (BRDF) of six fabrics representing four textile fibers and the three most common weave patterns, as well as texture measurements for some of the fabrics. </p>
+<p>While physics-based models are derived from analysis of first principles, data-based models gather the reflection data by taking many pictures of the material to be modeled, store those data in a database, and query the database for the appropriate reflection data at render time. </p>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>We validate our model against our measurements and compare to renderings using BTFs. While the resulting appearance is not per- fect, lacking some shadowing&#x2F;masking effects and the irregularities of real cloth, our model predicts many key features both of the direc- tional reflectance distribution and of the evolution of texture with viewing and illumination angle. Its accuracy compares favorably with BTFs in many respects. Because all the directional variation in the model is due to specular reflection, an implication of this work is that specular reflection plays a more important role in the appearance of even quite matte fabrics than previously appreciated.</p>
+<h2 id="关于不同织物我们需要考虑的物理变量"><a href="#关于不同织物我们需要考虑的物理变量" class="headerlink" title="关于不同织物我们需要考虑的物理变量"></a>关于不同织物我们需要考虑的物理变量</h2><center>
+<img src="/2022/09/29/Specular-Reflection-from-Woven-Cloth%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/1.jpeg" srcset="/img/loading.gif" lazyload width="900" height="200"> <br>
 </center>
+
+<h4 id="1-编织模式"><a href="#1-编织模式" class="headerlink" title="1. 编织模式"></a>1. 编织模式</h4><p>织布是由两组平行的纱线（称为经线和纬线）以直角相互交错而成的。在织造过程中，经纱被提升或降低，纬纱（也称为填充物）被插入所产生的空间中。经线和纬线交错的模式差异很大。<br>但大多数织物是以三种最简单的编织模式之一制成的：平纹、斜纹和缎纹</p>
+<h4 id="2-织布中不同的纺织纤维"><a href="#2-织布中不同的纺织纤维" class="headerlink" title="2.织布中不同的纺织纤维"></a>2.织布中不同的纺织纤维</h4><p>天然纤维（例如：棉、羊毛和丝；合成纤维（例如：聚酯、尼龙和丙烯酸）；以及纤维素纤维（例如：人造纤维和醋酸纤维）。这些纤维可分为两种类型：短纤维<br>和长丝纤维。</p>
+<ul>
+<li>短纤维被相互缠绕，使它们通过摩擦而固定在一起。We use the term “staple” to refer to twisted staple yarn.</li>
+<li>长丝纤维–如丝绸和许多合成纤维–是非常长的。因此，长丝纱线不需要捻在一起，就能保持在一起。 We use the term “filament” to refer to untwisted filament yarn.</li>
+</ul>
+<h4 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h4><p> 纱线的作用力使纱段弯曲成弧形，向可见一侧凸起。弯曲的程度对外观很重要，它取决于纱线的硬度、纱段的长度、纱线的张力以及与之相互作用的其他纱线的张力。</p>
 
               
             </div>
@@ -286,13 +291,6 @@
             <div>
               <div class="post-metas my-3">
   
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="../../../../tags/34111/">#34111</a>
-      
-    </div>
   
 </div>
 
@@ -302,8 +300,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>games 笔记1</div>
-      <div>http://example.com/2022/09/24/game-笔记/</div>
+      <div>Specular Reflection from Woven Cloth 论文总结</div>
+      <div>http://example.com/2022/09/29/Specular-Reflection-from-Woven-Cloth论文总结/</div>
     </div>
     <div class="license-meta">
       
@@ -340,15 +338,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="../../25/modeling-%E7%AC%94%E8%AE%B0/" title="modeling 笔记">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">modeling 笔记</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="../../25/modeling-%E7%AC%94%E8%AE%B0/" title="modeling 笔记">
+                        <span class="hidden-mobile">modeling 笔记</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
