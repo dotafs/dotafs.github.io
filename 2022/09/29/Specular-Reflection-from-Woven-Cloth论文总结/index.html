@@ -16,16 +16,16 @@
   <meta name="author" content="Chenxi Qu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="这篇文章提出了什么模型特定织物的外观是由大尺度反射率和小尺度纹理的变化产生的，因为整个表面的观察角度和光照角度都在变化。 This article presents a study of the reflectance and texture of woven cloth that aims to identify and model im- portant optical features of">
+    <meta name="description" content="1.这篇文章干了啥特定织物的外观是由大尺度反射率和小尺度纹理的变化产生的，因为整个表面的观察角度和光照角度都在变化。 This article presents a study of the reflectance and texture of woven cloth that aims to identify and model im- portant optical features of c">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Specular Reflection from Woven Cloth 论文总结">
 <meta property="og:url" content="http://example.com/2022/09/29/Specular-Reflection-from-Woven-Cloth%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="dotafs">
-<meta property="og:description" content="这篇文章提出了什么模型特定织物的外观是由大尺度反射率和小尺度纹理的变化产生的，因为整个表面的观察角度和光照角度都在变化。 This article presents a study of the reflectance and texture of woven cloth that aims to identify and model im- portant optical features of">
+<meta property="og:description" content="1.这篇文章干了啥特定织物的外观是由大尺度反射率和小尺度纹理的变化产生的，因为整个表面的观察角度和光照角度都在变化。 This article presents a study of the reflectance and texture of woven cloth that aims to identify and model im- portant optical features of c">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/09/29/Specular-Reflection-from-Woven-Cloth%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/1.jpeg">
 <meta property="article:published_time" content="2022-09-29T15:40:25.137Z">
-<meta property="article:modified_time" content="2022-10-01T01:30:23.007Z">
+<meta property="article:modified_time" content="2022-10-02T15:29:00.061Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/09/29/Specular-Reflection-from-Woven-Cloth%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/1.jpeg">
@@ -211,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.7k words
+          4.4k words
         
       </span>
     
@@ -255,7 +255,7 @@
             
             <div class="markdown-body">
               
-              <h2 id="这篇文章提出了什么模型"><a href="#这篇文章提出了什么模型" class="headerlink" title="这篇文章提出了什么模型"></a>这篇文章提出了什么模型</h2><p>特定织物的外观是由大尺度反射率和小尺度纹理的变化产生的，因为整个表面的观察角度和光照角度都在变化。</p>
+              <h1 id="1-这篇文章干了啥"><a href="#1-这篇文章干了啥" class="headerlink" title="1.这篇文章干了啥"></a>1.这篇文章干了啥</h1><p>特定织物的外观是由大尺度反射率和小尺度纹理的变化产生的，因为整个表面的观察角度和光照角度都在变化。</p>
 <p>This article presents a study of the reflectance and texture of woven cloth that aims to identify and model im- portant optical features of cloth appearance. </p>
 <ol>
 <li>New measurements are reported for a range of fabrics including natural and synthetic fibers as well as staple and filament yarns.</li>
@@ -284,6 +284,23 @@
 <li>长丝纤维–如丝绸和许多合成纤维–是非常长的。因此，长丝纱线不需要捻在一起，就能保持在一起。 We use the term “filament” to refer to untwisted filament yarn.</li>
 </ul>
 <h4 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h4><p> 纱线的作用力使纱段弯曲成弧形，向可见一侧凸起。弯曲的程度对外观很重要，它取决于纱线的硬度、纱段的长度、纱线的张力以及与之相互作用的其他纱线的张力。</p>
+<h1 id="2-关于测量"><a href="#2-关于测量" class="headerlink" title="2.关于测量"></a>2.关于测量</h1><h2 id="测量BRDF"><a href="#测量BRDF" class="headerlink" title="测量BRDF"></a>测量BRDF</h2><p>To measure the BRDFs of our materials, we illuminated them with a light source of small solid angle and measured the reflected radiance by photographing them with a scientific CCD camera.</p>
+<p>We measured datasets consisting of 225 incident directions for each of seven exitant directions. The incident directions are on a grid covering the hemisphere out to approximately 75 degrees, and the viewing directions coarsely cover the hemisphere (with the assumption of 180◦ rotational symmetry) out to 60 degrees.</p>
+<h2 id="测量结果"><a href="#测量结果" class="headerlink" title="测量结果"></a>测量结果</h2><ol>
+<li><p>there is an obvious difference between filament yarns, which produce a pair of fairly claffssic anisotropic linear highlights (one from the warp yarns and one from the weft)</p>
+</li>
+<li></li>
+</ol>
+<h1 id="3-关于model"><a href="#3-关于model" class="headerlink" title="3.关于model"></a>3.关于model</h1><p> 这两种方法具有相同的BRDF</p>
+<p> 分为两部分:</p>
+<ol>
+<li>the reflectance model</li>
+</ol>
+<p>我们不需要关注纹理只需要考虑BRDF的时候采用的model。</p>
+<ol start="2">
+<li>the texture model</li>
+</ol>
+<p>我们需要关注细节纹理的时候采用的model。</p>
 
               
             </div>
