@@ -16,12 +16,12 @@
   <meta name="author" content="Chenxi Qu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="modelinglinepolyline: 连续的折线 line: 不管啥样的线都是1D的。line 包含curve。      左边的公式适用于在曲线上生成点（为了pipeline） 右边的公式适用于描述trajectories(轨道)。可以用来延续一条curve。      define 1D curve in 3D space. Speedlinecurve上取两个及以上个数的点。 inte">
+    <meta name="description" content="linepolyline: 连续的折线 line: 不管啥样的线都是1D的。line 包含curve。      左边的公式适用于在曲线上生成点（为了pipeline） 右边的公式适用于描述trajectories(轨道)。可以用来延续一条curve。      define 1D curve in 3D space. Speedlinecurve上取两个及以上个数的点。 interpolatio">
 <meta property="og:type" content="article">
 <meta property="og:title" content="modeling 笔记">
 <meta property="og:url" content="http://example.com/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="dotafs">
-<meta property="og:description" content="modelinglinepolyline: 连续的折线 line: 不管啥样的线都是1D的。line 包含curve。      左边的公式适用于在曲线上生成点（为了pipeline） 右边的公式适用于描述trajectories(轨道)。可以用来延续一条curve。      define 1D curve in 3D space. Speedlinecurve上取两个及以上个数的点。 inte">
+<meta property="og:description" content="linepolyline: 连续的折线 line: 不管啥样的线都是1D的。line 包含curve。      左边的公式适用于在曲线上生成点（为了pipeline） 右边的公式适用于描述trajectories(轨道)。可以用来延续一条curve。      define 1D curve in 3D space. Speedlinecurve上取两个及以上个数的点。 interpolatio">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/1.jpeg">
 <meta property="og:image" content="http://example.com/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/2.jpeg">
@@ -31,8 +31,9 @@
 <meta property="og:image" content="http://example.com/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/6.jpeg">
 <meta property="og:image" content="http://example.com/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/7.jpeg">
 <meta property="og:image" content="http://example.com/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/8.jpeg">
+<meta property="og:image" content="http://example.com/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/9.jpeg">
 <meta property="article:published_time" content="2022-09-25T12:33:32.795Z">
-<meta property="article:modified_time" content="2022-09-29T14:18:58.144Z">
+<meta property="article:modified_time" content="2022-10-02T20:27:56.484Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta property="article:tag" content="37111">
 <meta name="twitter:card" content="summary_large_image">
@@ -219,7 +220,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          652 words
+          659 words
         
       </span>
     
@@ -263,7 +264,7 @@
             
             <div class="markdown-body">
               
-              <h1 id="modeling"><a href="#modeling" class="headerlink" title="modeling"></a>modeling</h1><h2 id="line"><a href="#line" class="headerlink" title="line"></a>line</h2><p>polyline: 连续的折线</p>
+              <h1 id="line"><a href="#line" class="headerlink" title="line"></a>line</h1><p>polyline: 连续的折线</p>
 <p>line: 不管啥样的线都是1D的。line 包含curve。</p>
 <center>
 <img src="/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/1.jpeg" srcset="/img/loading.gif" lazyload width="400" height="50"> <br>
@@ -320,6 +321,11 @@
 
 <h2 id="BSP-vs-Bezier"><a href="#BSP-vs-Bezier" class="headerlink" title="BSP vs Bezier"></a>BSP vs Bezier</h2><p>BSP 不经过endpoints</p>
 <p>Bezier 经过</p>
+<h1 id="surface"><a href="#surface" class="headerlink" title="surface"></a>surface</h1><center>
+<img src="/2022/09/25/modeling-%E7%AC%94%E8%AE%B0/9.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+<p>给一个线拉成平面</p>
 
               
             </div>
