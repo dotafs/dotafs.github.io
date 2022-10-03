@@ -16,23 +16,25 @@
   <meta name="author" content="Chenxi Qu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.这篇文章干了啥特定织物的外观是由大尺度反射率和小尺度纹理的变化产生的，因为整个表面的观察角度和光照角度都在变化。 This article presents a study of the reflectance and texture of woven cloth that aims to identify and model im- portant optical features of c">
+    <meta name="description" content="1NeRF: Representing Scenesas Neural Radiance Fieldsfor View Synthesis 目的通过优化底层的连续体积场景函数来合成复杂场景的新视图。 在这项工作中，我们以新的方式解决了长期存在的视图合成问题。  视图合成是指从一组给定的输入图中渲染场景的新视图的问题和它们各自的相机姿势来渲染场景的新视图。从新的视角产生逼真的输出需要正确处理复杂的几">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Specular Reflection from Woven Cloth 论文总结">
-<meta property="og:url" content="http://example.com/2022/09/29/Specular-Reflection-from-Woven-Cloth%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:title" content="NeRF论文总结">
+<meta property="og:url" content="http://example.com/2022/10/03/NeRF%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="dotafs">
-<meta property="og:description" content="1.这篇文章干了啥特定织物的外观是由大尺度反射率和小尺度纹理的变化产生的，因为整个表面的观察角度和光照角度都在变化。 This article presents a study of the reflectance and texture of woven cloth that aims to identify and model im- portant optical features of c">
+<meta property="og:description" content="1NeRF: Representing Scenesas Neural Radiance Fieldsfor View Synthesis 目的通过优化底层的连续体积场景函数来合成复杂场景的新视图。 在这项工作中，我们以新的方式解决了长期存在的视图合成问题。  视图合成是指从一组给定的输入图中渲染场景的新视图的问题和它们各自的相机姿势来渲染场景的新视图。从新的视角产生逼真的输出需要正确处理复杂的几">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/09/29/Specular-Reflection-from-Woven-Cloth%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/1.jpeg">
-<meta property="article:published_time" content="2022-09-29T15:40:25.137Z">
-<meta property="article:modified_time" content="2022-10-02T18:50:28.893Z">
+<meta property="og:image" content="http://example.com/2022/10/03/NeRF%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/1.jpeg">
+<meta property="og:image" content="http://example.com/2022/10/03/NeRF%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/2.jpeg">
+<meta property="og:image" content="http://example.com/2022/10/03/NeRF%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/3.jpeg">
+<meta property="article:published_time" content="2022-10-03T00:04:43.178Z">
+<meta property="article:modified_time" content="2022-10-03T01:47:19.298Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/09/29/Specular-Reflection-from-Woven-Cloth%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/1.jpeg">
+<meta name="twitter:image" content="http://example.com/2022/10/03/NeRF%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/1.jpeg">
   
   
   
-  <title>Specular Reflection from Woven Cloth 论文总结 - dotafs</title>
+  <title>NeRF论文总结 - dotafs</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -195,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Specular Reflection from Woven Cloth 论文总结"></span>
+            <span id="subtitle" data-typed-text="NeRF论文总结"></span>
           
         </div>
 
@@ -211,7 +213,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.4k words
+          2.9k words
         
       </span>
     
@@ -251,55 +253,89 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Specular Reflection from Woven Cloth 论文总结</h1>
+            <h1 style="display: none">NeRF论文总结</h1>
             
             <div class="markdown-body">
               
-              <h1 id="1-这篇文章干了啥"><a href="#1-这篇文章干了啥" class="headerlink" title="1.这篇文章干了啥"></a>1.这篇文章干了啥</h1><p>特定织物的外观是由大尺度反射率和小尺度纹理的变化产生的，因为整个表面的观察角度和光照角度都在变化。</p>
-<p>This article presents a study of the reflectance and texture of woven cloth that aims to identify and model im- portant optical features of cloth appearance. </p>
+              <h1 id="1"><a href="#1" class="headerlink" title="1"></a>1</h1><p>NeRF: Representing Scenes<br>as Neural Radiance Fields<br>for View Synthesis</p>
+<h3 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h3><p>通过优化底层的连续体积场景函数来合成复杂场景的新视图。</p>
+<p>在这项工作中，我们以新的方式解决了长期存在的视图合成问题。</p>
+<ul>
+<li>视图合成是指从一组给定的输入图中渲染场景的新视图的问题和它们各自的相机姿势来渲染场景的新视图。从新的视角产生逼真的输出需要正确处理复杂的几何形状和材料反射属性。</li>
+</ul>
+<p>之前提及过很多方案，但这是第一次实现。</p>
+<h4 id="结果："><a href="#结果：" class="headerlink" title="结果："></a>结果：</h4><p> 提出了第一个continuous neural scene(连续的神经场景表征)，能够从在自然环境中捕获的RGB图像中呈现出高分辨率的逼真的真实物体和场景的新观点。自然环境中捕获的RGB图像，呈现出真实物体和场景的高清晰度的新观点。</p>
+<h4 id="怎么做："><a href="#怎么做：" class="headerlink" title="怎么做："></a>怎么做：</h4><p>我们将一个静态场景表示为一个连续的5D函数输出每个方向(θ, φ)上的辐射度。在空间的每个点（x，y，z）的辐射度，以及每个点的密度。在每一点上的密度就像一个不透明度，它控制着通过(x, y, z)的光线所积累的辐射量。<br>我们的方法优化了一个没有任何卷积层的深度全连接神经网络通过回归来表示这个函数。<br>从一个单一的5D坐标（x，y，z，θ，φ）到一个单一的体积密度和取决于视图的RGB颜色。</p>
+<p>为了生成一个特定视角的NERF。做法以下步骤：</p>
 <ol>
-<li>New measurements are reported for a range of fabrics including natural and synthetic fibers as well as staple and filament yarns.</li>
-<li>A new scattering model for woven cloth is introduced that describes the reflectance and the texture based on an analysis of specular reflection from the fibers.</li>
+<li>将相机光线穿过场景，生成一个采样后的神经辐射场。</li>
+<li>使用这些点和它们相应的2D viewing directions 作为神经网络的输入，产生一组颜色和密度的输出。这些密度累积起来也就是一个视角的二维图像。</li>
+<li>因为有些观测不到，所以优化。用梯度下降法。</li>
+<li>神经网络模型并没有收敛到我们想要的分辨率。我们通过对输入的5D坐标进行位置编码来解决这个问题，从而使MLP能够表示更高的频率函数。</li>
 </ol>
-<p>procedural model 特点： Unlike data-based models, our procedural model doesn’t require image data. It can handle a wide range of fabrics using a small set of physically meaningful parameters that describe the characteris- tics of the fibers, the geometry of the yarns, and the pattern of the weave. </p>
-<p>最后： The model is validated against the measurements and evaluated by comparisons to high-resolution video of the real fabrics and to BTF models of two of the fabrics.</p>
-<h2 id="梗概"><a href="#梗概" class="headerlink" title="梗概"></a>梗概</h2><h3 id="cloth-在-cg-中重要性"><a href="#cloth-在-cg-中重要性" class="headerlink" title="cloth 在 cg 中重要性"></a>cloth 在 cg 中重要性</h3><p>Cloth is an important material to render convincingly because it is so often important in computer graphics scenes, especially those involving virtual humans in everyday environments. </p>
-<h3 id="作者想要实现的"><a href="#作者想要实现的" class="headerlink" title="作者想要实现的"></a>作者想要实现的</h3><p>Our goal is to develop a simple, easy-to-use procedural model for the appearance of cloth that efficiently captures the important features of its appearance based on physically meaningful parameters.</p>
-<h3 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h3><p>This work makes two contributions: a set of measurements and a model to fit them. </p>
+<p>note: 后两点是在模型提出之后作者引用自己在reference 13 中进行对神经网络场的改进。</p>
+<h4 id="输入"><a href="#输入" class="headerlink" title="输入"></a>输入</h4><p>其输入是一个单一的连续5D坐标:</p>
+<ul>
+<li>(spatial location (x, y, z) and viewing direction (θ, φ))</li>
+<li>换句话说也就是一组已知相机姿态的图像和摄像机的位置</li>
+</ul>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><p>其输出是体积密度和视图。</p>
+<h4 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h4><p>通过沿相机射线查询5D坐标来合成视图，并使用经典的体积渲染技术来投射输出。</p>
+<p>描述了如何有效地优化神经辐射场来渲染具有复杂几何和外观的场景的逼真的新观点。<br>描述了如何有效地优化neural radiance fields，以呈现具有复杂几何形状和外观的场景的逼真的新观点。</p>
+<p>和其他现代模型进行比较</p>
 <ol>
-<li>We present new, detailed measurements of the anisotropic Bidirectional Reflectance Distribution Function (BRDF) of six fabrics representing four textile fibers and the three most common weave patterns, as well as texture measurements for some of the fabrics. To study the appearance of the fabrics in con- text, we also took high-resolution video of the fabrics in a draped configuration under controlled conditions.</li>
-<li>Our second contribution is a new reflection model for woven fabrics. The model is based on an analysis of specular scattering from fibers that are spun into yarns and then woven into fabric based on a given weaving pattern. Its parameters are all physically meaningful, describing the scattering properties of the fibers and the geometry of the yarns and weave. The model predicts both BRDF and, by a simple mapping of specular highlights onto the cloth surface, the texture of specular highlights. It defines a spatially varying BRDF that fits into standard realistic rendering systems and can be integrated over incident light using standard methods.</li>
+<li>[SRN] 几何深度学习通常需要明确的三维监督。新兴的神经场景表征只能用摆放的二维图像进行训练，但现有的方法忽略了场景的三维结构。<br>提出了场景表征网络（SRNs），这是一种连续的、具有三维结构意识的场景表征，对几何和外观都进行编码。SRNs将场景表示为连续的函数，将世界坐标映射到局部场景属性的特征表示。SRNs可以仅从二维图像及其相机姿势中进行端到端的训练，而不需要访问深度或形状。</li>
 </ol>
-<h3 id="和传统Bidirectional-Texture-Functions的区别"><a href="#和传统Bidirectional-Texture-Functions的区别" class="headerlink" title="和传统Bidirectional Texture Functions的区别"></a>和传统Bidirectional Texture Functions的区别</h3><p>We present new, detailed measurements of the anisotropic Bidirectional Reflectance Distribution Function (BRDF) of six fabrics representing four textile fibers and the three most common weave patterns, as well as texture measurements for some of the fabrics. </p>
-<p>While physics-based models are derived from analysis of first principles, data-based models gather the reflection data by taking many pictures of the material to be modeled, store those data in a database, and query the database for the appropriate reflection data at render time. </p>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>We validate our model against our measurements and compare to renderings using BTFs. While the resulting appearance is not per- fect, lacking some shadowing&#x2F;masking effects and the irregularities of real cloth, our model predicts many key features both of the direc- tional reflectance distribution and of the evolution of texture with viewing and illumination angle. Its accuracy compares favorably with BTFs in many respects. Because all the directional variation in the model is due to specular reflection, an implication of this work is that specular reflection plays a more important role in the appearance of even quite matte fabrics than previously appreciated.</p>
-<h2 id="关于不同织物我们需要考虑的物理变量"><a href="#关于不同织物我们需要考虑的物理变量" class="headerlink" title="关于不同织物我们需要考虑的物理变量"></a>关于不同织物我们需要考虑的物理变量</h2><center>
-<img src="/2022/09/29/Specular-Reflection-from-Woven-Cloth%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/1.jpeg" srcset="/img/loading.gif" lazyload width="900" height="200"> <br>
+<ul>
+<li>与之前的变化： SRNs可以仅从二维图像及其相机姿势中进行端到端的训练，而不需要访问深度或形状。</li>
+</ul>
+<ol start="2">
+<li>[NV] 我们规避了这些困难，提出了一种基于学习的方法来表示动态物体，其灵感来自于断层成像中使用的整体投影模型<br>该方法是在多视角捕捉环境中直接从二维图像中监督出来的，不需要对物体进行明确的重建或跟踪。</li>
+</ol>
+<ul>
+<li>比较新兴的点： 为了克服基于体素的表征的内存限制，我们在射线行进过程中学习了一个用翘曲场实现的动态不规则网格结构。</li>
+</ul>
+<ol start="3">
+<li>[LLFF] 首先将每个取样视图扩展到 首先通过多平面图像(MPI)场景将每个取样的视图扩展成一个局部光场。表示，然后通过混合相邻的局部光场来渲染新的视图。用户可以自定义调节需要对图像的采样率。</li>
+</ol>
+<ul>
+<li>扩展了传统的全光采样理论，得出了一个界限，精确地规定了用户在使用我们的算法时应该对一个给定场景的视图进行多么密集的采样。</li>
+</ul>
+<center>
+<img src="/2022/10/03/NeRF%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/1.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
 </center>
 
-<h4 id="1-编织模式"><a href="#1-编织模式" class="headerlink" title="1. 编织模式"></a>1. 编织模式</h4><p>织布是由两组平行的纱线（称为经线和纬线）以直角相互交错而成的。在织造过程中，经纱被提升或降低，纬纱（也称为填充物）被插入所产生的空间中。经线和纬线交错的模式差异很大。<br>但大多数织物是以三种最简单的编织模式之一制成的：平纹、斜纹和缎纹</p>
-<h4 id="2-织布中不同的纺织纤维"><a href="#2-织布中不同的纺织纤维" class="headerlink" title="2.织布中不同的纺织纤维"></a>2.织布中不同的纺织纤维</h4><p>天然纤维（例如：棉、羊毛和丝；合成纤维（例如：聚酯、尼龙和丙烯酸）；以及纤维素纤维（例如：人造纤维和醋酸纤维）。这些纤维可分为两种类型：短纤维<br>和长丝纤维。</p>
+
+
+<h4 id="用基于物理的渲染器生成的新合成数据集的场景在测试集上的比较"><a href="#用基于物理的渲染器生成的新合成数据集的场景在测试集上的比较" class="headerlink" title="用基于物理的渲染器生成的新合成数据集的场景在测试集上的比较"></a>用基于物理的渲染器生成的新合成数据集的场景在测试集上的比较</h4><p>能够恢复几何和外观上的细节，如船舶的索具、乐高的齿轮和踏板、麦克风的闪亮支架。</p>
 <ul>
-<li>短纤维被相互缠绕，使它们通过摩擦而固定在一起。We use the term “staple” to refer to twisted staple yarn.</li>
-<li>长丝纤维–如丝绸和许多合成纤维–是非常长的。因此，长丝纱线不需要捻在一起，就能保持在一起。 We use the term “filament” to refer to untwisted filament yarn.</li>
+<li>LLFF在麦克风支架和材料的物体边缘出现了带状伪影。</li>
+<li>SRN在任何情况下都会产生模糊和失真的渲染。</li>
+<li>NV不能捕捉到麦克风格栅或乐高齿轮上的细节。</li>
 </ul>
-<h4 id="3-总结"><a href="#3-总结" class="headerlink" title="3.总结"></a>3.总结</h4><p> 纱线的作用力使纱段弯曲成弧形，向可见一侧凸起。弯曲的程度对外观很重要，它取决于纱线的硬度、纱段的长度、纱线的张力以及与之相互作用的其他纱线的张力。</p>
-<h1 id="2-关于测量"><a href="#2-关于测量" class="headerlink" title="2.关于测量"></a>2.关于测量</h1><h2 id="测量BRDF"><a href="#测量BRDF" class="headerlink" title="测量BRDF"></a>测量BRDF</h2><p>To measure the BRDFs of our materials, we illuminated them with a light source of small solid angle and measured the reflected radiance by photographing them with a scientific CCD camera.</p>
-<p>We measured datasets consisting of 225 incident directions for each of seven exitant directions. The incident directions are on a grid covering the hemisphere out to approximately 75 degrees, and the viewing directions coarsely cover the hemisphere (with the assumption of 180◦ rotational symmetry) out to 60 degrees.</p>
-<h2 id="测量结果"><a href="#测量结果" class="headerlink" title="测量结果"></a>测量结果</h2><ol>
-<li>there is an obvious difference between filament yarns, which produce a pair of fairly claffssic anisotropic linear highlights (one from the warp yarns and one from the weft)</li>
-</ol>
-<h2 id="测量Texture"><a href="#测量Texture" class="headerlink" title="测量Texture"></a>测量Texture</h2><p>但使用了放大倍数的微距镜头，使纱线能够被清楚地辨别出来。（这里我觉得是对model的两种模式进行铺垫）</p>
-<h1 id="3-关于model"><a href="#3-关于model" class="headerlink" title="3.关于model"></a>3.关于model</h1><p> 这两种方法具有相同的BRDF</p>
-<p> 分为两部分:</p>
-<ol>
-<li>the reflectance model</li>
-</ol>
-<p>我们不需要关注纹理只需要考虑BRDF的时候采用的model。</p>
-<ol start="2">
-<li>the texture model</li>
-</ol>
-<p>我们需要关注细节纹理的时候采用的model。</p>
+<center>
+<img src="/2022/10/03/NeRF%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/2.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+<h4 id="对真实世界场景的测试集视图的比较"><a href="#对真实世界场景的测试集视图的比较" class="headerlink" title="对真实世界场景的测试集视图的比较"></a>对真实世界场景的测试集视图的比较</h4><ul>
+<li>比LLFF更一致地表现精细的几何形状，如Fern的叶子所示<br>以及T-rex中的骨架肋骨和栏杆。</li>
+<li>SRN捕捉到的是低频几何和颜色变化，但却无法再现任何精细的细节。</li>
+</ul>
+ <center>
+<img src="/2022/10/03/NeRF%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/3.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+
+<h3 id="OPTIMIZING-A-NEURAL-RADIANCE-FIELD"><a href="#OPTIMIZING-A-NEURAL-RADIANCE-FIELD" class="headerlink" title="OPTIMIZING A NEURAL RADIANCE FIELD"></a>OPTIMIZING A NEURAL RADIANCE FIELD</h3><p>第一个改进是对输入坐标进行位置编码。<br>输入坐标的位置编码，协助MLP表示高频函数。第二项是一个分层采样</p>
+<h3 id="结果-1"><a href="#结果-1" class="headerlink" title="结果"></a>结果</h3><p>我们的工作直接解决了先前工作中的不足之处，即使用MLP来表示物体和场景的连续性。使用MLPs来表示物体和场景的连续函数。我们证明了将场景作为5D神经辐射场产生更好的效果。产生了比以前主流的训练深度CNN的方法更好的渲染。</p>
+<h1 id="2"><a href="#2" class="headerlink" title="2"></a>2</h1><p>UNISURF: Unifying Neural Implicit Surfaces and<br>Radiance Fields for Multi-View Reconstruction</p>
+<h3 id="目的-1"><a href="#目的-1" class="headerlink" title="目的"></a>目的</h3><p>NeRF的估计体积密度不允许精确的表面重建。我们的关键见解是，隐含的表面模型和辐射度场可以以统一的方式制定，从而可以使用同一模型进行表面和体积渲染。这种统一的观点使新的、更有效的采样程序成为可能，并且能够在没有输入掩码的情况下重建准确的表面。</p>
+<h3 id="结果-2"><a href="#结果-2" class="headerlink" title="结果"></a>结果</h3><p>在重建质量方面优于NeRF，同时 在不需要equiring mask的情况下，表现与IDR相当。</p>
+<p>我们提出了UNISURF（UNIfied Neural Implicit SUrface and Radiance Fields）一个原则性的隐含表面和辐射场的统一框架，其目标是从一组RGB图像中重建实体。我们的框架结合了曲面渲染和体积渲染的优点。重点是不需要equiring mask且表现不错。</p>
+<p>note： 注意是实体</p>
+<h3 id="IDR"><a href="#IDR" class="headerlink" title="IDR"></a>IDR</h3><p>引入了一个神经网络架构，它同时学习未知的几何体、相机参数和一个神经渲染器，该渲染器近似于从表面反射到相机的光线。几何图形被表示为a zero level-set of a neural network，而从渲染方程中导出的神经渲染器能够对广泛的照明条件和材料进行建模。我们在DTU MVS数据集中具有不同材料属性、照明条件和噪声相机初始化的物体的真实世界二维图像上训练我们的网络。我们发现我们的模型能够产生具有高保真度、高分辨率和细节的最先进的三维表面重建。</p>
+<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>。相对于NeRF也适用于非实体场景我们把重点限制在可以由三维表面和视线相关的表面颜色表示的实体物体上。<br>由三维表面和视线相关的表面颜色来表示。我们的方法既利用了体积辐射表征的力量来学习粗略的场景结构，又利用了表面渲染的力量来学习粗略的场景结构。作为一种归纳偏见，用一组精确的三维表面来表示物体，从而导致精确的重建</p>
+<h3 id="结果-3"><a href="#结果-3" class="headerlink" title="结果"></a>结果</h3><p>无需输入掩码。作者认为，神经隐含曲面和先进的可微分渲染程序在未来的三维重建方法中发挥着关键作用。我们统一的表明了在一个比以前更普遍的环境中优化隐含曲面的路径。<br>模型只限于表示实体。此外，在图像中很少可见的区域，重建的准确性较低。</p>
 
               
             </div>
@@ -316,8 +352,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Specular Reflection from Woven Cloth 论文总结</div>
-      <div>http://example.com/2022/09/29/Specular-Reflection-from-Woven-Cloth论文总结/</div>
+      <div>NeRF论文总结</div>
+      <div>http://example.com/2022/10/03/NeRF论文总结/</div>
     </div>
     <div class="license-meta">
       
@@ -354,18 +390,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="../../../10/03/NeRF%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/" title="NeRF论文总结">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">NeRF论文总结</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="../../26/exp-%E7%AC%94%E8%AE%B01/" title="exp 笔记1">
-                        <span class="hidden-mobile">exp 笔记1</span>
+                      <a href="../../../09/29/Specular-Reflection-from-Woven-Cloth%E8%AE%BA%E6%96%87%E6%80%BB%E7%BB%93/" title="Specular Reflection from Woven Cloth 论文总结">
+                        <span class="hidden-mobile">Specular Reflection from Woven Cloth 论文总结</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
