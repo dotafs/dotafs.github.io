@@ -23,10 +23,17 @@
 <meta property="og:site_name" content="dotafs">
 <meta property="og:description" content="Lecture 3Definition 2 game of perfect information: 一个抉择树每个节点都有一个条件。也就是说任意玩家在任意时间都知道自己所在的位置。反之则是imperfect information。 zero-sum: 每一个叶子上所有用户的总和payoff是0。也就是说用户不会从中得到什么。 without chance： 节点没有被自然控制。 反之是game">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2022/10/05/game-note/2.jpeg">
+<meta property="og:image" content="http://example.com/2022/10/05/game-note/3.jpeg">
+<meta property="og:image" content="http://example.com/2022/10/05/game-note/4.jpeg">
+<meta property="og:image" content="http://example.com/2022/10/05/game-note/5.jpeg">
+<meta property="og:image" content="http://example.com/2022/10/05/game-note/1.jpeg">
+<meta property="og:image" content="http://example.com/2022/10/05/game-note/2.jpeg">
 <meta property="article:published_time" content="2022-10-05T16:03:04.039Z">
-<meta property="article:modified_time" content="2022-10-05T20:31:00.250Z">
+<meta property="article:modified_time" content="2022-10-19T17:01:43.333Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/10/05/game-note/2.jpeg">
   
   
   
@@ -209,7 +216,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          501 words
+          2k words
         
       </span>
     
@@ -266,6 +273,69 @@
 <li><p>如果玩家i第一步后走的话： Ni(t) &#x3D; Ni(t1) × Ni(t2) × · · · × Ni(tn).</p>
 </li>
 </ul>
+<h1 id="week3"><a href="#week3" class="headerlink" title="week3"></a>week3</h1><h2 id="Nash-Equilibrium"><a href="#Nash-Equilibrium" class="headerlink" title="Nash Equilibrium"></a>Nash Equilibrium</h2><h4 id="Def"><a href="#Def" class="headerlink" title="Def"></a>Def</h4><p>Definition: A strategy profile (s1,s2,s3…sk) for a game with k<br>players, is a Nash equilibrium if each strategy is a best<br>response to all of the others.</p>
+<ul>
+<li>It is not a strategy; it is a choice of strategy for all players in<br>the game.</li>
+<li>If the players are playing the Nash, no player has any<br>incentive to change its strategy unilaterally</li>
+</ul>
+<h2 id="Mini-max-approach"><a href="#Mini-max-approach" class="headerlink" title="Mini-max approach"></a>Mini-max approach</h2><center>
+<img src="/2022/10/05/game-note/2.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+
+<center>
+<img src="/2022/10/05/game-note/3.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+<p>解释上图： </p>
+<ol>
+<li>寻找Amelia的min ， 1，2，3，1</li>
+<li>寻找Scott的max， 7，3，5，6</li>
+<li>找Amelia的min中的max 和 Scott的max中的min 的那个点。</li>
+</ol>
+<h2 id="Dominance"><a href="#Dominance" class="headerlink" title="Dominance"></a>Dominance</h2><center>
+<img src="/2022/10/05/game-note/4.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+
+<h2 id="Dominance-can-be-used-to-eliminate-some-strategies"><a href="#Dominance-can-be-used-to-eliminate-some-strategies" class="headerlink" title="Dominance can be used to eliminate some strategies"></a>Dominance can be used to eliminate some strategies</h2><center>
+<img src="/2022/10/05/game-note/5.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+
+<h2 id="mixed-strategies"><a href="#mixed-strategies" class="headerlink" title="mixed strategies"></a>mixed strategies</h2><p>A mixed strategy is a strategy for a player in which:</p>
+<ul>
+<li>I plays probabilistic combination of pure strategies;</li>
+<li>I receives a probabilistic combination of payoffs</li>
+</ul>
+<h4 id="Extensive-form"><a href="#Extensive-form" class="headerlink" title="Extensive form"></a>Extensive form</h4><p>一个路径上有权重比例的树</p>
+<p>At each node where the player has a<br>decision, assign a probability function to each<br>of the possible choices.</p>
+<h4 id="con"><a href="#con" class="headerlink" title="con"></a>con</h4><ol>
+<li>Only for a special class of games do strategies which beat<br>all opponents always exist (two-player, zero-sum, perfect<br>information, no chance).</li>
+<li>A Nash equilibrium is a collection of strategies for all<br>players such that each player is playing best response to<br>all the others.</li>
+<li>For a zero-sum, two-player game in normal form, a<br>strategy pair which is maximal in its columns and minimal<br>in its rows is a Nash equilibrium.</li>
+<li>Dominance can be used to reduce the number of<br>strategies.</li>
+<li>Nash equilibria also exist in general-sum games.</li>
+</ol>
+<h1 id="Week4"><a href="#Week4" class="headerlink" title="Week4"></a>Week4</h1><h2 id="The-minmax-rule"><a href="#The-minmax-rule" class="headerlink" title="The minmax rule"></a>The minmax rule</h2><p>• MAX nodes are trying to maximise the payoff to player 1.<br>• MIN nodes are trying to minimise the payoff to player 1.</p>
+<p>The value V(J) of a node J is</p>
+<ol>
+<li>If J is a terminal node, V(J) is equal its payoff U(J).</li>
+<li>If J is a MAX node, V(J) is the maximum value of its<br>children.</li>
+<li>If J is a MIN node, V(J) is the minimum value of its<br>children.</li>
+</ol>
+<center>
+<img src="/2022/10/05/game-note/1.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+
+
+<center>
+<img src="/2022/10/05/game-note/2.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+
+<h3 id="suppose-multi-players"><a href="#suppose-multi-players" class="headerlink" title="suppose multi players"></a>suppose multi players</h3><p>Can not approach an equilibria : </p>
 
               
             </div>

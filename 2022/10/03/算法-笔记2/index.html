@@ -31,8 +31,11 @@
 <meta property="og:image" content="http://example.com/2022/10/03/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B02/7.jpeg">
 <meta property="og:image" content="http://example.com/2022/10/03/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B02/6.jpeg">
 <meta property="og:image" content="http://example.com/2022/10/03/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B02/8.jpeg">
+<meta property="og:image" content="http://example.com/2022/10/03/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B02/9.jpeg">
+<meta property="og:image" content="http://example.com/2022/10/03/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B02/10.jpeg">
+<meta property="og:image" content="http://example.com/2022/10/03/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B02/11.jpeg">
 <meta property="article:published_time" content="2022-10-03T11:24:17.244Z">
-<meta property="article:modified_time" content="2022-10-08T15:28:54.441Z">
+<meta property="article:modified_time" content="2022-10-11T13:51:05.633Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/10/03/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B02/1.jpeg">
@@ -218,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          138 words
+          1.8k words
         
       </span>
     
@@ -305,6 +308,59 @@
 <center>
 <img src="/2022/10/03/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B02/8.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
 </center>
+
+
+
+
+<h1 id="String"><a href="#String" class="headerlink" title="String"></a>String</h1><h4 id="The-Pattern-Matching-Problem"><a href="#The-Pattern-Matching-Problem" class="headerlink" title="The Pattern Matching Problem"></a>The Pattern Matching Problem</h4><p>找子字符串</p>
+<p>Example 23.1: Suppose we are given the text string<br>T &#x3D; “abacaabaccabacabaabb”<br>and the pattern string P &#x3D; “abacab”<br>Then P is a substring of T . Namely, P &#x3D; T [10..15].</p>
+<p>Σ :  alphabet</p>
+<h2 id="Brute-Force-Pattern-Matching"><a href="#Brute-Force-Pattern-Matching" class="headerlink" title="Brute-Force Pattern Matching"></a>Brute-Force Pattern Matching</h2><p>暴力遍解 也叫 naive algorithm </p>
+<p>Running time O(T*P)</p>
+<p>T P 一个substring 一个 string</p>
+<h2 id="Rabin-Karp-algorithm"><a href="#Rabin-Karp-algorithm" class="headerlink" title="Rabin-Karp algorithm"></a>Rabin-Karp algorithm</h2><p>先check substring的numbers 再check它是否匹配。</p>
+<p>Worst-case Running time O(T*P)</p>
+<p>O(n+m+m(n&#x2F;q))</p>
+<ul>
+<li>q: modulo (always prime)</li>
+</ul>
+<h2 id="The-Boyer-Moore-Algorithm"><a href="#The-Boyer-Moore-Algorithm" class="headerlink" title="The Boyer-Moore Algorithm"></a>The Boyer-Moore Algorithm</h2><p>相比于暴力遍解，只需要加两个启发式。</p>
+<ul>
+<li><p>Looking-Glass Heuristic: 当第一个字节匹配，我们也同时检测最后一个substring是否匹配。</p>
+</li>
+<li><p>Character-Jump Heuristic: 如果string中有一个字符substring都不存在，直接跳到这个字符串后面。</p>
+</li>
+</ul>
+<h4 id="Worst-Case-Analysis-of-the-Boyer-Moore-Algorithm"><a href="#Worst-Case-Analysis-of-the-Boyer-Moore-Algorithm" class="headerlink" title="Worst-Case Analysis of the Boyer-Moore Algorithm"></a>Worst-Case Analysis of the Boyer-Moore Algorithm</h4><p>The worst-case running time of the BM algorithm is O(nm + |Σ|). Namely, the computation of the last function takes time O(m + |Σ|) and the actual search for the pattern takes O(nm) time in the worst case, the same as the brute-force algorithm. An example of a text-pattern pair that achieves the worst case is</p>
+<center>
+<img src="/2022/10/03/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B02/9.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+<p>这个方法的shift不是很好。所以有下面方法。</p>
+<h2 id="Knuth-Morris-Pratt-Algorithm"><a href="#Knuth-Morris-Pratt-Algorithm" class="headerlink" title="Knuth-Morris-Pratt Algorithm"></a>Knuth-Morris-Pratt Algorithm</h2><p>KMP 是线性复杂度。</p>
+<p>longest prefix of the good prefix is also a proper suffix of the good prefix 。</p>
+<p>增添回溯的Boyer-Moore Algorithm。不像之前一个个字符的判断。而类似于贪婪，检测substring和string的匹配关系直到遇到不匹配的字符。通过咨询失败函数来判断新的索引。</p>
+<center>
+<img src="/2022/10/03/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B02/10.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+
+<h4 id="compute-π："><a href="#compute-π：" class="headerlink" title="compute π："></a>compute π：</h4><p> Using a similar reasoning, the running time of compute-π(P)<br>is O(|P|).</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java">begin naiveCompute-π(P)<br>π(<span class="hljs-number">0</span>) ← <span class="hljs-number">0</span><br><span class="hljs-type">for</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span> to |P| − <span class="hljs-number">1</span><br>π(i) ← −<span class="hljs-number">1</span> <br><span class="hljs-type">for</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span> to |P| − <span class="hljs-number">1</span><br>j ← <span class="hljs-number">0</span><br><span class="hljs-keyword">while</span> i + j &lt; |P| and P[i + j] = P[j]<br><span class="hljs-keyword">if</span> π(i + j) = −<span class="hljs-number">1</span><br>π(i + j) ← j + <span class="hljs-number">1</span><br><span class="hljs-type">if</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span><br>π(i) ← <span class="hljs-number">0</span><br>j ← j + <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="remove-unnecessary-shifts"><a href="#remove-unnecessary-shifts" class="headerlink" title="remove unnecessary shifts"></a>remove unnecessary shifts</h4><center>
+<img src="/2022/10/03/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B02/11.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+
+
+<p>better: </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java">begin naiveCompute-π(P)<br>π(<span class="hljs-number">0</span>) ← <span class="hljs-number">0</span><br><span class="hljs-type">for</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span> to |P| − <span class="hljs-number">1</span><br>π(i) ← −<span class="hljs-number">1</span><br>i ← <span class="hljs-number">1</span><br>j ← <span class="hljs-number">0</span><br><span class="hljs-keyword">while</span> i &lt; |P|<br><span class="hljs-keyword">while</span> i + j &lt; |P| and P[i + j] = P[j]<br><span class="hljs-keyword">if</span> π(i + j) = −<span class="hljs-number">1</span> <span class="hljs-comment">// match</span><br>π(i + j) ← j + <span class="hljs-number">1</span><br>j ← j + <span class="hljs-number">1</span><br><span class="hljs-keyword">if</span> j &gt; <span class="hljs-number">0</span> <span class="hljs-comment">// mismatch</span><br>i ← i + j − π(j); j ← π(j)  <br><span class="hljs-keyword">else</span><br>π(i) ← <span class="hljs-number">0</span>; i ← i + <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
+
+
+<p>线性复杂度的原因是在循环之中不是 i 就是i+j increases。</p>
+<p>The running time of KMP(T,P) (ignoring the construction of π is O(|T|).</p>
+
               
             </div>
             <hr/>

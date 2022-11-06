@@ -27,8 +27,10 @@
 <meta property="og:image" content="http://example.com/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/2.jpeg">
 <meta property="og:image" content="http://example.com/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/3.jpeg">
 <meta property="og:image" content="http://example.com/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/4.jpeg">
+<meta property="og:image" content="http://example.com/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/5.jpeg">
+<meta property="og:image" content="http://example.com/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/6.jpeg">
 <meta property="article:published_time" content="2022-10-09T14:02:54.906Z">
-<meta property="article:modified_time" content="2022-10-09T15:05:45.202Z">
+<meta property="article:modified_time" content="2022-10-09T20:48:53.649Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/1.jpeg">
@@ -214,7 +216,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          155 words
+          338 words
         
       </span>
     
@@ -281,7 +283,20 @@
 </center>
 
 <p>这种使用flow network 更加有效率。</p>
-<h2 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h2>
+<h2 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h2><h2 id="Ford-Fulkerson-algorithm"><a href="#Ford-Fulkerson-algorithm" class="headerlink" title="Ford-Fulkerson algorithm"></a>Ford-Fulkerson algorithm</h2><p>求解maximum flow的方法。采用了贪婪。但只采用贪婪得不到最优解，会在图右边堵住。</p>
+<ul>
+<li>优化方法：把边（无论满没满）往两侧推，推到那些有空余的边上。也就是： 可以在有剩余容量的边上正向增加，并在已经承载了流量的边上反向增加，以将其分流到不同的方向。</li>
+</ul>
+<center>
+<img src="/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/5.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+
+<h2 id="Maximum-Bipartite-Matching"><a href="#Maximum-Bipartite-Matching" class="headerlink" title="Maximum Bipartite Matching"></a>Maximum Bipartite Matching</h2><p>一个两个集合一一对应的图。</p>
+<center>
+<img src="/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/6.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
               
             </div>
             <hr/>
