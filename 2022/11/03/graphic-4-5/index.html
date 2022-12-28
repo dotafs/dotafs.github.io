@@ -16,28 +16,21 @@
   <meta name="author" content="Chenxi Qu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="flow network     The quantity f (e) is called the flow of edge e.       flow      除了s和t，所有的节点进入等于出去，比如 v3： 1+2+1 &#x3D; 2 + 2  [f]&#x3D;10的意思就是s发出了10，t接受了10。  maximum flow     这种使用flow network 更加有效率。">
+    <meta name="description" content="simulationrigid body simulation6DOF 3个用于物体中心点的xyz轴，3个用于xyz三个轴的旋转角度 常见词汇 Force and torque: 力与扭力 Impulse-based collisions: 计算速度用的动量 Rest in contact: 碰撞过程中需要等待一下 Stacking: 两个物体之间如果任何一个物体收到很小的影响，物体之间发生了变化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="算法-笔记3">
-<meta property="og:url" content="http://example.com/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/index.html">
+<meta property="og:title" content="graphic 4-5">
+<meta property="og:url" content="http://example.com/2022/11/03/graphic-4-5/index.html">
 <meta property="og:site_name" content="dotafs">
-<meta property="og:description" content="flow network     The quantity f (e) is called the flow of edge e.       flow      除了s和t，所有的节点进入等于出去，比如 v3： 1+2+1 &#x3D; 2 + 2  [f]&#x3D;10的意思就是s发出了10，t接受了10。  maximum flow     这种使用flow network 更加有效率。">
+<meta property="og:description" content="simulationrigid body simulation6DOF 3个用于物体中心点的xyz轴，3个用于xyz三个轴的旋转角度 常见词汇 Force and torque: 力与扭力 Impulse-based collisions: 计算速度用的动量 Rest in contact: 碰撞过程中需要等待一下 Stacking: 两个物体之间如果任何一个物体收到很小的影响，物体之间发生了变化">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/1.jpeg">
-<meta property="og:image" content="http://example.com/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/2.jpeg">
-<meta property="og:image" content="http://example.com/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/3.jpeg">
-<meta property="og:image" content="http://example.com/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/4.jpeg">
-<meta property="og:image" content="http://example.com/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/5.jpeg">
-<meta property="og:image" content="http://example.com/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/6.jpeg">
-<meta property="article:published_time" content="2022-10-09T14:02:54.906Z">
-<meta property="article:modified_time" content="2022-10-09T20:48:53.649Z">
+<meta property="article:published_time" content="2022-11-03T15:31:44.006Z">
+<meta property="article:modified_time" content="2022-12-28T09:08:15.408Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/1.jpeg">
   
   
   
-  <title>算法-笔记3 - dotafs</title>
+  <title>graphic 4-5 - dotafs</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -204,7 +197,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="算法-笔记3"></span>
+            <span id="subtitle" data-typed-text="graphic 4-5"></span>
           
         </div>
 
@@ -220,7 +213,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          338 words
+          645 words
         
       </span>
     
@@ -260,46 +253,36 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">算法-笔记3</h1>
+            <h1 style="display: none">graphic 4-5</h1>
             
             <div class="markdown-body">
               
-              <h1 id="flow-network"><a href="#flow-network" class="headerlink" title="flow network"></a>flow network</h1><center>
-<img src="/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/1.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
-</center>
-
-<p>The quantity f (e) is called the flow of edge e.</p>
-<center>
-<img src="/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/2.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
-</center>
-
-
-<h4 id="flow"><a href="#flow" class="headerlink" title="flow"></a>flow</h4><center>
-<img src="/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/3.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
-</center>
-
-<ol>
-<li>除了s和t，所有的节点进入等于出去，比如 v3： 1+2+1 &#x3D; 2 + 2 </li>
-<li>[f]&#x3D;10的意思就是s发出了10，t接受了10。</li>
-</ol>
-<h4 id="maximum-flow"><a href="#maximum-flow" class="headerlink" title="maximum flow"></a>maximum flow</h4><center>
-<img src="/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/4.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
-</center>
-
-<p>这种使用flow network 更加有效率。</p>
-<h2 id="cut"><a href="#cut" class="headerlink" title="cut"></a>cut</h2><h2 id="Ford-Fulkerson-algorithm"><a href="#Ford-Fulkerson-algorithm" class="headerlink" title="Ford-Fulkerson algorithm"></a>Ford-Fulkerson algorithm</h2><p>求解maximum flow的方法。采用了贪婪。但只采用贪婪得不到最优解，会在图右边堵住。</p>
-<ul>
-<li>优化方法：把边（无论满没满）往两侧推，推到那些有空余的边上。也就是： 可以在有剩余容量的边上正向增加，并在已经承载了流量的边上反向增加，以将其分流到不同的方向。</li>
+              <h1 id="simulation"><a href="#simulation" class="headerlink" title="simulation"></a>simulation</h1><h2 id="rigid-body-simulation"><a href="#rigid-body-simulation" class="headerlink" title="rigid body simulation"></a>rigid body simulation</h2><h4 id="6DOF"><a href="#6DOF" class="headerlink" title="6DOF"></a>6DOF</h4><p> 3个用于物体中心点的xyz轴，3个用于xyz三个轴的旋转角度</p>
+<h4 id="常见词汇"><a href="#常见词汇" class="headerlink" title="常见词汇"></a>常见词汇</h4><ul>
+<li>Force and torque: 力与扭力</li>
+<li>Impulse-based collisions: 计算速度用的动量</li>
+<li>Rest in contact: 碰撞过程中需要等待一下</li>
+<li>Stacking: 两个物体之间如果任何一个物体收到很小的影响，物体之间发生了变化</li>
 </ul>
-<center>
-<img src="/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/5.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
-</center>
-
-
-<h2 id="Maximum-Bipartite-Matching"><a href="#Maximum-Bipartite-Matching" class="headerlink" title="Maximum Bipartite Matching"></a>Maximum Bipartite Matching</h2><p>一个两个集合一一对应的图。</p>
-<center>
-<img src="/2022/10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/6.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
-</center>
+<h2 id="articulated-（关节）"><a href="#articulated-（关节）" class="headerlink" title="articulated （关节）"></a>articulated （关节）</h2><p>articulated rigid body simulation</p>
+<p>两块骨头&#x2F;中间链接的部分叫做： joint constraint</p>
+<p>原本两块骨头分别6个DOF。但可以通过以下两种方式减少DOF。</p>
+<ol>
+<li>由于链接，在一个面，所以关节处-2个rotate。</li>
+<li>因为链接，一个物体必定在另一个末端，所以关节-3个坐标点。</li>
+</ol>
+<p>总体来说12-5 &#x3D; 7 个。</p>
+<p>例子： 人的骨头，车的轮子。。。etc</p>
+<h2 id="Finite-Element-Method-FEM"><a href="#Finite-Element-Method-FEM" class="headerlink" title="Finite Element Method (FEM)"></a>Finite Element Method (FEM)</h2><p>一个模型，处理受损物体的。</p>
+<p>Tetrahedralization(四面体)</p>
+<p>把物体变成很多四面体。</p>
+<p>rest shape。  deformed shape。</p>
+<p>deformed shape 可以通过 FEM 变成rest shape。</p>
+<h2 id="一些方法"><a href="#一些方法" class="headerlink" title="一些方法"></a>一些方法</h2><p>Mass-Spring System.</p>
+<p>Particle-Based Fluid Simulation.</p>
+<p>Grid-Based Fluid Simulation.</p>
+<p>Hybrid Fluid Simulation.</p>
+<h1 id="Collisions"><a href="#Collisions" class="headerlink" title="Collisions"></a>Collisions</h1><p>position velocity age color.</p>
 
               
             </div>
@@ -316,8 +299,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>算法-笔记3</div>
-      <div>http://example.com/2022/10/09/算法-笔记3/</div>
+      <div>graphic 4-5</div>
+      <div>http://example.com/2022/11/03/graphic-4-5/</div>
     </div>
     <div class="license-meta">
       
@@ -354,9 +337,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="../../../11/03/graphic-4-5/" title="graphic 4-5">
+                      <a href="../../04/ux-star-%E6%80%BB%E7%BB%93/" title="ux star 总结">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">graphic 4-5</span>
+                        <span class="hidden-mobile">ux star 总结</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -364,8 +347,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="../ux/" title="ux">
-                        <span class="hidden-mobile">ux</span>
+                      <a href="../../../10/09/%E7%AE%97%E6%B3%95-%E7%AC%94%E8%AE%B03/" title="算法-笔记3">
+                        <span class="hidden-mobile">算法-笔记3</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

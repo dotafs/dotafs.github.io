@@ -16,21 +16,24 @@
   <meta name="author" content="Chenxi Qu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="title: graph-渲染公式date: 2022-11-07 13:42:41tags:">
+    <meta name="description" content="Log Time &lt;&#x3D; Nlog Time &lt;&#x3D; P Time &lt;&#x3D; NP Time &lt;&#x3D; P Space &#x3D;&#x3D; NP Space &lt;&#x3D; Exp Time &lt;&#x3D; NExpTime &lt;&#x3D; ExpSpace &lt; NExpSpace &lt;&#x3D; 2ExpTi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="dotafs">
-<meta property="og:url" content="http://example.com/2022/11/07/graph-%E6%B8%B2%E6%9F%93%E5%85%AC%E5%BC%8F/index.html">
+<meta property="og:title" content="算法5">
+<meta property="og:url" content="http://example.com/2022/11/07/%E7%AE%97%E6%B3%955/index.html">
 <meta property="og:site_name" content="dotafs">
-<meta property="og:description" content="title: graph-渲染公式date: 2022-11-07 13:42:41tags:">
+<meta property="og:description" content="Log Time &lt;&#x3D; Nlog Time &lt;&#x3D; P Time &lt;&#x3D; NP Time &lt;&#x3D; P Space &#x3D;&#x3D; NP Space &lt;&#x3D; Exp Time &lt;&#x3D; NExpTime &lt;&#x3D; ExpSpace &lt; NExpSpace &lt;&#x3D; 2ExpTi">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-11-07T13:42:41.423Z">
-<meta property="article:modified_time" content="2022-11-07T13:47:29.459Z">
+<meta property="og:image" content="http://example.com/2022/11/07/%E7%AE%97%E6%B3%955/1.jpeg">
+<meta property="article:published_time" content="2022-11-07T12:21:23.727Z">
+<meta property="article:modified_time" content="2022-11-28T12:49:24.811Z">
 <meta property="article:author" content="Chenxi Qu">
+<meta property="article:tag" content="36111">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/11/07/%E7%AE%97%E6%B3%955/1.jpeg">
   
   
   
-  <title>dotafs</title>
+  <title>算法5 - dotafs</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -197,7 +200,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text=""></span>
+            <span id="subtitle" data-typed-text="算法5"></span>
           
         </div>
 
@@ -213,7 +216,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          44 words
+          1.4k words
         
       </span>
     
@@ -253,12 +256,70 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none"></h1>
+            <h1 style="display: none">算法5</h1>
             
             <div class="markdown-body">
               
-              <hr>
-<p>title: graph-渲染公式<br>date: 2022-11-07 13:42:41<br>tags:</p>
+              <p>Log Time &lt;&#x3D; Nlog Time &lt;&#x3D; P Time &lt;&#x3D; NP Time &lt;&#x3D; P Space &#x3D;&#x3D; NP Space &lt;&#x3D; Exp Time &lt;&#x3D; NExpTime &lt;&#x3D; ExpSpace &lt; NExpSpace &lt;&#x3D; 2ExpTime</p>
+<ul>
+<li>if ϕ1 and ϕ2 are formulas, then so are</li>
+</ul>
+<p>(¬ϕ1), (ϕ1 ∨ ϕ2), (ϕ1 ∧ ϕ2), (ϕ1 → ϕ2)</p>
+<h2 id="lecture-2"><a href="#lecture-2" class="headerlink" title="lecture_2"></a>lecture_2</h2><h2 id="SAT-amp-k-SAT"><a href="#SAT-amp-k-SAT" class="headerlink" title="SAT &amp; k-SAT"></a>SAT &amp; k-SAT</h2><p>SAT</p>
+<p>Given: a set of clauses Γ;<br>Return: Yes if Γ is satisfiable, and No otherwise.</p>
+<p>k-SAT</p>
+<p>Given: a set of clauses Γ, each with at most k literals;<br>Return: Yes if Γ is satisfiable, and No otherwise.</p>
+<h2 id="formula"><a href="#formula" class="headerlink" title="formula"></a>formula</h2><ul>
+<li><p>proposition letters(variables): p&amp;q 的p和q</p>
+</li>
+<li><p>connectives:  &amp;, v, -&gt;, and &lt;-&gt;.</p>
+</li>
+<li><p>leteral:     p or ¬p (p is proposition letter)</p>
+</li>
+<li><p>opposite leteral : l 上面一个横杠</p>
+</li>
+<li><p>clause: A clause is an expression l1 v l2 v· · · ∨ k , where the li are<br>literals.   ep: p1 ∨ ¬p2 ∨ p3</p>
+</li>
+</ul>
+<p>P &#x3D; {p1, p2, . . .}</p>
+<p>• every element of P is a formula</p>
+<p>• if ϕ1 and ϕ2 are formulas, then so are</p>
+<p>(¬ϕ1), (ϕ1 ∨ ϕ2), (ϕ1 ∧ ϕ2), (ϕ1 → ϕ2)</p>
+<h2 id="assignment"><a href="#assignment" class="headerlink" title="assignment"></a>assignment</h2><p>• An assignment is a function θ : P → {T, F}.</p>
+<p>• we extend θ to formulas by setting</p>
+<p>θ(¬ϕ1) &#x3D; T iff ϕ1 &#x3D; F</p>
+<h2 id="satisfiable"><a href="#satisfiable" class="headerlink" title="satisfiable"></a>satisfiable</h2><p>• A formula ϕ is satisfiable if there exists an assignment θ such<br>that θ(ϕ) &#x3D; T.</p>
+<ul>
+<li>set of clauses : there exists an assignment θ such that θ(γ) &#x3D; T for all γ ∈ Γ.</li>
+</ul>
+<h2 id="PROPOSITIONAL-SAT"><a href="#PROPOSITIONAL-SAT" class="headerlink" title="PROPOSITIONAL SAT"></a>PROPOSITIONAL SAT</h2><p>NP time </p>
+<p>Given: a propositional logic formula ϕ;</p>
+<p>Return: Yes if ϕ is satisfiable, and No otherwise.</p>
+<h2 id="SAT"><a href="#SAT" class="headerlink" title="SAT"></a>SAT</h2><center>
+<img src="/2022/11/07/%E7%AE%97%E6%B3%955/1.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
+</center>
+
+
+
+
+
+
+
+
+
+
+
+<h1 id="Integer-Linear-Programming"><a href="#Integer-Linear-Programming" class="headerlink" title="Integer Linear Programming"></a>Integer Linear Programming</h1><p>Cramer’s rule </p>
+<p>Ax &#x3D; b with det(A) !&#x3D; empty</p>
+<p>xi &#x3D; det(Ai) &#x2F; det(A)</p>
+<p>Ai is the result of replacing the ith column of A by b</p>
+<p>｜det(A)｜ &lt;&#x3D; $2^nM^n$</p>
+<p>no matter how many veribles（non-zero value） -&gt; still small.</p>
+<p>LP-feasibility is NPTIME 并 co-NPTIME</p>
+<p>P-feasibility is P-TIME</p>
+<p>$Ax &#x3D; b   x&gt;&#x3D;b$</p>
+<p>$x^T (A^Ty) &#x3D; b^T y$</p>
+<p>$（&gt;&#x3D;0 &gt;&#x3D;0 &lt;0)$ 为什么这里第一个0没有下划线</p>
 
               
             </div>
@@ -266,6 +327,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="../../../../tags/36111/">#36111</a>
+      
+    </div>
   
 </div>
 
@@ -275,8 +343,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div></div>
-      <div>http://example.com/2022/11/07/graph-渲染公式/</div>
+      <div>算法5</div>
+      <div>http://example.com/2022/11/07/算法5/</div>
     </div>
     <div class="license-meta">
       
@@ -312,6 +380,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="../../23/%E7%AE%97%E6%B3%95-%E5%AF%B9%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E7%9A%84%E6%B1%87%E6%80%BB/" title="算法-对时间复杂度的汇总">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">算法-对时间复杂度的汇总</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
