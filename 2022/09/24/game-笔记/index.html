@@ -31,7 +31,7 @@
 <meta property="og:image" content="http://example.com/2022/09/24/game-%E7%AC%94%E8%AE%B0/6.jpeg">
 <meta property="og:image" content="http://example.com/2022/09/24/game-%E7%AC%94%E8%AE%B0/7.jpeg">
 <meta property="article:published_time" content="2022-09-24T14:31:14.480Z">
-<meta property="article:modified_time" content="2022-11-16T16:07:29.861Z">
+<meta property="article:modified_time" content="2022-11-16T16:47:09.615Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta property="article:tag" content="34111">
 <meta name="twitter:card" content="summary_large_image">
@@ -384,7 +384,7 @@
 
 
 <h3 id="suppose-multi-players"><a href="#suppose-multi-players" class="headerlink" title="suppose multi players"></a>suppose multi players</h3><p>Can not approach an equilibria : </p>
-
+<h1 id="Week-6"><a href="#Week-6" class="headerlink" title="Week 6"></a>Week 6</h1><h2 id="Trajectory-based-approaches"><a href="#Trajectory-based-approaches" class="headerlink" title="Trajectory-based approaches"></a>Trajectory-based approaches</h2>
               
             </div>
             <hr/>
@@ -510,6 +510,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -742,6 +748,44 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
 
   <script  src="../../../../js/local-search.js" ></script>
 
