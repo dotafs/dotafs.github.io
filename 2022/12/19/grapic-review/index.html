@@ -16,12 +16,12 @@
   <meta name="author" content="Chenxi Qu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="总结错题Test 7 的 2,3 一些名词 colour bleed : 渗色 caustics : 焦散: 玻璃杯子下面阴影的点里有一个高亮处 soft shadows : 软阴影 transparency : 透明度 opaque : 不透明物体 partially transparent : 部分透明 emerge : 表面 flux : 对到达某一表面上的某一点的热力学辐射的称呼。这个术语">
+    <meta name="description" content="final final review 那几个偏微分方程 前两章计算再来一遍 culling几种方法背一下  final reviewweek 7Direct Volume RenderingTrilinear Interpolation : all you’re doing here is ‘averaging out’ the values around the data point, bias">
 <meta property="og:type" content="article">
 <meta property="og:title" content="grapic_review">
 <meta property="og:url" content="http://example.com/2022/12/19/grapic-review/index.html">
 <meta property="og:site_name" content="dotafs">
-<meta property="og:description" content="总结错题Test 7 的 2,3 一些名词 colour bleed : 渗色 caustics : 焦散: 玻璃杯子下面阴影的点里有一个高亮处 soft shadows : 软阴影 transparency : 透明度 opaque : 不透明物体 partially transparent : 部分透明 emerge : 表面 flux : 对到达某一表面上的某一点的热力学辐射的称呼。这个术语">
+<meta property="og:description" content="final final review 那几个偏微分方程 前两章计算再来一遍 culling几种方法背一下  final reviewweek 7Direct Volume RenderingTrilinear Interpolation : all you’re doing here is ‘averaging out’ the values around the data point, bias">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2022/12/19/grapic-review/10_1.jpeg">
 <meta property="og:image" content="http://example.com/2022/12/19/grapic-review/10_2.jpeg">
@@ -30,9 +30,9 @@
 <meta property="og:image" content="http://example.com/2022/12/19/grapic-review/9_2.jpeg">
 <meta property="og:image" content="http://example.com/2022/12/19/grapic-review/9_3.jpeg">
 <meta property="og:image" content="http://example.com/2022/12/19/grapic-review/9_4.jpeg">
-<meta property="og:image" content="http://example.com/2022/12/19/grapic-review/9_4.jpeg">
+<meta property="og:image" content="http://example.com/2022/12/19/grapic-review/9_5.jpeg">
 <meta property="og:image" content="http://example.com/2022/12/19/grapic-review/9_6.jpeg">
-<meta property="og:image" content="http://example.com/2022/12/19/grapic-review/9_6.jpeg">
+<meta property="og:image" content="http://example.com/2022/12/19/grapic-review/9_7.jpeg">
 <meta property="og:image" content="http://example.com/2022/12/19/grapic-review/7_1.jpeg">
 <meta property="og:image" content="http://example.com/2022/12/19/grapic-review/8_1.jpeg">
 <meta property="og:image" content="http://example.com/2022/12/19/grapic-review/8_2.jpeg">
@@ -70,7 +70,7 @@
 <meta property="og:image" content="http://example.com/2022/12/19/grapic-review/1_8.jpeg">
 <meta property="og:image" content="http://example.com/2022/12/19/grapic-review/1_10.jpeg">
 <meta property="article:published_time" content="2022-12-19T20:37:55.522Z">
-<meta property="article:modified_time" content="2023-01-12T19:10:23.551Z">
+<meta property="article:modified_time" content="2023-01-15T12:10:33.256Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta property="article:tag" content="37111">
 <meta name="twitter:card" content="summary_large_image">
@@ -261,7 +261,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          14k words
+          15k words
         
       </span>
     
@@ -308,7 +308,38 @@
             
             <div class="markdown-body">
               
-              <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><h2 id="错题"><a href="#错题" class="headerlink" title="错题"></a>错题</h2><p>Test 7 的 2,3</p>
+              <h1 id="final-final-review"><a href="#final-final-review" class="headerlink" title="final final review"></a>final final review</h1><ol>
+<li>那几个偏微分方程</li>
+<li>前两章计算再来一遍</li>
+<li>culling几种方法背一下</li>
+</ol>
+<h1 id="final-review"><a href="#final-review" class="headerlink" title="final review"></a>final review</h1><h2 id="week-7"><a href="#week-7" class="headerlink" title="week 7"></a>week 7</h2><h3 id="Direct-Volume-Rendering"><a href="#Direct-Volume-Rendering" class="headerlink" title="Direct Volume Rendering"></a>Direct Volume Rendering</h3><p>Trilinear Interpolation : all you’re doing here is ‘averaging out’ the values around the data point, biased in the three different directions.</p>
+<p>Proxy geometry : 就是给屏幕切片，但是如果你的摄像头恰好与被切平面垂直，啥都看不到。可以朝着摄像头方向切。</p>
+<p>Marching Cubes algorithm : 一堆方块的方法。</p>
+<p>voxel: 体素结构，也被称为体素阵列，是一种用于直接体积渲染的数据结构。它是一个由小的立方体元素组成的3维数组，称为体素，代表一个三维物体或一个三维空间数据。阵列中的每个体素都包含颜色、密度和透明度等信息，可用于生成物体的2D图像。体素结构允许对大型三维数据集进行有效操作，通常用于医学成像、计算机图形和科学可视化。</p>
+<p> opacity : 不透明度</p>
+<h2 id="week-8"><a href="#week-8" class="headerlink" title="week 8"></a>week 8</h2><p>Gridcell : populating Space : O(n3) Finding Time : O(1)</p>
+<p>Octree : 适合真实世界</p>
+<h2 id="week-7-1"><a href="#week-7-1" class="headerlink" title="week 7"></a>week 7</h2><p>sub-voxel sampling</p>
+<h2 id="week-6"><a href="#week-6" class="headerlink" title="week 6"></a>week 6</h2><p>Radiosity :</p>
+<ul>
+<li>able : Colour Bleed , Diffuse interreflection , Soft shadows</li>
+<li>unable : Specular reflection , Refraction , Crisp shadows , Participating media</li>
+</ul>
+<p>Path tracing : </p>
+<ul>
+<li>able : Specular highlights, Specular reflection, Refraction, Colour bleed, Soft shadows, Hard shadows, Diffuse interreflection</li>
+</ul>
+<p>Rendering equation only using a BRDF : </p>
+<ul>
+<li>able : Specular highlights, Reflection, Colour Bleed, Penumbral Shadows, Umbral shadows, Diffuse interrefection</li>
+<li>unable: Refraction, Depth of field, relativistic effects</li>
+</ul>
+<p>viewpoint moves of texture baking(烘焙) 储存数据的过程 : </p>
+<ul>
+<li>able : colour bleed, soft shadows, hard shadows</li>
+<li>unable : specular highlights, specular reflection, refraction, depth of field</li>
+</ul>
 <h2 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h2><ul>
 <li>colour bleed : 渗色</li>
 <li>caustics : 焦散: 玻璃杯子下面阴影的点里有一个高亮处</li>
@@ -324,7 +355,8 @@
 <li>crisp shadow : 清晰的影子</li>
 <li>DOF 不适用一个bsdf</li>
 </ul>
-<h1 id="week-10"><a href="#week-10" class="headerlink" title="week 10"></a>week 10</h1><h2 id="regular-special"><a href="#regular-special" class="headerlink" title="regular special"></a>regular special</h2><h3 id="grid-cell"><a href="#grid-cell" class="headerlink" title="grid cell"></a>grid cell</h3><p>就正常网格划分</p>
+<h1 id="week-10"><a href="#week-10" class="headerlink" title="week 10"></a>week 10</h1><p>detail culling : 无论远近，剔除太小并且消耗过多的物体。<br>Backface culling : 不渲染物体的背面看不见的东西。<br>Frustum Culling : 渲染前就移除FOV之外的东西。<br>Occlusion Culling : 它可以在渲染之前从场景中移除隐藏或闭塞的物体。z-buffer知道那些物体被遮挡，直接剔除。<br>portal culling : 确定当前视角中所有的门户，对着门户射线到其他房间。剔除看不见的区域</p>
+<h2 id="regular-special"><a href="#regular-special" class="headerlink" title="regular special"></a>regular special</h2><h3 id="grid-cell"><a href="#grid-cell" class="headerlink" title="grid cell"></a>grid cell</h3><p>就正常网格划分</p>
 <h3 id="OctTree"><a href="#OctTree" class="headerlink" title="OctTree"></a>OctTree</h3><p>保持每一个空间里面有最多2个物体。</p>
 <center>
 <img src="/2022/12/19/grapic-review/10_1.jpeg" srcset="/img/loading.gif" lazyload width="400" height="200"> <br>
@@ -390,7 +422,7 @@
 <p>根据点不一样一共有14种情况，别的情况都是这些的反转变化。</p>
 <p>然后向下图这样，遍历扫描所有的点，来确定整个形状是啥样。</p>
  <center>
-<img src="/2022/12/19/grapic-review/9_4.jpeg" srcset="/img/loading.gif" lazyload width="600" height="200"> <br>
+<img src="/2022/12/19/grapic-review/9_5.jpeg" srcset="/img/loading.gif" lazyload width="600" height="200"> <br>
 </center>
 
 
@@ -401,12 +433,12 @@
 
 <p>提出了一个terrain editor。类似于astronomer中的填补地形工具。</p>
  <center>
-<img src="/2022/12/19/grapic-review/9_6.jpeg" srcset="/img/loading.gif" lazyload width="600" height="200"> <br>
+<img src="/2022/12/19/grapic-review/9_7.jpeg" srcset="/img/loading.gif" lazyload width="600" height="200"> <br>
 </center>
 
 <p>整体来说这种方法如上图所示，但是问题是slices之间的gap看起来很差。</p>
 <p>我们尝试使所有切片正对着我们的viewpoint，但这样太消耗算力了。多一些slices也会提高效果显而易见。</p>
-<h1 id="week-7"><a href="#week-7" class="headerlink" title="week 7"></a>week 7</h1><h2 id="ray-tracing"><a href="#ray-tracing" class="headerlink" title="ray tracing"></a>ray tracing</h2><h3 id="各种ray"><a href="#各种ray" class="headerlink" title="各种ray"></a>各种ray</h3><ol>
+<h1 id="week-7-2"><a href="#week-7-2" class="headerlink" title="week 7"></a>week 7</h1><h2 id="ray-tracing"><a href="#ray-tracing" class="headerlink" title="ray tracing"></a>ray tracing</h2><h3 id="各种ray"><a href="#各种ray" class="headerlink" title="各种ray"></a>各种ray</h3><ol>
 <li><p>primary ray : 也被称为相机光线，是为图像中的每个像素生成的光线。主射线从摄像机或观察者的视角出发，通过图像的每个像素，追踪到三维场景中。主射线被用来确定最终图像中相应像素的颜色。</p>
 </li>
 <li><p>shadow feeler ray : surface上一个点是不是被光线直接照射。</p>
@@ -433,12 +465,13 @@
 <li>关注他们反射到的地方。无限重复。</li>
 <li>到有一个很高的percentage不变的时候停止。</li>
 </ol>
-<h1 id="week-8"><a href="#week-8" class="headerlink" title="week 8"></a>week 8</h1><h2 id="path-tracing"><a href="#path-tracing" class="headerlink" title="path tracing"></a>path tracing</h2><h4 id="umbra-and-penumbra"><a href="#umbra-and-penumbra" class="headerlink" title="umbra and penumbra"></a>umbra and penumbra</h4><center>
+<h1 id="week-8-1"><a href="#week-8-1" class="headerlink" title="week 8"></a>week 8</h1><h2 id="path-tracing"><a href="#path-tracing" class="headerlink" title="path tracing"></a>path tracing</h2><h4 id="umbra-and-penumbra"><a href="#umbra-and-penumbra" class="headerlink" title="umbra and penumbra"></a>umbra and penumbra</h4><center>
 <img src="/2022/12/19/grapic-review/8_1.jpeg" srcset="/img/loading.gif" lazyload width="200" height="250"> <br>
 </center>
 
 
 <h4 id="path-tracing-1"><a href="#path-tracing-1" class="headerlink" title="path tracing"></a>path tracing</h4><p>whitted style 就没有这种: 不是有就是无，不存在模糊</p>
+<p>radiosity : 场景分成小块，计算每个小块洗手和反射的能量， 无法实现有光泽或透明的表面的场景。</p>
 <center>
 <img src="/2022/12/19/grapic-review/8_2.jpeg" srcset="/img/loading.gif" lazyload width="200" height="250"> <br>
 </center>
@@ -506,7 +539,7 @@
 <h3 id="2-mass-spring-fracture-simulation"><a href="#2-mass-spring-fracture-simulation" class="headerlink" title="2. mass-spring fracture simulation"></a>2. mass-spring fracture simulation</h3><p>用来描述压力下的物体。</p>
 <h3 id="3-particle-based-fluid-simulation-Lagrangian"><a href="#3-particle-based-fluid-simulation-Lagrangian" class="headerlink" title="3. particle-based fluid simulation (Lagrangian)"></a>3. particle-based fluid simulation (Lagrangian)</h3><p>给液体堪称很多个粒子</p>
 <h3 id="4-grid-based-fluid-simulation-Eulerian"><a href="#4-grid-based-fluid-simulation-Eulerian" class="headerlink" title="4. grid-based fluid simulation(Eulerian)"></a>4. grid-based fluid simulation(Eulerian)</h3><p>给空间划分成很多的网格，进入每一个小网格的物体和出去的应该是一样的数量</p>
-<h3 id="5-Hybrid-fuild-simulation-Lagrangian-Eulerian"><a href="#5-Hybrid-fuild-simulation-Lagrangian-Eulerian" class="headerlink" title="5. Hybrid fuild simulation(Lagrangian + Eulerian)"></a>5. Hybrid fuild simulation(Lagrangian + Eulerian)</h3><h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>有限元法（FEM）是一种用于解决微分方程的数值技术。它是一种通用的方法，广泛用于模拟各种物理系统，包括流体力学、传热学和结构力学。FEM以其处理复杂几何形状的能力和为具有平滑解的问题提供精确解而闻名。然而，它可能是计算密集型的，而且可能不是模拟某些类型流体的最有效方法，例如那些具有高粘度的流体。  </p>
+<h3 id="5-Hybrid-fuild-simulation-Lagrangian-Eulerian"><a href="#5-Hybrid-fuild-simulation-Lagrangian-Eulerian" class="headerlink" title="5. Hybrid fuild simulation(Lagrangian + Eulerian)"></a>5. Hybrid fuild simulation(Lagrangian + Eulerian)</h3><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>有限元法（FEM）是一种用于解决微分方程的数值技术。它是一种通用的方法，广泛用于模拟各种物理系统，包括流体力学、传热学和结构力学。FEM以其处理复杂几何形状的能力和为具有平滑解的问题提供精确解而闻名。然而，它可能是计算密集型的，而且可能不是模拟某些类型流体的最有效方法，例如那些具有高粘度的流体。  </p>
 <p>Eulerian是一种数值技术，通过监测空间中固定点的某些量（如速度、密度和压力）的值来跟踪流体的运动。这种方法通常用于模拟涉及不可压缩流体的问题，善于捕捉处于稳定状态的流体的行为。欧拉法适用于模拟像牛奶这样没有宏观变形的粘性流体。  </p>
 <p>Lagrangian是一种数值技术，它追踪单个流体粒子在空间移动时的运动。这种方法通常用于模拟涉及可压缩流体的问题，它善于捕捉正在发生大变形的流体的行为。  </p>
 <p>mass-spring是一种简单且计算效率高的方法，用于模拟涉及大量粒子或节点的系统。它可以用来模拟流体，但一般来说，由于其假设的线性和弹性行为，它对复杂的系统和流体，如牛奶，并不那么准确。</p>
