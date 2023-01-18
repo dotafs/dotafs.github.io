@@ -16,12 +16,12 @@
   <meta name="author" content="Chenxi Qu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="last section:应该把NP-complete那几个算法仔细过一遍 final final reviewInteger Linear ProgrammingFarkas’ Lemma一定满足其中一个，不能两个都满足  There exists a vector x such that Ax ≥ b and x ≥ 0 There exists a vector y such that yA">
+    <meta name="description" content="last section: Horn-SAT is PTime-complete SAT is NPTime-complete. by Cook’s st-Con is NLogSpace-complete. The problem QBF is PSpace-complete. LP-feasibility is in PTime.  ILP is NPTime-hard. BEC 3-SAT">
 <meta property="og:type" content="article">
 <meta property="og:title" content="algorithm_review">
 <meta property="og:url" content="http://example.com/2023/01/04/algorithm-review/index.html">
 <meta property="og:site_name" content="dotafs">
-<meta property="og:description" content="last section:应该把NP-complete那几个算法仔细过一遍 final final reviewInteger Linear ProgrammingFarkas’ Lemma一定满足其中一个，不能两个都满足  There exists a vector x such that Ax ≥ b and x ≥ 0 There exists a vector y such that yA">
+<meta property="og:description" content="last section: Horn-SAT is PTime-complete SAT is NPTime-complete. by Cook’s st-Con is NLogSpace-complete. The problem QBF is PSpace-complete. LP-feasibility is in PTime.  ILP is NPTime-hard. BEC 3-SAT">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="http://example.com/2023/01/04/algorithm-review/4_1.jpeg">
 <meta property="og:image" content="http://example.com/2023/01/04/algorithm-review/7_1.jpeg">
@@ -47,7 +47,7 @@
 <meta property="og:image" content="http://example.com/2023/01/04/algorithm-review/9_1.jpeg">
 <meta property="og:image" content="http://example.com/2023/01/04/algorithm-review/9_2.jpeg">
 <meta property="article:published_time" content="2023-01-04T11:51:47.226Z">
-<meta property="article:modified_time" content="2023-01-17T11:01:45.510Z">
+<meta property="article:modified_time" content="2023-01-18T10:51:55.727Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta property="article:tag" content="36111">
 <meta name="twitter:card" content="summary_large_image">
@@ -238,7 +238,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          15k words
+          16k words
         
       </span>
     
@@ -285,13 +285,32 @@
             
             <div class="markdown-body">
               
-              <h1 id="last-section"><a href="#last-section" class="headerlink" title="last section:"></a>last section:</h1><p>应该把NP-complete那几个算法仔细过一遍</p>
-<h1 id="final-final-review"><a href="#final-final-review" class="headerlink" title="final final review"></a>final final review</h1><h2 id="Integer-Linear-Programming"><a href="#Integer-Linear-Programming" class="headerlink" title="Integer Linear Programming"></a>Integer Linear Programming</h2><h4 id="Farkas’-Lemma"><a href="#Farkas’-Lemma" class="headerlink" title="Farkas’ Lemma"></a>Farkas’ Lemma</h4><p>一定满足其中一个，不能两个都满足</p>
+              <h1 id="last-section"><a href="#last-section" class="headerlink" title="last section:"></a>last section:</h1><ul>
+<li>Horn-SAT is PTime-complete</li>
+<li>SAT is NPTime-complete. by Cook’s</li>
+<li>st-Con is NLogSpace-complete.</li>
+<li>The problem QBF is PSpace-complete.</li>
+<li>LP-feasibility is in PTime. </li>
+<li>ILP is NPTime-hard. BEC 3-SAT ≤ log m ILP.</li>
+<li>HAMILTONIAN-circuit is NPTime-complete</li>
+</ul>
+<p>We can forget the ‘reasonably large’ non-deterministic space<br>classes.<br>LogSpace ⊆ NLogSpace ⊆ PTime ⊆ NPTime ⊆<br>PSpace ⊆ NPSpace ⊆ ExpTime ⊆ NExpTime ⊆<br>ExpSpace ⊆ NExpSpace ⊆ 2-ExpTime · · ·</p>
+<p>• Savitch’s theorem simplifies this to:<br>LogSpace ⊆ NLogSpace ⊆ PTime ⊆ NPTime ⊆<br>PSpace ⊆ ExpTime ⊆ NExpTime ⊆<br>ExpSpace ⊆ 2-ExpTime · · ·</p>
+<ul>
+<li>deterministic classes (time or space) are always equal to their<br>complement classes;</li>
+<li>non-deterministic space classes from NPSpace upwards are<br>equal to their deterministic variants (Savitch) and hence to<br>their complement classes;</li>
+<li>NLogSpace is equal to its complement class<br>(Immerman-Szelepcse´nyi).</li>
+</ul>
+<h2 id="LP"><a href="#LP" class="headerlink" title="LP"></a>LP</h2><ul>
+<li>Diophantine : A equation in which all coefficients are integers and solutions<br>are sought over the non-negative integers is called</li>
+<li>A system of linear equations<br>Ax &#x3D; 0<br>is called homogeneous . The solution x &#x3D; 0 is the trivial<br>solution .</li>
+</ul>
+<h4 id="Farkas’-Lemma"><a href="#Farkas’-Lemma" class="headerlink" title="Farkas’ Lemma"></a>Farkas’ Lemma</h4><p>一定满足其中一个，不能两个都满足</p>
 <ul>
 <li>There exists a vector x such that Ax ≥ b and x ≥ 0</li>
 <li>There exists a vector y such that yA ≤ 0 and yb &lt; 0</li>
 </ul>
-<h2 id="3-colourability"><a href="#3-colourability" class="headerlink" title="3-colourability"></a>3-colourability</h2><p>3个gadget</p>
+<h1 id="final-final-review"><a href="#final-final-review" class="headerlink" title="final final review"></a>final final review</h1><h2 id="3-colourability"><a href="#3-colourability" class="headerlink" title="3-colourability"></a>3-colourability</h2><p>3个gadget</p>
 <ol>
 <li>第一个是四边形，其中一个对角线连线，另外一组对角必须是不同颜色。</li>
 <li>三角形一个点上面有一个点，上面这个点与三角形另外两个点必须有一个相同颜色。</li>
@@ -409,7 +428,7 @@
 <ul>
 <li>closed : many-one reduction 之后时间复杂度不变</li>
 </ul>
-<h3 id="Two-NP-Complete-problems"><a href="#Two-NP-Complete-problems" class="headerlink" title="Two NP-Complete problems"></a>Two NP-Complete problems</h3><h2 id="凸优化"><a href="#凸优化" class="headerlink" title="凸优化"></a>凸优化</h2><h3 id="Integer-Linear-Programming-1"><a href="#Integer-Linear-Programming-1" class="headerlink" title="Integer Linear Programming"></a>Integer Linear Programming</h3><h3 id="Two-Theorems-on-Space-Complexity"><a href="#Two-Theorems-on-Space-Complexity" class="headerlink" title="Two Theorems on Space Complexity"></a>Two Theorems on Space Complexity</h3><h4 id="Savitch’s-theorem"><a href="#Savitch’s-theorem" class="headerlink" title="Savitch’s theorem"></a>Savitch’s theorem</h4><h1 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a>Week 4</h1><h2 id="Turing-Machines-我自己的理解"><a href="#Turing-Machines-我自己的理解" class="headerlink" title="Turing Machines (我自己的理解)"></a>Turing Machines (我自己的理解)</h2><h3 id="palindrome问题"><a href="#palindrome问题" class="headerlink" title="palindrome问题"></a>palindrome问题</h3><p>我们可以用one tape来实现判断回文。在这种情况之下，先看input的第一个，read（再这里是不用write的）head。然后在通过O(n)，n是字符串长，来跑到最后一位，判断是否相等。如果相等，继续，不想等，halt。直到判断完所有为止。</p>
+<h3 id="Two-NP-Complete-problems"><a href="#Two-NP-Complete-problems" class="headerlink" title="Two NP-Complete problems"></a>Two NP-Complete problems</h3><h2 id="凸优化"><a href="#凸优化" class="headerlink" title="凸优化"></a>凸优化</h2><h3 id="Integer-Linear-Programming"><a href="#Integer-Linear-Programming" class="headerlink" title="Integer Linear Programming"></a>Integer Linear Programming</h3><h3 id="Two-Theorems-on-Space-Complexity"><a href="#Two-Theorems-on-Space-Complexity" class="headerlink" title="Two Theorems on Space Complexity"></a>Two Theorems on Space Complexity</h3><h4 id="Savitch’s-theorem"><a href="#Savitch’s-theorem" class="headerlink" title="Savitch’s theorem"></a>Savitch’s theorem</h4><h1 id="Week-4"><a href="#Week-4" class="headerlink" title="Week 4"></a>Week 4</h1><h2 id="Turing-Machines-我自己的理解"><a href="#Turing-Machines-我自己的理解" class="headerlink" title="Turing Machines (我自己的理解)"></a>Turing Machines (我自己的理解)</h2><h3 id="palindrome问题"><a href="#palindrome问题" class="headerlink" title="palindrome问题"></a>palindrome问题</h3><p>我们可以用one tape来实现判断回文。在这种情况之下，先看input的第一个，read（再这里是不用write的）head。然后在通过O(n)，n是字符串长，来跑到最后一位，判断是否相等。如果相等，继续，不想等，halt。直到判断完所有为止。</p>
 <p>那么two tape呢。比如可以第一个tape从头往后，第二个tape从后往前，判断是否相等。</p>
 <ol>
 <li>但是怎么样每一个tape在一半的时候停止呢？我们可以用一个counter来计算，图灵机在判断开始前知道了字符串长度，维护counter就可以了。这个counter并不需要额外的tape去实现。</li>
