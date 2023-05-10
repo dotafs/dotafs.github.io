@@ -1,0 +1,1096 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../../img/fluid.png">
+  <link rel="icon" href="../../../../img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Chenxi Qu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="PGPdigital signaturessender 用一个cryptographic function(比如SHA-256)来计算发送信息的hash(digest)，这个hash表示的message是独一无二的，定长的。再使用sender自己的private key使用 asymmetric algorithm (比如RSA&#x2F;DSA)对这个hash进行签名, recipient 再用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cyber_security">
+<meta property="og:url" content="http://example.com/2023/04/24/Cyber-security/index.html">
+<meta property="og:site_name" content="dotafs">
+<meta property="og:description" content="PGPdigital signaturessender 用一个cryptographic function(比如SHA-256)来计算发送信息的hash(digest)，这个hash表示的message是独一无二的，定长的。再使用sender自己的private key使用 asymmetric algorithm (比如RSA&#x2F;DSA)对这个hash进行签名, recipient 再用">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/2.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/1.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/3.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/4.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/5.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/6.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/7.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/8.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/9.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/10.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/11.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/12.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/14.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/13.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/15.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/16.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/17.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/18.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/19.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/20.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/21.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/22.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/23.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/24.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/25.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/26.jpeg">
+<meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/27.jpeg">
+<meta property="article:published_time" content="2023-04-24T14:48:11.528Z">
+<meta property="article:modified_time" content="2023-05-10T18:20:19.299Z">
+<meta property="article:author" content="Chenxi Qu">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/04/24/Cyber-security/2.jpeg">
+  
+  
+  
+  <title>Cyber_security - dotafs</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="../../../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../../../css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="../../../../css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../../../js/utils.js" ></script>
+  <script  src="../../../../js/color-schema.js" ></script>
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../../../index.html">
+      <strong>DOTAFS</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../index.html">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../../../img/default1.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="Cyber_security"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          20k words
+        
+      </span>
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Cyber_security</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="PGP"><a href="#PGP" class="headerlink" title="PGP"></a>PGP</h1><h2 id="digital-signatures"><a href="#digital-signatures" class="headerlink" title="digital signatures"></a>digital signatures</h2><p>sender 用一个cryptographic function(比如SHA-256)来计算发送信息的hash(digest)，这个hash表示的message是独一无二的，定长的。再使用sender自己的private key使用 asymmetric algorithm (比如RSA&#x2F;DSA)对这个hash进行签名, recipient 再用sender的public key进行验证。</p>
+<h2 id="message-encryption-x2F-confidentiality"><a href="#message-encryption-x2F-confidentiality" class="headerlink" title="message encryption &#x2F; confidentiality"></a>message encryption &#x2F; confidentiality</h2><p>PGP 使用hybird encryption(混合加密), symmetric encryption(对称加密) 用于encrypt实际信息, asymmetric encryption(非对称加密) 用于加密session key和digital signatures.</p>
+<h2 id="完整步骤"><a href="#完整步骤" class="headerlink" title="完整步骤"></a>完整步骤</h2><p><img src="/2023/04/24/Cyber-security/2.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="PGP-Services"><a href="#PGP-Services" class="headerlink" title="PGP Services"></a>PGP Services</h2><h3 id="confidentiality-only"><a href="#confidentiality-only" class="headerlink" title="confidentiality only"></a>confidentiality only</h3><p>If you only use PGP to encrypt your information (confidentiality(保密性)), you protect the message from unauthorized access, but you do not guarantee its integrity(完整性).</p>
+<p>Z&#x2F;Z-1: 压缩和解压操作。PGP在加密前对信息进行压缩，以节省空间和减少传输时间。<br>EC&#x2F;DC: 对称密钥的加密和解密操作。这些操作是使用会话密钥进行的。<br>EP&#x2F;DP： 公钥加密和解密操作。这些操作使用收件人的公共和私人密钥进行。<br>‘||’: 连接，即把两个或多个数据连接在一起。<br>综上所述，描述了PGP如何通过用对称会话密钥加密信息内容，然后用收件人的公开密钥加密会话密钥来为信息提供保密性。这个过程不涉及数字签名或消息认证和完整性检查。<br><img src="/2023/04/24/Cyber-security/1.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Confidentiality-and-Authentication"><a href="#Confidentiality-and-Authentication" class="headerlink" title="Confidentiality and Authentication"></a>Confidentiality and Authentication</h3><p>Authentication(digital signatures(数字签名))，就可以保证了integrity(完整性)。<br><img src="/2023/04/24/Cyber-security/3.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="PGP-Message-Format"><a href="#PGP-Message-Format" class="headerlink" title="PGP Message Format"></a>PGP Message Format</h2><ol>
+<li>Session key component: 该组件包含会话密钥和发件人用于加密会话密钥的收件人公钥的标识符。会话密钥是为每条信息生成的唯一的、一次性的密钥，用于使用对称加密算法（如AES）对信息内容进行加密。为了安全地将会话密钥传输给收件人，发件人使用收件人的公钥和非对称加密算法（如RSA）对其进行加密。包括收件人公钥的标识符，确保收件人知道他们的公钥中哪一个被使用，以防他们有多个公钥。</li>
+<li>Message component: 该组件包含要传输的实际数据，使用会话密钥进行加密。除了加密的信息内容外，信息组件还包括元数据，如文件名和指定信息创建时间的时间戳。文件名可以帮助收件人了解消息的背景或目的，而时间戳则有助于跟踪消息的年龄并确保其相关性。</li>
+<li>Signature component: Timestamp(时间戳)目的是产生签名时间。Message digest(信息摘要)，结合签名时间，可以用来验证消息的完整性。</li>
+<li>前两个字节: 当收件人使用发件人的公钥对信息摘要（数字签名）进行解密时，他们将获得信息内容的原始哈希值和签名的时间戳。然后，他们可以将这个解密的哈希值的前两个字节与包含在签名组件中的消息摘要的前两个字节的明文副本进行比较。<br>如果这前两个字节相匹配，就表明解密时使用了正确的公钥，并且该信息被认为是真实的。然后，收件人可以继续对收到的消息内容结合签名时间戳生成一个新的哈希值，并将其与解密后的哈希值进行比较。如果两个哈希值相匹配，就可以确认该消息在传输过程中没有被篡改，可以安全使用。<br>通过这种方式，PGP消息格式确保了消息的认证和完整性，使收件人可以验证发件人的身份和消息的完整性。</li>
+</ol>
+<h2 id="key-rings"><a href="#key-rings" class="headerlink" title="key rings"></a>key rings</h2><p>PGP使用key rings来存储公钥和私钥。key rings是一个文件，包含了公钥和私钥。key rings可以分为两类：public key rings和private key rings。public key rings包含了公钥，private key rings包含了私钥。 sender 和 recipients 都有自己的key rings。</p>
+<h3 id="key-identifiers-key-ID"><a href="#key-identifiers-key-ID" class="headerlink" title="key identifiers (key ID)"></a>key identifiers (key ID)</h3><p>recipients 怎么知道一条接受的message是用哪个public key?</p>
+<ol>
+<li>message和public key同时发送给recipients</li>
+<li>使用key identifier 去识别一个public key特别是在key server上的。</li>
+</ol>
+<p>PGP 使用后者，UserID x key ID。key ID 是public key的hash，用来识别public key。ie. KeyID &#x3D; $KU_a mod 2^{64}$. 私钥(KR),公钥(KU), 特定用户a,所以KU_a指的是用户a的公钥。这句话的意思是指就指计算一个private key的时候，应该使用用户KU中最没有意义的64位。</p>
+<p>A private-key ring to store the private&#x2F;public key pairs owned<br>by this user.<br>A public-key ring to store the public keys of other users known<br>to this user.  </p>
+<p>Both key rings can be indexed by either User ID or Key ID.</p>
+<h3 id="encryption-private-key"><a href="#encryption-private-key" class="headerlink" title="encryption private key"></a>encryption private key</h3><p>encencrypted private key &#x3D; $EC_{H(Pi)}[PR_i]$</p>
+<p>$PR_i$ : User i’s private key  </p>
+<p>CAST-128(C): A symmetric algorithm</p>
+<p>Key-encryption key: 用于加密User’s private key($PR_i$)的key，是由用户选择的passphrase(口令): $Pi$生成的。  </p>
+<p>Passphrase(口令 Pi): 类似于密码，但是比密码更长，更复杂。每一个private key应该有与之对应的一个passphrase。  </p>
+<p>Hash function(H): 输入Passphrase(Pi),输出一个hash code(H)，这个hash code(H)用于求出key-encryption key。</p>
+<p>encryption process(E): 加密过程</p>
+<h3 id="private-key-rings"><a href="#private-key-rings" class="headerlink" title="private-key rings"></a>private-key rings</h3><p>pairs : {private key : public key}</p>
+<p>有点类似于windows，每一行就是windows的一个user，我可以有多个user。</p>
+<p>Timestep 是创建这个用户的时间。</p>
+<p><img src="/2023/04/24/Cyber-security/4.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="PGP-Trust-Model"><a href="#PGP-Trust-Model" class="headerlink" title="PGP Trust Model"></a>PGP Trust Model</h3><h4 id="Web-of-Trust"><a href="#Web-of-Trust" class="headerlink" title="Web-of-Trust"></a>Web-of-Trust</h4><p>Owner Trust: PGP user 信任key’s owner to sign public-key certificates(public key签署的公共密钥证书的信任程度).<br>e.g.</p>
+<ul>
+<li>ounknown user</li>
+<li>opartially trusted user</li>
+<li>ofully trusted user</li>
+</ul>
+<p>Signature Trust: 证书的签名者(certificate signer)对用户身份的信任程度。这个值在key server(钥匙服务器)与certificate signed 一起公开。比如Ailice signs(certifies) Bob‘s key，也就是她生命信任Bob的身份。</p>
+<p>Key Legitimacy: 该PGP用户对public key的拥有者的身份的信任程度。至少有一个Signature fully trusted , 或者两个Signature partially trusted.</p>
+<p><img src="/2023/04/24/Cyber-security/5.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h4 id="Public-key-revocation-公钥废止"><a href="#Public-key-revocation-公钥废止" class="headerlink" title="Public key revocation(公钥废止)"></a>Public key revocation(公钥废止)</h4><ol>
+<li>与公钥相关的私钥被破坏</li>
+<li>所有者不再需要该证书</li>
+</ol>
+<p>这个步骤是右所有者发出一个废止证书(revocation certificate)。这个证书中包含着public key to be revoked，和private key’s signature.</p>
+<p><img src="/2023/04/24/Cyber-security/6.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Generation-of-the-signature-component"><a href="#Generation-of-the-signature-component" class="headerlink" title="Generation of the signature component"></a>Generation of the signature component</h3><ol>
+<li>Signing a message : sender 决定使用PGP对信息进行签名从而提供Authenticity 和 integrity.</li>
+<li>Retrieving the sender’s private key: sender 从key ring中找到自己的private key.</li>
+<li>prompting for passpharse: sender 输入passphrase，用于解密private key.</li>
+<li>constructing the signature component: 在private key 被解密之后，PGP会结合message’s content生成一个signature component。然后这个签名会被添加到信息之中。</li>
+<li>recipient 收到信息之后，可以用签名和public key来验证信息完整性切没有被修改，和确实来自用户ID这个人。</li>
+</ol>
+<h3 id="generation-of-the-session-key-component"><a href="#generation-of-the-session-key-component" class="headerlink" title="generation of the session key component"></a>generation of the session key component</h3><ol>
+<li>generating a session key: sender 生成一个session key，用于加密信息。</li>
+<li>encrypting the Message: sender 用session key加密信息。</li>
+<li>retrieving the recipient’s public key: sender 从key ring中通过User ID 作为index来找到recipient的public key。</li>
+<li>constructing the session key component: PGP 对session key进行加密。</li>
+<li>recipient 收到的message由两部分组成，session key component（使用recipient的public key加密的） 和 加密信息本身。</li>
+<li>recipient 用自己的private key解密session key component，然后用session key解密信息本身。</li>
+</ol>
+<h2 id="Exercise-Question-–-E10-1"><a href="#Exercise-Question-–-E10-1" class="headerlink" title="Exercise Question – E10.1"></a>Exercise Question – E10.1</h2><p>In secure email systems, such as PGP (pretty good privacy), the order<br>of message protection operations performed by a sending entity is to<br>first sign the outgoing&#x2F;email message, then compress the signed<br>message, and finally encrypt the compressed message. Answer the<br>following questions:  </p>
+<p>(i) What are the justifications (or benefits) for using this order of<br>operations?</p>
+<p>(ii) Would this order of operations be suitable for all cases of<br>applications?</p>
+<p>(iii) Assuming that Alice sends Bob an email, M. Express the whole<br>message that is sent by Alice using protocol notation format?</p>
+<ol>
+<li>Signature verification can only be carried out after two decryption<br>operations and this makes the solution vulnerable to DoS attacks.<br>However, as this is an end user to end user communication at the<br>application level, so the issue of DoS attacks is considered not as<br>important as users’ preference of record-keeping a signed email (on<br>plaintext). Compression-then-encryption can bring two benefits, one is<br>security (harder to break a text that is not recognisible) and the other is<br>performance (cheaper to encrypt a shorter message)</li>
+</ol>
+<h1 id="Software-security-Malware"><a href="#Software-security-Malware" class="headerlink" title="Software security (Malware)"></a>Software security (Malware)</h1><h2 id="Viruses-病毒"><a href="#Viruses-病毒" class="headerlink" title="Viruses(病毒)"></a>Viruses(病毒)</h2><h3 id="Viruses-Classifications-病毒分类"><a href="#Viruses-Classifications-病毒分类" class="headerlink" title="Viruses Classifications(病毒分类)"></a>Viruses Classifications(病毒分类)</h3><h4 id="Classification-by-concealment-strategy-隐蔽性策略分类"><a href="#Classification-by-concealment-strategy-隐蔽性策略分类" class="headerlink" title="Classification by concealment strategy(隐蔽性策略分类)"></a>Classification by concealment strategy(隐蔽性策略分类)</h4><ol>
+<li>Polymorphic virus(多态性病毒): changees its appearance, control flow or other characteristics 当infects a new host.</li>
+<li>Metamorphic virus(变态病毒): 更牛逼，传播的时候还改变了自己的代码，不仅改变了外观，还改变了行为。</li>
+</ol>
+<h4 id="Classification-by-target-目标分类"><a href="#Classification-by-target-目标分类" class="headerlink" title="Classification by target(目标分类)"></a>Classification by target(目标分类)</h4><ol>
+<li>Boot sector viruses: infects the boot sector of a disk.(这个区域是包含计算机启动时候执行的代码的区域。感染后，可以确保病毒开机自动加载和执行，并将自己传递到其他磁盘上)</li>
+<li>File viruses: 针对executable file(可执行文件)，比如.exe,.bat.感染文件被执行，病毒被执行。</li>
+<li>Multipartitle virusees: 前两者结合起来。</li>
+<li>Macro viruses: 利用Word 和 Excel等的内置编程语言。感染后，会在打开文档的时候执行病毒代码。</li>
+<li>scripting viruses: JS或者VB，网页或者电子邮件附件上。</li>
+</ol>
+<h3 id="structrure-of-a-virus-病毒结构"><a href="#structrure-of-a-virus-病毒结构" class="headerlink" title="structrure of a virus(病毒结构)"></a>structrure of a virus(病毒结构)</h3><h4 id="Propagation-传播"><a href="#Propagation-传播" class="headerlink" title="Propagation(传播)"></a>Propagation(传播)</h4><p>将病毒从一个系统传播到另一个系统，过程通常需要人为干预，打开垃圾邮件，非正规网站下载资源。</p>
+<h4 id="Triggering-触发"><a href="#Triggering-触发" class="headerlink" title="Triggering(触发)"></a>Triggering(触发)</h4><p>导致病毒执行的事件，比如打开文件，启动计算机，或者特定的日期。</p>
+<h4 id="Payload-载荷"><a href="#Payload-载荷" class="headerlink" title="Payload(载荷)"></a>Payload(载荷)</h4><p>病毒的主要功能，比如delete files，steal information, encrypting data(赎金软件)。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs C++"><span class="hljs-built_in">Virus</span>() &#123;<br><span class="hljs-built_in">infectExecutable</span>();<br><span class="hljs-keyword">if</span> (<span class="hljs-built_in">triggered</span>()) &#123;<br><span class="hljs-built_in">doDamage</span>();<br>&#125;<br>jump to main of infected program;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">infectExecutable</span><span class="hljs-params">()</span> </span>&#123;<br>file = choose an uninfected executable<br>file;<br>prepend/postpend/embed V to file;<br>&#125;<br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">doDamage</span><span class="hljs-params">()</span> </span>&#123; ... &#125;<br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">triggered</span><span class="hljs-params">()</span> </span>&#123; <span class="hljs-keyword">return</span> (some test? <span class="hljs-number">1</span> : <span class="hljs-number">0</span>); &#125; <br></code></pre></td></tr></table></figure>
+
+<h2 id="Worms-蠕虫"><a href="#Worms-蠕虫" class="headerlink" title="Worms(蠕虫)"></a>Worms(蠕虫)</h2><p>与病毒的区别是，不需要人的互动,通过软件或者服务器漏洞传播。</p>
+<h3 id="Target-Discovery"><a href="#Target-Discovery" class="headerlink" title="Target Discovery"></a>Target Discovery</h3><ol>
+<li>Port scanning(端口扫描): 扫描网络上的所有端口，找到开放的端口，然后尝试连接，如果连接成功，就可以传播。</li>
+<li>External hit-list: 通过外部来源(meta-servers)获得有可能被感染的目标列表。</li>
+<li>Internal topological information : 已经感染的受害者及其上发现更多的目标主机。比如硬盘存的url，电子邮件。</li>
+<li>local subnet address structure : 如果Worm已经渗透到了防火墙内部，他就可以感染子网中其他的主机。</li>
+</ol>
+<h3 id="Propagation-传播-1"><a href="#Propagation-传播-1" class="headerlink" title="Propagation (传播)"></a>Propagation (传播)</h3><ol>
+<li>Exploiting communitcation&#x2F;networking facilities or services(利用通信网络设施&#x2F;服务): 比如利用邮件，RPC(远程程序调用)。</li>
+<li>Exploiting vulnerabilities or bugs in operating system(操作系统漏洞): 比如buffer overflow, code injection, SQL injection.</li>
+<li>Taking advantage of mobile code characteristics(利用移动代码的特点)： 电子邮件附件，互动，动态内容。</li>
+<li>Insecured file sharing facilities.(不安全的文件共享设施)。</li>
+</ol>
+<h3 id="Activation-and-Payload"><a href="#Activation-and-Payload" class="headerlink" title="Activation and Payload"></a>Activation and Payload</h3><ol>
+<li>Activation(激活): 打开电子邮件附件，点击网络链接。分为Human activity-based activation, Human activation, Scheduled process activation, self-activation.</li>
+<li>Payload: worm被激活开始工作，比如Dos(as a botnet),Data theft,Data integrity attack。</li>
+</ol>
+<p><img src="/2023/04/24/Cyber-security/7.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="其他种类"><a href="#其他种类" class="headerlink" title="其他种类"></a>其他种类</h2><ol>
+<li>Trapdoor (backdoor 后门): developers for maintenance or testing purpose or maliciously inserted by attackers.</li>
+<li>Trojan horse (木马): 伪装成正常程序，但是实际上是恶意程序。</li>
+<li>Malicious Mobile Code(恶性移动代码): 从远程主机传送到本机。</li>
+<li>Zombies(bots僵尸): 被攻击者控制的主机，用来进行DDoS(分布式拒绝服务攻击) DDos 有一个Botnet，但DOS没有因为只是一个bot。</li>
+<li>Blended Attacks:  混合式攻击是指采用多种感染和&#x2F;或传输方法来破坏系统或网络的恶意活动。</li>
+</ol>
+<h2 id="APTS-Advanced-Persistent-Threats-高级持续性威胁"><a href="#APTS-Advanced-Persistent-Threats-高级持续性威胁" class="headerlink" title="APTS(Advanced Persistent Threats 高级持续性威胁)"></a>APTS(Advanced Persistent Threats 高级持续性威胁)</h2><ol>
+<li>Crimeware toolkits(犯罪软件包): APT攻击者通常使用软件包。没啥好说的，任何人都用。</li>
+<li>Persistence and stealth(持续性和隐蔽性); 攻击者渗透到目标网络之中并很长时间不被发现。</li>
+<li>Organized and dangerous attack source: 有组织的危险和攻击来源，从以前为了装逼的个人或者小团地转变成了正式的攻击组织&#x2F;国家。</li>
+<li>Targeted attacks: APTs通常具有高度的针对性，比如国防，政府，金融。</li>
+</ol>
+<h2 id="Buffer-Overflow"><a href="#Buffer-Overflow" class="headerlink" title="Buffer Overflow"></a>Buffer Overflow</h2><p>buffer是一个pre-allocated data storage area in computer’s memory. 用来暂时的保存数据，如果overflow了，缓冲区溢出，导致多余的数据已出道了邻近的内存位置，导致覆盖了重要的代码，从而有安全行为或者漏洞。</p>
+<p><img src="/2023/04/24/Cyber-security/8.jpeg" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>Consequence: 正常情况会给程序干崩溃，通常用一个指向自己的恶意代码(shellcode)的指针覆盖返回地址，或者攻击者可以在函数返回的时候控制程序的执行流程。</li>
+<li>如果登陆需要填写Authenticated才会进入，编译器在str之后立刻存储变量，攻击者可以通过提供21个字节的数据，覆盖掉返回地址，然后在后面加上shellcode，就可以控制程序的执行流程。</li>
+</ol>
+<h2 id="Program-Memory-Layout"><a href="#Program-Memory-Layout" class="headerlink" title="Program Memory Layout"></a>Program Memory Layout</h2><ol>
+<li>Stack: 用来存储局部变量，函数参数，返回地址，函数调用的上下文信息。</li>
+<li>Heap: 用来存储动态分配的内存，比如malloc, new。</li>
+<li>BSS (Block Start by Symbol) segment : 存储未初始化的全局&#x2F;静态变量。</li>
+<li>Data segment: 用来存储全局变量，静态变量，常量。</li>
+<li>Text segment : 用来存可执行文件的可执行代码。</li>
+</ol>
+<p>buffer 可以是stack或者heap。</p>
+<h3 id="Heap-Based-attacks"><a href="#Heap-Based-attacks" class="headerlink" title="Heap-Based attacks"></a>Heap-Based attacks</h3><p>如果成功，会导致任意代码饿执行访问崩溃，更具有挑战，需要更加了解目标陈旭的内存布局和管理。</p>
+<h3 id="Stack-Based-attacks"><a href="#Stack-Based-attacks" class="headerlink" title="Stack-Based attacks"></a>Stack-Based attacks</h3><p>LIFO（先进后出）的结构组织的，新添加的项目第一个被删除。<br><img src="/2023/04/24/Cyber-security/9.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Stack-based-on-x86"><a href="#Stack-based-on-x86" class="headerlink" title="Stack(based on x86)"></a>Stack(based on x86)</h3><ol>
+<li>Instruction Pointer(register %eip): 处理器执行的下体条命令。</li>
+<li>Stack Pointer(%esp): 指向栈顶的指针。</li>
+<li>(Current) Frame Pointer(%ebp): The Frame Pointer 是当一个函数被调用，新的Stack frame 被创建。</li>
+</ol>
+<h3 id="VPN-Virtual-Private-Network"><a href="#VPN-Virtual-Private-Network" class="headerlink" title="VPN(Virtual Private Network)"></a>VPN(Virtual Private Network)</h3><ol>
+<li>Tunneling(隧道): VPN在你的设备和VPN服务器之间创建一个隧道，将你的数据密封在其中。包括encapsulation, transmission and decapsulation。</li>
+<li>Private Intranet: 一个私有网络，只有内部的设备可以访问，外部的设备无法访问。</li>
+<li>IP-in-IP Tunnel: 允许两个网络(Private Intranet)&#x2F;设备之间建立安全的隧道链接，通过在原始IP数据包的头部添加一个新的IP头部来实现。可以让两个IP在公共网络中也可以安全的通信。工作原理如下图所示。</li>
+</ol>
+<p><img src="/2023/04/24/Cyber-security/10.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="VPN-routers-gateways-路由器"><a href="#VPN-routers-gateways-路由器" class="headerlink" title="VPN routers(gateways 路由器)"></a>VPN routers(gateways 路由器)</h3><ol>
+<li>Standalone VPNs: 转饿为提供VPN功能而设计的专用网络设备。  </li>
+<li>Integrated VPNs: 把VPN功能添加到现有设备，不需要专业设备。比如添加到路由器或者防火墙上。</li>
+</ol>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><h2 id="Cybersecurity-Domains"><a href="#Cybersecurity-Domains" class="headerlink" title="Cybersecurity Domains"></a>Cybersecurity Domains</h2><ol>
+<li>Critical Infrastructure Security 关键基础设施安全: 保护国家的基础设施，比如电力，交通，通信，金融。</li>
+<li>Network&#x2F;Internet Security 网络&#x2F;互联网安全: 授权访问，防火墙，入侵检测系统(IDS),入侵防御系统(IPS)和安全的网络架构。</li>
+<li>Application Security 软件安全: 保护应用程序，比如web应用程序，数据库，操作系统。</li>
+<li>Cloud Security yunanquan: 保护云计算环境。</li>
+<li>Information Security 信息安全: 保护信息，比如数据，文件，邮件，通信。</li>
+<li>End-User Education 用户教育: 保护用户，比如安全意识，安全培训，安全政策。</li>
+<li>Disaster Recovery&#x2F;Business Continuity 恢复&#x2F;业务连续性: 保护组织的业务，比如备份，恢复，灾难恢复计划，业务连续性计划。</li>
+</ol>
+<h2 id="E1-1"><a href="#E1-1" class="headerlink" title="E1.1"></a>E1.1</h2><p>Respectively assuming yourself as</p>
+<ul>
+<li>the owner&#x2F;director of an SME (Small and medium-sized<br>enterprise),</li>
+<li>the IT manager in an organization, managing the IT facilities in<br>the organization, and</li>
+<li>the manager of the development team in an IT company, in<br>charge of developing an app for on-line shopping,<br>carry out some research and identify</li>
+</ul>
+<ol>
+<li>cybersecurity challenges and</li>
+<li>measures to tackle the challenges.</li>
+</ol>
+<h2 id="E1-1-solution"><a href="#E1-1-solution" class="headerlink" title="E1.1 solution"></a>E1.1 solution</h2><h3 id="Owner-x2F-director-of-an-SME"><a href="#Owner-x2F-director-of-an-SME" class="headerlink" title="Owner&#x2F;director of an SME:"></a>Owner&#x2F;director of an SME:</h3><h4 id="Cybersecurity-challenges"><a href="#Cybersecurity-challenges" class="headerlink" title="Cybersecurity challenges:"></a>Cybersecurity challenges:</h4><p>Limited budget and resources for cybersecurity measures.<br>Lack of cybersecurity awareness among employees.<br>Vulnerability to ransomware, phishing, and other types of cyberattacks.</p>
+<h4 id="Measures-to-tackle-the-challenges"><a href="#Measures-to-tackle-the-challenges" class="headerlink" title="Measures to tackle the challenges:"></a>Measures to tackle the challenges:</h4><p>Invest in essential security measures such as firewalls, antivirus software, and data backups.<br>Provide cybersecurity awareness training for employees.<br>Implement strong access control and password policies.</p>
+<h3 id="IT-manager-in-an-organization"><a href="#IT-manager-in-an-organization" class="headerlink" title="IT manager in an organization:"></a>IT manager in an organization:</h3><h4 id="Cybersecurity-challenges-1"><a href="#Cybersecurity-challenges-1" class="headerlink" title="Cybersecurity challenges:"></a>Cybersecurity challenges:</h4><p>Securing a growing number of devices and endpoints.<br>Managing software and hardware updates to address vulnerabilities.<br>Ensuring compliance with data protection regulations.</p>
+<h4 id="Measures-to-tackle-the-challenges-1"><a href="#Measures-to-tackle-the-challenges-1" class="headerlink" title="Measures to tackle the challenges:"></a>Measures to tackle the challenges:</h4><p>Implement a comprehensive endpoint security strategy, including regular patch management and vulnerability assessments.<br>Establish a clear incident response plan to handle potential cybersecurity incidents.<br>Collaborate with other departments to ensure data protection policies are adhered to.</p>
+<h3 id="Manager-of-the-development-team-in-an-IT-company-developing-an-online-shopping-app"><a href="#Manager-of-the-development-team-in-an-IT-company-developing-an-online-shopping-app" class="headerlink" title="Manager of the development team in an IT company (developing an online shopping app):"></a>Manager of the development team in an IT company (developing an online shopping app):</h3><h4 id="Cybersecurity-challenges-2"><a href="#Cybersecurity-challenges-2" class="headerlink" title="Cybersecurity challenges:"></a>Cybersecurity challenges:</h4><p>Protecting user personal information and payment data.<br>Preventing fraudulent activities, such as malicious refunds.<br>Mitigating the risk of Distributed Denial of Service (DDoS) attacks and other types of cyberattacks that can disrupt service availability.</p>
+<h4 id="Measures-to-tackle-the-challenges-2"><a href="#Measures-to-tackle-the-challenges-2" class="headerlink" title="Measures to tackle the challenges:"></a>Measures to tackle the challenges:</h4><p>Implement strong encryption and secure coding practices to protect sensitive data.<br>Use secure and reliable payment processing services, and implement fraud detection mechanisms.<br>Deploy DDoS protection services and use cloud-based solutions with built-in redundancy to mitigate service disruptions.</p>
+<h1 id="Security-Basic"><a href="#Security-Basic" class="headerlink" title="Security Basic"></a>Security Basic</h1><h2 id="Cybersecurity-Threats"><a href="#Cybersecurity-Threats" class="headerlink" title="Cybersecurity Threats"></a>Cybersecurity Threats</h2><ul>
+<li>Malware (virus, trojan, worm, …)</li>
+<li>Ransomware</li>
+<li>Adware</li>
+<li>Hacking</li>
+<li>Spoofing</li>
+<li>Phishing</li>
+<li>Pharming</li>
+<li>DDoS (Distributed Denial of Service) attacks (Botnets attacks)</li>
+<li>Identity theft</li>
+<li>SQL injection</li>
+<li>Social engineering</li>
+<li>Cryptojacking (Cryptocurrency Hijacking)</li>
+<li>etc, the list goes on …</li>
+</ul>
+<h3 id="CIA-Confidentiality-Integrity-and-Availability"><a href="#CIA-Confidentiality-Integrity-and-Availability" class="headerlink" title="CIA(Confidentiality,Integrity and Availability)"></a>CIA(Confidentiality,Integrity and Availability)</h3><ol>
+<li><p>Discolosure(threats to confidentiality): confidentiality是防止对敏感信息的未授权访问，Discolosure是值对敏感信息的未授权访问。</p>
+<ol>
+<li>Snooping，sniffing(data in transit):在数据上传的时候拦截和读取数据的手段,加密可以有效防止。</li>
+<li>Unauthorized access(systems, data at rest):未经授权的访问系统和数据。</li>
+</ol>
+</li>
+<li><p>Deception(fraud and forgeries; threats to integrity): 保证数据没有被篡改。</p>
+<ol>
+<li>Spoofing(identify theft): 攻击者模仿他人的证书通信模式假装成其他人。</li>
+<li>Unauthorized data modification: 未经允许的数据修改。</li>
+<li>Replay(intercept and retransmit): 涉及拦截和重传有效的数据传输</li>
+<li>Repudiation(false denial) of origin, repudiation of recipt: 当参与交易的一方否认他们是交易的一部分。</li>
+</ol>
+</li>
+<li><p>Disruption: 使得系统无法正常工作。</p>
+<ol>
+<li>Modification: 对系统活数据的未经允许的改变。</li>
+<li>Delay: 影响服务的延迟。</li>
+<li>Denial of service: 使得系统无法正常工作。</li>
+</ol>
+</li>
+</ol>
+<h3 id="Security-Properties"><a href="#Security-Properties" class="headerlink" title="Security Properties"></a>Security Properties</h3><ol>
+<li>Freshness : 保证数据不是就数据的重放</li>
+<li>Non-repudiation: 防止虚假拒绝</li>
+<li>Fairness: 要么双方都收到认同的东西，活着都收不到东西</li>
+</ol>
+<h2 id="Achieving-Security-life-cycle"><a href="#Achieving-Security-life-cycle" class="headerlink" title="Achieving Security: life-cycle"></a>Achieving Security: life-cycle</h2><p>没有绝对的安全。<br>Life-cycle分为三个步骤: </p>
+<ol>
+<li>threats analysis: 识别威胁</li>
+<li>design and implementation: 设计和实现</li>
+<li>security assurance: 确保安全</li>
+</ol>
+<h3 id="Attack-Tree-Threat-Tree"><a href="#Attack-Tree-Threat-Tree" class="headerlink" title="Attack Tree (Threat Tree)"></a>Attack Tree (Threat Tree)</h3><p>root 是攻击目标，child是攻击方法。每一个节点都有一个likelihood 可能性，象征着入侵成功的概率。即货币成本，或者完成攻击所需要的成本。</p>
+<p><img src="/2023/04/24/Cyber-security/11.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Security-models"><a href="#Security-models" class="headerlink" title="Security models"></a>Security models</h2><h3 id="A-distributed-system-security-model"><a href="#A-distributed-system-security-model" class="headerlink" title="A distributed system security model"></a>A distributed system security model</h3><ul>
+<li>认证： 验证网络中用户和系统的身份，确保他们被授权访问资源。</li>
+<li>授权： 根据用户或系统的权限，授予或拒绝对特定资源的访问。</li>
+<li>完整性： 确保数据和系统组件不被未授权方篡改或改变。</li>
+<li>保密性： 保护敏感数据免受未经授权的访问和披露。</li>
+<li>可用性： 确保系统及其资源在需要时能被授权用户访问。</li>
+</ul>
+<h3 id="A-communication-security-model"><a href="#A-communication-security-model" class="headerlink" title="A communication security model"></a>A communication security model</h3><ul>
+<li>加密： 对数据进行编码，以便只有拥有适当解密密钥的授权方才能访问该信息。</li>
+<li>认证： 验证通信各方的身份，以确保他们被授权参与通信。</li>
+<li>不可否认性： 提供一种手段来证明特定的一方参与了一项通信或交易，防止他们事后否认他们的参与。</li>
+<li>完整性： 确保传输的数据在传输过程中没有被改变或篡改。</li>
+<li>密钥管理： 安全地生成、分发和管理通信过程中使用的加密密钥。</li>
+</ul>
+<h3 id="An-e-commerce-security-model"><a href="#An-e-commerce-security-model" class="headerlink" title="An e-commerce security model"></a>An e-commerce security model</h3><ul>
+<li>安全通信： 利用加密协议，如SSL&#x2F;TLS，来保护客户和服务器之间传输的敏感数据。</li>
+<li>认证： 验证用户、商家和系统的身份，以确保对资源和交易的安全和授权访问。</li>
+<li>授权： 根据用户角色和权限控制对资源和功能的访问。</li>
+<li>数据隐私： 通过加密和安全存储，确保保护敏感的用户信息，如信用卡号码和个人详细资料。</li>
+<li>欺诈检测和预防： 实施检测和减少欺诈性交易的系统，如监测可疑活动和实施强大的认证机制。</li>
+</ul>
+<h2 id="E2-1"><a href="#E2-1" class="headerlink" title="E2.1"></a>E2.1</h2><p>Comment on the implications to risks (i.e. whether risks are increased or decreased) in<br>terms of Confidentiality, Integrity and Availability in each of the following cases:</p>
+<ol>
+<li><p>Disconnect a computer from the Internet<br>Disconnecting a computer from the Internet reduces risks to confidentiality, but availability<br>suffers. Integrity may also suffer due to loss of updates.</p>
+</li>
+<li><p>Have extensive data checks by different people&#x2F;systems<br>Have extensive data checks by different people&#x2F;systems can reduce risks to integrity, but<br>confidentiality suffers as more people will be able to see the data. Availability will also suffer<br>due to locks on data under verification</p>
+</li>
+</ol>
+<h2 id="E2-2"><a href="#E2-2" class="headerlink" title="E2.2"></a>E2.2</h2><ol>
+<li>In this exercise, you are asked to identify, via literature research,<br>potential cyber attack threats to mobile banking (i.e. perform<br>banking transactions using your mobile phone). You are expected to<br>be able to explain the attacking mechanism of each of your<br>identified threats (i.e. how the attack is performed) and try to name<br>any countermeasures to your identified threats.</li>
+<li>Draw a threat tree for ‘reading your best friend’s email without<br>authorisation’.</li>
+</ol>
+<h1 id="Symmetric"><a href="#Symmetric" class="headerlink" title="Symmetric"></a>Symmetric</h1><p>$C &#x3D; E_K(M) (or C &#x3D; E(K, M)) \<br>M &#x3D; D_K(C) (or M &#x3D; D(K, C))<br>$  </p>
+<ul>
+<li>encryption function E_K(.), or a decryption function,<br>D_K(.).  </li>
+<li>M is a plaintext block and C is a ciphertext block<br>is a secret (a symmetric or a private key)</li>
+</ul>
+<h2 id="Block-cipher-design-criteria-区块密码设计标准"><a href="#Block-cipher-design-criteria-区块密码设计标准" class="headerlink" title="Block cipher design criteria(区块密码设计标准)"></a>Block cipher design criteria(区块密码设计标准)</h2><ol>
+<li><p>Completeness（完整性）： cipher text（密码文本）应该完全取决于 plain text(纯文本)。</p>
+</li>
+<li><p>Avalanche effect (Diffusion雪崩效应，扩散): 输入text或者private key的任何一个微小的变化应该导致输出text的巨大变化。目的是防止暴力破解。</p>
+<ol>
+<li>改变信息的一个bit 对应的输出信息很多个bit 得到改变。</li>
+<li>改变private key的一个bit 对应的输出信息很多个bit 得到改变。</li>
+</ol>
+</li>
+<li><p>Statistical independence (Confusion 混淆): 输入和输出的关系非常复杂，非线性函数或混合函数来实现的。目的是防止统计分析。</p>
+</li>
+</ol>
+<h2 id="Feistel-Block-Cipher-费斯特尔区块密码"><a href="#Feistel-Block-Cipher-费斯特尔区块密码" class="headerlink" title="Feistel Block Cipher(费斯特尔区块密码)"></a>Feistel Block Cipher(费斯特尔区块密码)</h2><p><img src="/2023/04/24/Cyber-security/12.jpeg" srcset="/img/loading.gif" lazyload></p>
+<ul>
+<li>XOR : 比较两个二进制位数之间的不同，相同返回0，不同返回1.</li>
+<li>Round function(f): n位块进行输出n位块，</li>
+<li>Block Size(n):</li>
+<li>Key Size(s):</li>
+<li>Number of rounds(r):一般大于10, 循环次数</li>
+</ul>
+<p> 费斯特尔密码依靠XOR操作和圆形函数的组合来创造一个更复杂和安全的加密过程。轮次函数引入了混乱和扩散，而XOR操作有助于有效地混合输入数据和轮次函数的输出。</p>
+<p>加密和解密过程都知道参数，如回合数、密钥和具体的回合函数。当正确的密钥与这些参数一起使用时，解密过程将逆转加密过程中应用的操作，允许恢复原始明文。</p>
+<h2 id="DES-Data-Encryption-Standard"><a href="#DES-Data-Encryption-Standard" class="headerlink" title="DES (Data Encryption Standard)"></a>DES (Data Encryption Standard)</h2><p>DES is a Feistel block cipher</p>
+<ol>
+<li>密钥 K 是 56 位；实际上是 8 个字节，但每个字节中的第 8 位是奇偶校验位</li>
+<li>子密钥k1, k2 …, k16各为48位，由密钥K生成,解密和加密相同，唯一的不同是解密subkey的顺序反过来。</li>
+<li>DES不安全了,$2^{55}$次就可以破解，因为只是56-bit key, 但是DES的设计是很好的，所以可以用DES的设计思想，设计出更好的算法，比如3DES, AES。</li>
+</ol>
+<h3 id="Triple-DES-3DES"><a href="#Triple-DES-3DES" class="headerlink" title="Triple DES(3DES)"></a>Triple DES(3DES)</h3><h4 id="EDS2-3DES-用两个keys"><a href="#EDS2-3DES-用两个keys" class="headerlink" title="EDS2 (3DES 用两个keys)"></a>EDS2 (3DES 用两个keys)</h4><p>$Ciphertext (C) &#x3D; E_{K1}(D_{K2}(E_{K1}(Plaintext (M))))$</p>
+<p>EDE2的密钥长度为112位（56位来自K1，56位来自K2）。在中间使用解密算法D对安全性没有直接影响。它的作用是在K1&#x3D;K2的情况下使Triple DES向后兼容单DES，这意味着在这种情况下它可以像单DES一样发挥作用。</p>
+<h4 id="EDS2-3DES-用三个keys"><a href="#EDS2-3DES-用三个keys" class="headerlink" title="EDS2 (3DES 用三个keys)"></a>EDS2 (3DES 用三个keys)</h4><p>$Ciphertext (C) &#x3D; E_{K3}(D_{K2}(E_{K1}(Plaintext (M))))$</p>
+<p>EDE3密钥长度168bits.</p>
+<h2 id="AES-Advanced-Encryption-Standard"><a href="#AES-Advanced-Encryption-Standard" class="headerlink" title="AES (Advanced Encryption Standard)"></a>AES (Advanced Encryption Standard)</h2><p>A symmetric block cipher same as DES.</p>
+<ul>
+<li>使用相同的密钥来加密和解密信息。</li>
+<li>明文和密码文本具有相同的大小。</li>
+</ul>
+<ol>
+<li>不同于DES他是iterative而并非feistel cipher。</li>
+<li>限定block size &#x3D; 128 bit。加密和解密都用128bit。</li>
+<li>round(n):<ol>
+<li>对于一个128位的密钥长度，r &#x3D; 10轮。</li>
+<li>对于192位的密钥长度，r&#x3D;12轮。</li>
+<li>对于256位的密钥长度，r&#x3D;14轮。</li>
+</ol>
+</li>
+</ol>
+<h3 id="十六进制-hexadecimal-hex-number"><a href="#十六进制-hexadecimal-hex-number" class="headerlink" title="十六进制(hexadecimal (hex) number)"></a>十六进制(hexadecimal (hex) number)</h3><p>0x5B</p>
+<ol>
+<li>0x 表示十六进制</li>
+<li>5: $16^1 * 5$ (80)</li>
+<li>B: $16^0 * 11$ (11)</li>
+<li>5B &#x3D; 16 + 11 &#x3D; 91</li>
+</ol>
+<h3 id="SubBytes"><a href="#SubBytes" class="headerlink" title="SubBytes"></a>SubBytes</h3><p>这个步骤只是为了让plaintext变得更加复杂。high and low nibbles of a byte是用来寻找S-box中特定的index的。<br>比如5B，high nibble是5，low nibble是B，inde就是S-box[5][11]。找到这个index，把这个index的值拿过来放到当前的5B在的位置。<br><img src="/2023/04/24/Cyber-security/14.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Shift-Row"><a href="#Shift-Row" class="headerlink" title="Shift Row"></a>Shift Row</h3><p><img src="/2023/04/24/Cyber-security/13.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Mix-columns"><a href="#Mix-columns" class="headerlink" title="Mix columns"></a>Mix columns</h3><p>$GF(P^n)$ (in AES, p&#x3D;2, n&#x3D;8)</p>
+<p>In AES, $m(x)&#x3D;x^8+x^4 +x^3+x^1+x^0$, i.e. 100011011 (or 11B) 这里因为使用了bitwise XOR，二进制等于1则有，0则没有。<br><img src="/2023/04/24/Cyber-security/15.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="Add-round-key"><a href="#Add-round-key" class="headerlink" title="Add round key"></a>Add round key</h3><p>状态的128位与圆密钥的128位进行位数XOR： 由于状态矩阵和圆密钥矩阵都由16个字节（128位）组成，AddRoundKey转换的结果是另一个128位的矩阵，其中每个位是状态矩阵和圆密钥矩阵中相应位的XOR。</p>
+<p><img src="/2023/04/24/Cyber-security/16.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="DES-vs-AES"><a href="#DES-vs-AES" class="headerlink" title="DES vs AES"></a>DES vs AES</h2><p><img src="/2023/04/24/Cyber-security/17.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p>N-bit block cipher 需要超过 2^N 来破解。</p>
+<h2 id="Stream-Cipher"><a href="#Stream-Cipher" class="headerlink" title="Stream Cipher"></a>Stream Cipher</h2><p>流密码是一种对称密钥加密算法，一次对明文数据进行加密，每次加密一个比特或字节。它们通过生成一个密钥流进行操作，密钥流是由秘密密钥产生的一个比特或字节序列。然后，密钥流与明文使用位XOR操作相结合，产生密码文本。</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>Bitwise XOR 效率高 </p>
+<h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
+<li>Key length 密钥必须和明文一样长，这在大多数应用场景中是不现实的</li>
+<li>如果同一个密钥被用于多个明文，流密码就会受到攻击。能够获得两个明文的XOR（M1 XOR M2）的攻击者，如果能够获得另一个plaintext及其相应的密码文本（M1和C1），就可以恢复其中一个明文。这是因为将M1与C1进行XOR（即M1 XOR K）会得到密钥K，然后攻击者可以使用K来解密C2（即M2 XOR K）并恢复M2。<h3 id="Bitwise-XOR"><a href="#Bitwise-XOR" class="headerlink" title="Bitwise XOR"></a>Bitwise XOR</h3></li>
+</ol>
+<p>$0 XOR 0 &#x3D; 0  \<br>0 XOR 1 &#x3D; 1  \<br>1 XOR 0 &#x3D; 1  \<br>1 XOR 1 &#x3D; 0$</p>
+<h3 id="PRNG"><a href="#PRNG" class="headerlink" title="PRNG"></a>PRNG</h3><p>Replace the random key in One-time Pad by a pseudo-random<br>sequence, generated by a cryptographic pseudo-random generator that is ‘seeded’ with the key.</p>
+<h2 id="Modes-of-Encryption"><a href="#Modes-of-Encryption" class="headerlink" title="Modes of Encryption"></a>Modes of Encryption</h2><p>如果消息比block size长。<br>o ECB – Electronic Code Book mode<br>o CBC – Cipher Block Chaining mode<br>o CTR – Counter mode</p>
+<h3 id="ECB"><a href="#ECB" class="headerlink" title="ECB"></a>ECB</h3><p>plaintext被分成很多与block size相同的text独立加密，然后再用分别的密钥独立解密。</p>
+<ul>
+<li>操作简便，但是对于有重复性的信息不安全。</li>
+<li>最后一个block不足block size，需要padding，最后一个字节表示padding的长度，方便接收后删除。</li>
+<li>加密: $C_n &#x3D; E_k(M_n) (or E(K, M_n))$ 解密:  $M_n &#x3D; D_k(C_n); n &#x3D; {1, 2, …}.$</li>
+</ul>
+<h3 id="CBC"><a href="#CBC" class="headerlink" title="CBC"></a>CBC</h3><p>与ECB一样，不过每一个cipher block 都是用前一个cipher block的ciphertext和当前的plaintext进行加密，所以前面的block坏掉，后面的全会影响。<br>$C_i &#x3D; E_K(M_i XOR C_{i-1}), where C_0 &#x3D; IV (Initialization Vector)$<br>Initialization Vector :是一个随机值，给第一个plaintext增加随机性用的。<br><img src="/2023/04/24/Cyber-security/18.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="CTR"><a href="#CTR" class="headerlink" title="CTR"></a>CTR</h3><p>目的是把block cipher变成stream cipher。<br>有一个计数器，计数器最大值等于block size的数量。每一个计数器的数量等于block size的数量，然后用计数器的值和密钥进行加密，然后和plaintext进行XOR。</p>
+<p>有点不太懂。</p>
+<ol>
+<li>可以并行化。</li>
+<li>可以随机访问。</li>
+<li>与plaintext的XOR可以预先计算。</li>
+<li>一个block的丢失，同步就会丢失，无法复原plaintext。</li>
+<li>一个在传输过程中被修改的密码文本块只影响该块的解密。</li>
+</ol>
+<p><img src="/2023/04/24/Cyber-security/19.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Block-vs-Stream-Cipher"><a href="#Block-vs-Stream-Cipher" class="headerlink" title="Block vs Stream Cipher"></a>Block vs Stream Cipher</h2><ul>
+<li>Block Cipher</li>
+</ul>
+<ol>
+<li>While block ciphers encrypt blocks of characters, stream ciphers encrypt individual characters or bit streams.</li>
+</ol>
+<ul>
+<li>Stream ciphers</li>
+</ul>
+<ol>
+<li>are usually faster than block ciphers in hardware; mostly used for continuous communications and&#x2F;or real-time applications.2. requires less memory space, so cheaper for resource<br>restrained devices such as embedded sensors.</li>
+<li>have limited or no error propagation, so advantageous when transmission errors are probable.</li>
+<li>can be built out of block ciphers, e.g. by using CTR modes.</li>
+</ol>
+<h2 id="漏洞"><a href="#漏洞" class="headerlink" title="漏洞"></a>漏洞</h2><ol>
+<li>不可以使用内置random 函数比如rand()。</li>
+<li>IVs should be random.</li>
+</ol>
+<h2 id="E3-1"><a href="#E3-1" class="headerlink" title="E3.1"></a>E3.1</h2><p>By applying DES twice using two different 56-bit keys, K1 and<br>K2, to encrypt a message, M, i.e. $C&#x3D;EK2[EK1[M]]$, where C is the ciphertext, we have a double DES encryption. Would this double DES encryption double the security level of a single DES<br>encryption? Justify your answer.<br><img src="/2023/04/24/Cyber-security/20.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h1 id="Public-key-Cryptography-PKC"><a href="#Public-key-Cryptography-PKC" class="headerlink" title="Public-key Cryptography (PKC)"></a>Public-key Cryptography (PKC)</h1><h2 id="One-Way-Function"><a href="#One-Way-Function" class="headerlink" title="One-Way Function"></a>One-Way Function</h2><p>计算上不可逆转的函数。常用的单项函数:</p>
+<ol>
+<li>Integer factorization(整数因子化): 用于RSA加密方案，将两个大的质数相乘很容易，但再给他分解质因数是很难的。RSA中信息通过提高到两个大素数的乘积来加密，只有知道素数的人才能将它解密。</li>
+<li>discrete logarithm(离散对数): 用于DSS&#x2F;DSA和Diffie-Hellman密钥交换。目的是寻找一个 ax&#x3D;b mod p 的整数x的问题。其中a，b，p是已知的，x是未知的。这个问题是很难解决的，因为它需要尝试所有可能的x值，直到找到一个满足方程的值。这个问题的难度在于，当p很大时，x的可能值的数量是非常大的。</li>
+</ol>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><ul>
+<li>适用于encryption(for symmetric key distribution): RSA, ElGamal, ECC</li>
+<li>只能数字签名: DSA</li>
+<li>只能key agreement : DH</li>
+<li>加密和数字签名: RSA ElGamal Rabin</li>
+<li>Examples:<br>  9 mod 5 &#x3D; 4<br>  20 mod 9 &#x3D; 2<br>  17 &#x3D; 2 mod 5 since 17-2 &#x3D; 3 ·5<h2 id="RSA"><a href="#RSA" class="headerlink" title="RSA"></a>RSA</h2>两个大素数(100-400)的乘积。<br><img src="/2023/04/24/Cyber-security/21.jpeg" srcset="/img/loading.gif" lazyload></li>
+</ul>
+<p><img src="/2023/04/24/Cyber-security/22.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Hybrid-Cryptosystems"><a href="#Hybrid-Cryptosystems" class="headerlink" title="Hybrid Cryptosystems"></a>Hybrid Cryptosystems</h2><p><img src="/2023/04/24/Cyber-security/23.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="Digital-Signature"><a href="#Digital-Signature" class="headerlink" title="Digital Signature"></a>Digital Signature</h2><ol>
+<li>Message-dependent: 数字签名需要依赖消息的内容，包括时间日期等细节。</li>
+<li>Unreusable: 数字签名不可重复使用，每条信息的数字签名都是唯一的。</li>
+<li>Ensures content integrity: 数字签名保证信息在签名过后的完整性。</li>
+<li>Signer-dependent: 数字签名独属于签名着，不可以轻易被其他人创建。</li>
+<li>Unforgeable: 很难被伪造。</li>
+<li>Ensures origin authentication: 确认信息来源。</li>
+<li>Verifiable: 可以被验证。</li>
+<li>Anti-forgery: 数字签名不可伪造，因为它是基于签名者的私钥进行加密。</li>
+</ol>
+<p><img src="/2023/04/24/Cyber-security/24.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="DSS-x2F-DSA-纯数字签名的方法"><a href="#DSS-x2F-DSA-纯数字签名的方法" class="headerlink" title="DSS&#x2F;DSA(纯数字签名的方法)"></a>DSS&#x2F;DSA(纯数字签名的方法)</h2><h1 id="Cryptographic-Checksum-加密校验"><a href="#Cryptographic-Checksum-加密校验" class="headerlink" title="Cryptographic Checksum(加密校验)"></a>Cryptographic Checksum(加密校验)</h1><h2 id="需要加密校验的地方"><a href="#需要加密校验的地方" class="headerlink" title="需要加密校验的地方"></a>需要加密校验的地方</h2><ol>
+<li>Public-key encryption, A –&gt; B: $E_{KUb}$ [M] 用B的public key加密。B不知道是谁发的，也不能确定消息完整性。所以需要校验。</li>
+<li>Digital signing, A –&gt; B: M||$E{KRa}$ [h(M)] 用A的private key加密。不可抵赖性，因为明确是A发出的，并且消息完整。但是无法保证保密性。</li>
+</ol>
+<p>加密校验分为两种，hash function 和 Macs。</p>
+<h2 id="对比于数字签名"><a href="#对比于数字签名" class="headerlink" title="对比于数字签名"></a>对比于数字签名</h2><p> 加密校验和和数字签名都是相关的，因为它们都是用来确保数据的完整性和真实性。然而，加密校验使用哈希函数或MAC，而数字签名则依靠公钥密码学。此外，数字签名提供不可抵赖性，这意味着发送者不能否认发送过数据，而加密校验则不提供这一功能。</p>
+<h2 id="Hash-Function"><a href="#Hash-Function" class="headerlink" title="Hash Function"></a>Hash Function</h2><h3 id="Compression-Property-压缩特性"><a href="#Compression-Property-压缩特性" class="headerlink" title="Compression Property(压缩特性)"></a>Compression Property(压缩特性)</h3><p>h &#x3D; H(M) , h是 message digest(信息摘要)。由于是多对一映射，有可能collisions，尽可能避免。</p>
+<p>生成hash 摘要用很多个block，不断用不同的hash function对上一次的hash message进行hash。最后的hash 是整个message的hash摘要。</p>
+<h3 id="Security-Requirements-x2F-Properties-安全特性"><a href="#Security-Requirements-x2F-Properties-安全特性" class="headerlink" title="Security Requirements&#x2F;Properties(安全特性)"></a>Security Requirements&#x2F;Properties(安全特性)</h3><ol>
+<li>Preimage resistant(one-way单向性): 无法反向。</li>
+<li>2nd preimage resistant(week coliision resistance弱碰撞性): 无法找到另一个message，使得hash值相同。</li>
+<li>Collision resistance (strong collision resistance强抗碰撞): 很难找到相同哈希值的和两个输入。</li>
+</ol>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><p>A 发送信息M给B, $M||s$ , $s &#x3D; E_{KRa}[H[M]]$. 攻击者发现了另外一个meesage,这个message和M有着相同的hash，我们就可以把这个替换成原本的message。这就是collision attack。</p>
+<h2 id="MAC-Message-Authentication-Code"><a href="#MAC-Message-Authentication-Code" class="headerlink" title="MAC(Message Authentication Code)"></a>MAC(Message Authentication Code)</h2><p><img src="/2023/04/24/Cyber-security/25.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/04/24/Cyber-security/26.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="HMAC"><a href="#HMAC" class="headerlink" title="HMAC"></a>HMAC</h2><p><img src="/2023/04/24/Cyber-security/27.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="AEAD-Authenticated-Encryption-with-Associated-Data"><a href="#AEAD-Authenticated-Encryption-with-Associated-Data" class="headerlink" title="AEAD(Authenticated Encryption with Associated Data)"></a>AEAD(Authenticated Encryption with Associated Data)</h2><p>在AEAD（带关联数据的认证加密）中，其目的是为明文信息（有效载荷）提供保密性，并确保明文信息和关联数据（头）的完整性和真实性。AEAD的加密过程需要以下输入：</p>
+<p>头（关联数据）： 信息的一部分，通常不需要保密性，但需要完整性和真实性保护。<br>明文（Plaintext）： 正在传输的实际内容或数据，需要保密。<br>密钥： 用于加密和认证过程的秘密密钥。<br>Nonce： 一个独特的值，将随机性引入加密过程。<br>当你使用这些输入进行AEAD加密时，你将得到以下输出：</p>
+<p>密码文本： 明文信息的加密版本，确保其保密性。<br>认证标签： 一个验证加密的有效载荷（密码文本）和相关数据（头）的完整性和真实性的值。<br>然后，发送方将头、Nonce、密码文本和认证标签传送给接收方。收件人使用相同的密钥、nonce和头来解密密码文本并验证认证标签。如果验证成功，收件人可以确定该信息没有被篡改，并且它来自拥有相同密匙的合法发件人。</p>
+<p>因此，收件人收到以下组件：头、nonce、密码文本和验证标签。然后，收件人使用这些组件以及共享的秘密密钥来解密密码文本，并验证整个信息的完整性和真实性。</p>
+<h2 id="CCM-和-GCM"><a href="#CCM-和-GCM" class="headerlink" title="CCM 和 GCM"></a>CCM 和 GCM</h2><p>CGM 和 GCM 都是AEAD，并且都基于AES。GCM更加灵活，性能更好。</p>
+<h2 id="length-attack"><a href="#length-attack" class="headerlink" title="length attack"></a>length attack</h2><p>攻击者知道正在使用的哈希函数和哈希输出的长度。他们也知道原始信息M的长度，但不知道秘钥K或其长度。</p>
+<h2 id="E5-1"><a href="#E5-1" class="headerlink" title="E5.1"></a>E5.1</h2><ol>
+<li>M||Tag, where Tag&#x3D;H(M||K)</li>
+<li>M||Tag, where Tag&#x3D;E(K, H(M))</li>
+<li>M||Tag, where Tag&#x3D;E(PRs, H(M))</li>
+<li>E(K, M||H(M))</li>
+</ol>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>Cyber_security</div>
+      <div>http://example.com/2023/04/24/Cyber-security/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Chenxi Qu</div>
+        </div>
+      
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../../../01/25/ux-review/" title="ux_review">
+                        <span class="hidden-mobile">ux_review</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="http://dotafs.github.io" target="_blank" rel="nofollow noopener"><span>------到底啦------</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../../../js/events.js" ></script>
+<script  src="../../../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="../../../../js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?dotafs";
+            var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
+            var git_user ="dotafs";
+            var parent_div_git = document.getElementsByClassName('container')[2];
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/about/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementsByClassName('container')[2]){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --></body>
+</html>
