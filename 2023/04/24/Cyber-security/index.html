@@ -56,7 +56,7 @@
 <meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/32.jpeg">
 <meta property="og:image" content="http://example.com/2023/04/24/Cyber-security/33.jpeg">
 <meta property="article:published_time" content="2023-04-24T14:48:11.528Z">
-<meta property="article:modified_time" content="2023-05-15T19:27:13.875Z">
+<meta property="article:modified_time" content="2023-05-16T20:02:09.650Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2023/04/24/Cyber-security/2.jpeg">
@@ -246,7 +246,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          31k words
+          32k words
         
       </span>
     
@@ -727,7 +727,7 @@
 <h4 id="PKC-2-pass"><a href="#PKC-2-pass" class="headerlink" title="PKC 2 pass"></a>PKC 2 pass</h4><p><img src="/2023/04/24/Cyber-security/29.jpeg" srcset="/img/loading.gif" lazyload></p>
 <h4 id="PKC-3-pass"><a href="#PKC-3-pass" class="headerlink" title="PKC 3 pass"></a>PKC 3 pass</h4><p><img src="/2023/04/24/Cyber-security/30.jpeg" srcset="/img/loading.gif" lazyload></p>
 <h2 id="E6-1"><a href="#E6-1" class="headerlink" title="E6.1"></a>E6.1</h2><p>Assuming that Alice is to send a message, M, to Bob. M is encrypted with a shared key established using the DH protocol.<br>Explain whether Eve could access this message M. If so, explain how, and propose a solution to address this vulnerability.Assuming that Alice is to send a message, M, to Bob. M is encrypted with a shared key established using the DH protocol. Explain whether Eve could access this message M. If so, explain how, and propose a solution to address this vulnerability.</p>
-<p>how :<br>This is an active attack. The attacker intercepts and substitutes Ya and Yb with Ye.<br>So at the end of the message exchanges, Eve will have Kae, Kbe, Alice will have Kae and Bob will have Kbe. Any messages encrypted with Kae will be decrypted and read by Eve and then re-encrypted with Kbe and vice versa without the knowledge of Alice and Bob.</p>
+<p>how :<br>This is an active attack. The attacker in tercepts and substitutes Ya and Yb with Ye.<br>So at the end of the message exchanges, Eve will have Kae, Kbe, Alice will have Kae and Bob will have Kbe. Any messages encrypted with Kae will be decrypted and read by Eve and then re-encrypted with Kbe and vice versa without the knowledge of Alice and Bob.</p>
 <p>solution 1 Fix DH: </p>
 <p>Server’s and client’s public key certificates contain their respective DH public key parameters. In other words, the DH public keys are certified by a CA. But there has to be a way that Alice and Bob could prove to each other that they are the rightful owners of the corresponding certificates (unless the identity of one entity is already known to the other). With this method, the established symmetric key is not really a session-valid key. So the security level is not as high as the second method.</p>
 <p>solution 2 Ephemeral DH:</p>
@@ -853,6 +853,7 @@
 </ul>
 </li>
 </ul>
+<h3 id="CA-和-KDC"><a href="#CA-和-KDC" class="headerlink" title="CA 和 KDC"></a>CA 和 KDC</h3><p>CA 是 asymmetric 的 , KDC 是 symmetric的。</p>
 <h3 id="HMAC-1"><a href="#HMAC-1" class="headerlink" title="HMAC"></a>HMAC</h3><p>HMAC(K, M)&#x3D; H[(K+ XOR opad) || H[(K+ XOR ipad) || M]]; </p>
 <h3 id><a href="#" class="headerlink" title></a></h3><h2 id="Attack"><a href="#Attack" class="headerlink" title="Attack"></a>Attack</h2><ul>
 <li><p>Replay attack: eve拦截了data package 并且transmit很多次，让recipient以为自己收到了很多次。</p>
@@ -868,14 +869,16 @@
 <li><p>dictionary Attack: eve尝试生日，常见组合来破解密码。</p>
 </li>
 <li><p>rainbow table attack : 预先计算好的表，反转加密的hash function, 就是破解hash值的dictonary attack.</p>
-<h2 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h2></li>
-<li><p>intensity : 完整性</p>
+<h2 id="security-properties"><a href="#security-properties" class="headerlink" title="security properties"></a>security properties</h2></li>
+<li><p>integrity : 完整性 Hash.</p>
 </li>
 <li><p>confidentiality :  保密性</p>
 </li>
-<li><p>authenticity : 验证来源，但不知道完整性。</p>
+<li><p>authenticity : 验证来源，CA.</p>
 </li>
-<li><p>non-repudiation: 不可抵赖性, authenticity + intensity.</p>
+<li><p>non-repudiation: 不可抵赖性, 通常通过digit signature.</p>
+</li>
+<li><p>authorization: 授权。不同的用户有不同的权限。</p>
 </li>
 </ul>
 <h2 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h2><p>PKI,CA,RSI,ECB,CBC,CTR,</p>
@@ -908,6 +911,21 @@
 </ol>
 <h3 id="stream和block-的区别"><a href="#stream和block-的区别" class="headerlink" title="stream和block 的区别"></a>stream和block 的区别</h3><ol>
 <li>block 对字符块进行加密，stream对单个bit\character进行加密。</li>
+</ol>
+<h3 id="UNIX"><a href="#UNIX" class="headerlink" title="UNIX"></a>UNIX</h3><p>croe: 14mo31bmRY0Yg: 12:31:Cathy Roe: &#x2F;home&#x2F;croe:&#x2F;bin&#x2F;csh</p>
+<ul>
+<li>unix password file: &#x2F;etc&#x2F;passwd</li>
+<li>User Name : croe</li>
+<li>Password (14mo31bmRY0Yg) : salt value(14) + hash password </li>
+<li>User ID(UID) : 12</li>
+<li>Group ID(GID) : 31</li>
+<li>Home Directory (&#x2F;home&#x2F;croe)</li>
+<li>Shell (&#x2F;bin&#x2F;csh)</li>
+</ul>
+<h3 id="RSA-step"><a href="#RSA-step" class="headerlink" title="RSA step"></a>RSA step</h3><p>two prime number p,q<br>f(n) &#x3D; (p-1)(q-1)<br>1 &lt; e &lt; f(n)<br>d x e &#x3D; 1 mod f(n)<br>KPU &#x3D;  {e,n}<br>KPR &#x3D;  {d,n}<br>encrypt: message M &lt; n , C &#x3D; M^e mod n<br>decrypt: M &#x3D; C^d mod n   </p>
+<h3 id="SA"><a href="#SA" class="headerlink" title="SA"></a>SA</h3><ol>
+<li>negotiate policy such as authentication method , enctyption and has halgorithms , AH&#x2F;ESP,etc.</li>
+<li></li>
 </ol>
 <h2 id="Exercise-Question-–-E9-1"><a href="#Exercise-Question-–-E9-1" class="headerlink" title="Exercise Question – E9.1"></a>Exercise Question – E9.1</h2><p>What is the major difference between transport mode and tunnel<br>mode in IPSec ESP, and any implications?</p>
 <p>Unlike the tunnel mode, the transport mode only encrypts the<br>payload, not header. This means that in the transport mode, address info<br>and other header info are exposed.</p>
