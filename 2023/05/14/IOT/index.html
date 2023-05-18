@@ -28,7 +28,7 @@
 <meta property="og:image" content="http://example.com/2023/05/14/IOT/36.jpeg">
 <meta property="og:image" content="http://example.com/2023/05/14/IOT/17.jpeg">
 <meta property="article:published_time" content="2023-05-14T18:58:39.653Z">
-<meta property="article:modified_time" content="2023-05-18T19:02:17.189Z">
+<meta property="article:modified_time" content="2023-05-18T22:31:03.581Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2023/05/14/IOT/34.jpeg">
@@ -218,7 +218,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.3k words
+          4k words
         
       </span>
     
@@ -364,6 +364,14 @@
 </ul>
 <h3 id="RSA-step"><a href="#RSA-step" class="headerlink" title="RSA step"></a>RSA step</h3><p>two prime number p,q<br>f(n) &#x3D; (p-1)(q-1)<br>1 &lt; e &lt; f(n)<br>d x e &#x3D; 1 mod f(n)<br>KPU &#x3D;  {e,n}<br>KPR &#x3D;  {d,n}<br>encrypt: message M &lt; n , C &#x3D; M^e mod n<br>decrypt: M &#x3D; C^d mod n   </p>
 <h2 id="attack-tree"><a href="#attack-tree" class="headerlink" title="attack tree"></a>attack tree</h2><p>shoulder surfing<br>false terminal<br>insiders<br>maintenacnce contractor<br>cryptanalysis DES<br>protocol failure   </p>
+<h2 id="malware"><a href="#malware" class="headerlink" title="malware"></a>malware</h2><h3 id="stack-overflow-attack"><a href="#stack-overflow-attack" class="headerlink" title="stack overflow attack"></a>stack overflow attack</h3><p>攻击者向你的程序发送数据，通常是通过输入字段，其数量超过你的程序所期望的或可以处理的。</p>
+<p>这些多余的数据会溢出到堆栈的邻近部分。如果攻击者精心设计了他们的输入，他们可以用他们输入的一些恶意代码的地址覆盖堆栈上的一个函数的返回地址。</p>
+<p>当函数执行完毕后，它不是返回到它被调用的地方，而是返回到新的返回地址所指定的位置–这就是恶意代码。这可能允许攻击者获得对系统的未授权访问或造成其他类型的损害。</p>
+<p>这就是为什么它被称为堆栈溢出攻击 – 因为攻击者用数据溢出了堆栈的一部分，导致它溢出并覆盖了关键信息。</p>
+<p>这是对堆栈溢出攻击如何工作的一个非常基本的描述。这种攻击有许多变化，防御它可能很复杂。</p>
+<h3 id="prevent"><a href="#prevent" class="headerlink" title="prevent"></a>prevent</h3><p>Stackguard: 这个系统在函数的执行过程中，在返回地址之前的内存空间中插入一个已知的值，通常称为金丝雀。当函数结束时，将检查金丝雀的值。如果该值发生了变化，程序就知道发生了缓冲区溢出，可以停止执行，防止溢出造成更大的破坏</p>
+<p>Data Execution Prevention: 这种机制将内存的区域标记为不可执行。这意味着，即使攻击者成功地将恶意代码注入这些区域，系统也不会执行它，从而挫败了攻击</p>
+<p>Address Space Randomization: 这种技术将内存中不同元素（如堆栈、库等）的位置随机化。这使得攻击者更难预测在哪里注入恶意代码，或关键数据结构的位置，增加了成功执行缓冲区溢出攻击的难度</p>
 
               
             </div>
