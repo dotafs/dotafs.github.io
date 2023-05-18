@@ -16,17 +16,22 @@
   <meta name="author" content="Chenxi Qu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="ConIPsecs Transport Mode vs Tunnel Mode: transport只加密payload(数据),tunnel model 同时加密head和payload。 AH 无论用哪个model都不可以加密。上诉情况是指ESP。 AH(Authentication Header):  data origin authentication  数据来源认证 data integ">
+    <meta name="description" content="last danceSA定义了key management , security protocols(AH,ESP), security policies(type of encryption and authentication to be used), direction of traffic(one-direction , inbound and outbound 都需要). SA one-">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IOT">
 <meta property="og:url" content="http://example.com/2023/05/14/IOT/index.html">
 <meta property="og:site_name" content="dotafs">
-<meta property="og:description" content="ConIPsecs Transport Mode vs Tunnel Mode: transport只加密payload(数据),tunnel model 同时加密head和payload。 AH 无论用哪个model都不可以加密。上诉情况是指ESP。 AH(Authentication Header):  data origin authentication  数据来源认证 data integ">
+<meta property="og:description" content="last danceSA定义了key management , security protocols(AH,ESP), security policies(type of encryption and authentication to be used), direction of traffic(one-direction , inbound and outbound 都需要). SA one-">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/05/14/IOT/34.jpeg">
+<meta property="og:image" content="http://example.com/2023/05/14/IOT/35.jpeg">
+<meta property="og:image" content="http://example.com/2023/05/14/IOT/36.jpeg">
+<meta property="og:image" content="http://example.com/2023/05/14/IOT/17.jpeg">
 <meta property="article:published_time" content="2023-05-14T18:58:39.653Z">
-<meta property="article:modified_time" content="2023-05-16T20:02:12.412Z">
+<meta property="article:modified_time" content="2023-05-18T19:02:17.189Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/05/14/IOT/34.jpeg">
   
   
   
@@ -213,7 +218,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          3.6k words
+          3.3k words
         
       </span>
     
@@ -260,7 +265,12 @@
             
             <div class="markdown-body">
               
-              <h1 id="Con"><a href="#Con" class="headerlink" title="Con"></a>Con</h1><h3 id="IPsecs"><a href="#IPsecs" class="headerlink" title="IPsecs"></a>IPsecs</h3><ul>
+              <h1 id="last-dance"><a href="#last-dance" class="headerlink" title="last dance"></a>last dance</h1><h2 id="SA"><a href="#SA" class="headerlink" title="SA"></a>SA</h2><p>定义了key management , security protocols(AH,ESP), security policies(type of encryption and authentication to be used), direction of traffic(one-direction , inbound and outbound 都需要).</p>
+<p>SA one-direction</p>
+<p>Initiator(I) -&gt; Responder(R)</p>
+<p><img src="/2023/05/14/IOT/34.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p>transport mode<br><img src="/2023/05/14/IOT/35.jpeg" srcset="/img/loading.gif" lazyload><br>tunnel mode<br><img src="/2023/05/14/IOT/36.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="IPsecs"><a href="#IPsecs" class="headerlink" title="IPsecs"></a>IPsecs</h3><ul>
 <li>Transport Mode vs Tunnel Mode: transport只加密payload(数据),tunnel model 同时加密head和payload。 AH 无论用哪个model都不可以加密。上诉情况是指ESP。</li>
 <li>AH(Authentication Header): <ul>
 <li>data origin authentication  数据来源认证</li>
@@ -290,8 +300,14 @@
 </li>
 </ul>
 <h3 id="CA-和-KDC"><a href="#CA-和-KDC" class="headerlink" title="CA 和 KDC"></a>CA 和 KDC</h3><p>CA 是 asymmetric 的 , KDC 是 symmetric的。</p>
-<h3 id="HMAC"><a href="#HMAC" class="headerlink" title="HMAC"></a>HMAC</h3><p>HMAC(K, M)&#x3D; H[(K+ XOR opad) || H[(K+ XOR ipad) || M]]; </p>
-<h3 id><a href="#" class="headerlink" title></a></h3><h2 id="Attack"><a href="#Attack" class="headerlink" title="Attack"></a>Attack</h2><ul>
+<h2 id="Hash-MAC-HMAC"><a href="#Hash-MAC-HMAC" class="headerlink" title="Hash , MAC , HMAC"></a>Hash , MAC , HMAC</h2><p>Mac 不能提供 confidentiality, 因为没有加密<br>HMAC 加密的Hash function 和 key</p>
+<h3 id="Security-Requirements-x2F-Properties-of-Hahs-安全特性"><a href="#Security-Requirements-x2F-Properties-of-Hahs-安全特性" class="headerlink" title="Security Requirements&#x2F;Properties of Hahs(安全特性)"></a>Security Requirements&#x2F;Properties of Hahs(安全特性)</h3><ol>
+<li>Preimage resistant(one-way单向性): 无法反向。</li>
+<li>2nd preimage resistant(week coliision resistance弱碰撞性): hash 很难对应两个plaintext。</li>
+<li>Collision resistance (strong collision resistance强抗碰撞): 两个plaintext 很难找到相同的hash。<h3 id="HMAC"><a href="#HMAC" class="headerlink" title="HMAC"></a>HMAC</h3></li>
+</ol>
+<p>HMAC(K, M)&#x3D; H[(K+ XOR opad) || H[(K+ XOR ipad) || M]]; </p>
+<h3 id="CBC-MAC"><a href="#CBC-MAC" class="headerlink" title="CBC-MAC"></a>CBC-MAC</h3><h2 id="Attack"><a href="#Attack" class="headerlink" title="Attack"></a>Attack</h2><ul>
 <li><p>Replay attack: eve拦截了data package 并且transmit很多次，让recipient以为自己收到了很多次。</p>
 </li>
 <li><p>padding oracle attack填充神谕攻击: eve利用解密过程中的错误信息来得到plaintext的内容。通常是mac直接通过plaintext得到而造成的。</p>
@@ -317,29 +333,16 @@
 <li><p>authorization: 授权。不同的用户有不同的权限。</p>
 </li>
 </ul>
-<h2 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h2><p>PKI,CA,RSI,ECB,CBC,CTR,</p>
 <h2 id="AES-block-cipher"><a href="#AES-block-cipher" class="headerlink" title="AES(block cipher)"></a>AES(block cipher)</h2><p>DES 8 bytes block , AES 16 bytes block.</p>
+<p><img src="/2023/05/14/IOT/17.jpeg" srcset="/img/loading.gif" lazyload></p>
 <h3 id="formula"><a href="#formula" class="headerlink" title="formula"></a>formula</h3><ol>
 <li>EDE2(triple DES using 2 keys) : C &#x3D; EK1(DK2(EK1(M)))   </li>
 <li>EDE3(triple DES using three keys):  C &#x3D; EK3(DK2(EK1(M)))   </li>
 <li>AES</li>
 <li>ECB : Cn &#x3D; E(K, Mn) ;  Mn &#x3D; D(K, Cn); n &#x3D; {1, 2, …}. (别忘了padding)</li>
 <li>CBC : Ci &#x3D; E(K , Mi XORCi-1), where C0 &#x3D; IV (Initialization Vector) ; Mi &#x3D; D(K, Ci) XOR Ci-1 , M0 &#x3D; IV (别忘了padding)</li>
-<li>CTR : Ci &#x3D; E(K, Counter + i) XOR Mi; i &#x3D; {1, 2, …}. Mi &#x3D; E(K, Counter + i) XOR Ci ; i &#x3D; {1, 2, …}.</li>
+<li>CTR : Ci &#x3D; E(K, Counter + i) XOR Mi; i &#x3D; {1, 2, …}. Mi &#x3D; E(K, Counter + i) XOR Ci ; i &#x3D; {1, 2, …}.<h2 id="Stream-Cipher"><a href="#Stream-Cipher" class="headerlink" title="Stream Cipher"></a>Stream Cipher</h2>流密码是一种对称密钥加密算法，一次对明文数据进行加密，每次加密一个比特或字节。它们通过生成一个密钥流进行操作，密钥流是由秘密密钥产生的一个比特或字节序列。然后，密钥流与明文使用位XOR操作相结合，产生密码文本。å</li>
 </ol>
-<h3 id="如果消息比block-size长。"><a href="#如果消息比block-size长。" class="headerlink" title="如果消息比block size长。"></a>如果消息比block size长。</h3><h4 id="ECB"><a href="#ECB" class="headerlink" title="ECB"></a>ECB</h4><p> Cn &#x3D; Ek(Mn) (or E(K, Mn));<br> Mn &#x3D; Dk(Cn); n &#x3D; {1, 2, …}.<br>plaintext被分成很多与block size相同的text独立加密，然后再用分别的密钥独立解密。</p>
-<ul>
-<li>操作简便，但是对于有重复性的信息不安全。</li>
-<li>最后一个block不足block size，需要padding，最后一个字节表示padding的长度，方便接收后删除。<h4 id="CBC"><a href="#CBC" class="headerlink" title="CBC"></a>CBC</h4>与ECB一样，不过每一个cipher block 都是用前一个cipher block的ciphertext和当前的plaintext进行加密，所以前面的block坏掉，后面的全会影响。<br>Initialization Vector :是一个随机值，给第一个plaintext增加随机性用的。<h4 id="CTR"><a href="#CTR" class="headerlink" title="CTR"></a>CTR</h4>目的是把block cipher变成stream cipher。<br>有一个counter 和 nonce 计数器最大值等于block size的数量。每一个计数器的数量等于block size的数量，然后用计数器的值和密钥进行加密，然后和plaintext进行XOR。</li>
-</ul>
-<ol>
-<li>可以并行化。</li>
-<li>可以随机访问。</li>
-<li>与plaintext的XOR可以预先计算。</li>
-<li>一个block的丢失，同步就会丢失，无法复原plaintext。</li>
-<li>一个在传输过程中被修改的密码文本块只影响该块的解密。</li>
-</ol>
-<h2 id="Stream-Cipher"><a href="#Stream-Cipher" class="headerlink" title="Stream Cipher"></a>Stream Cipher</h2><p>流密码是一种对称密钥加密算法，一次对明文数据进行加密，每次加密一个比特或字节。它们通过生成一个密钥流进行操作，密钥流是由秘密密钥产生的一个比特或字节序列。然后，密钥流与明文使用位XOR操作相结合，产生密码文本。å</p>
 <h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>Bitwise XOR 效率高</p>
 <h3 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h3><ol>
 <li>Key length 密钥必须和明文一样长，这在大多数应用场景中是不现实的</li>
@@ -348,7 +351,8 @@
 <h3 id="stream和block-的区别"><a href="#stream和block-的区别" class="headerlink" title="stream和block 的区别"></a>stream和block 的区别</h3><ol>
 <li>block 对字符块进行加密，stream对单个bit\character进行加密。</li>
 </ol>
-<h3 id="UNIX"><a href="#UNIX" class="headerlink" title="UNIX"></a>UNIX</h3><p>croe: 14mo31bmRY0Yg: 12:31:Cathy Roe: &#x2F;home&#x2F;croe:&#x2F;bin&#x2F;csh</p>
+<h3 id="UNIX"><a href="#UNIX" class="headerlink" title="UNIX"></a>UNIX</h3><p>etc&#x2F;shadow 存放password,只有root才有权限查看</p>
+<p>croe: 14mo31bmRY0Yg: 12:31:Cathy Roe: &#x2F;home&#x2F;croe:&#x2F;bin&#x2F;csh</p>
 <ul>
 <li>unix password file: &#x2F;etc&#x2F;passwd</li>
 <li>User Name : croe</li>
@@ -359,12 +363,7 @@
 <li>Shell (&#x2F;bin&#x2F;csh)</li>
 </ul>
 <h3 id="RSA-step"><a href="#RSA-step" class="headerlink" title="RSA step"></a>RSA step</h3><p>two prime number p,q<br>f(n) &#x3D; (p-1)(q-1)<br>1 &lt; e &lt; f(n)<br>d x e &#x3D; 1 mod f(n)<br>KPU &#x3D;  {e,n}<br>KPR &#x3D;  {d,n}<br>encrypt: message M &lt; n , C &#x3D; M^e mod n<br>decrypt: M &#x3D; C^d mod n   </p>
-<h3 id="SA"><a href="#SA" class="headerlink" title="SA"></a>SA</h3><ol>
-<li>negotiate policy such as authentication method , enctyption and has halgorithms , AH&#x2F;ESP,etc.</li>
-<li></li>
-</ol>
-<h2 id="Exercise-Question-–-E9-1"><a href="#Exercise-Question-–-E9-1" class="headerlink" title="Exercise Question – E9.1"></a>Exercise Question – E9.1</h2><p>What is the major difference between transport mode and tunnel<br>mode in IPSec ESP, and any implications?</p>
-<p>Unlike the tunnel mode, the transport mode only encrypts the<br>payload, not header. This means that in the transport mode, address info<br>and other header info are exposed.</p>
+<h2 id="attack-tree"><a href="#attack-tree" class="headerlink" title="attack tree"></a>attack tree</h2><p>shoulder surfing<br>false terminal<br>insiders<br>maintenacnce contractor<br>cryptanalysis DES<br>protocol failure   </p>
 
               
             </div>
