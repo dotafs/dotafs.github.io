@@ -1,0 +1,1029 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../../img/fluid.png">
+  <link rel="icon" href="../../../../img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Chenxi Qu">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Week 1lecture 2Image representation Image function  Landscape  Array of pixels  Image histogram  Image transformationsg (x,y) &#x3D; f (x,y) + 20 g (x,y) &#x3D; f (-x,y) Image ArithmeticAddition : I3(">
+<meta property="og:type" content="article">
+<meta property="og:title" content="cv_笔记">
+<meta property="og:url" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="dotafs">
+<meta property="og:description" content="Week 1lecture 2Image representation Image function  Landscape  Array of pixels  Image histogram  Image transformationsg (x,y) &#x3D; f (x,y) + 20 g (x,y) &#x3D; f (-x,y) Image ArithmeticAddition : I3(">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/1_1.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/1_2.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/1_3.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/2_1.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/2_2.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/2_3.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/2_4.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/2_5.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/3.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/4.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/5.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/6.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/1.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/2.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/7.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/8.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/9.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/10.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/12.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/13.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/14.jpeg">
+<meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/6.jpeg">
+<meta property="article:published_time" content="2023-01-30T14:51:11.674Z">
+<meta property="article:modified_time" content="2023-05-23T17:49:57.787Z">
+<meta property="article:author" content="Chenxi Qu">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/1_1.jpeg">
+  
+  
+  
+  <title>cv_笔记 - dotafs</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="../../../../css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="../../../../css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="../../../../css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="../../../../js/utils.js" ></script>
+  <script  src="../../../../js/color-schema.js" ></script>
+
+  
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="../../../../index.html">
+      <strong>DOTAFS</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../index.html">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                Archives
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Categories
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tags
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="../../../../about/">
+                <i class="iconfont icon-user-fill"></i>
+                About
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('../../../../img/default1.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="cv_笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          11k words
+        
+      </span>
+    
+
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    <canvas class="fireworks" style="position: fixed;left: 0;top: 0;z-index: 1; pointer-events: none;" ></canvas> 
+<script type="text/javascript" src="//cdn.bootcss.com/animejs/2.2.0/anime.min.js"></script> 
+<script type="text/javascript" src="/js/fireworks.js"></script>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">cv_笔记</h1>
+            
+            <div class="markdown-body">
+              
+              <h1 id="Week-1"><a href="#Week-1" class="headerlink" title="Week 1"></a>Week 1</h1><h2 id="lecture-2"><a href="#lecture-2" class="headerlink" title="lecture 2"></a>lecture 2</h2><h3 id="Image-representation"><a href="#Image-representation" class="headerlink" title="Image representation"></a>Image representation</h3><ul>
+<li>Image function </li>
+<li>Landscape </li>
+<li>Array of pixels </li>
+<li>Image histogram</li>
+</ul>
+<h3 id="Image-transformations"><a href="#Image-transformations" class="headerlink" title="Image transformations"></a>Image transformations</h3><p>g (x,y) &#x3D; f (x,y) + 20</p>
+<p>g (x,y) &#x3D; f (-x,y)</p>
+<h3 id="Image-Arithmetic"><a href="#Image-Arithmetic" class="headerlink" title="Image Arithmetic"></a>Image Arithmetic</h3><p>Addition : I3(x,y) &#x3D; I1(x,y) + I2(x,y) 会变得更亮，降噪</p>
+<p>Subtraction : Static background, detects change, Object, shadows &amp;<br>reflections in realworld scenes</p>
+<h3 id="Signal-to-Noise-Ratio-SNR"><a href="#Signal-to-Noise-Ratio-SNR" class="headerlink" title="Signal to Noise Ratio (SNR)"></a>Signal to Noise Ratio (SNR)</h3><p>较高的 SNR 表示图像包含更多有用的信息和较少的噪声，而较低的 SNR 表示图像的噪声较多且有用性较低。</p>
+<p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/1_1.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="reduce-noise"><a href="#reduce-noise" class="headerlink" title="reduce noise"></a>reduce noise</h3><ol>
+<li>temporal averaging : 平均9个图片</li>
+<li>spatial averaging : 九宫格中间的像素平均九个的像素</li>
+</ol>
+<h3 id="noise-amp-scale"><a href="#noise-amp-scale" class="headerlink" title="noise &amp; scale"></a>noise &amp; scale</h3><ul>
+<li>降噪会失去small-scale</li>
+<li>noise是我们不想要的small-scale</li>
+<li>如果最小的scale被移除，我们可以subsample分辨率或者用更少的pixel来表示图像</li>
+</ul>
+<p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/1_2.jpeg" srcset="/img/loading.gif" lazyload><br><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/1_3.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="lecture-3"><a href="#lecture-3" class="headerlink" title="lecture 3"></a>lecture 3</h2><h2 id="week-2"><a href="#week-2" class="headerlink" title="week 2"></a>week 2</h2><h3 id="edge"><a href="#edge" class="headerlink" title="edge"></a>edge</h3><ol>
+<li>it’s a curve</li>
+<li>depth discontinuity</li>
+<li>surface color discontinuity</li>
+<li>illumination discontinuity</li>
+</ol>
+<p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/2_1.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p>用一条横切线，来寻找几个边界。和右图一样。</p>
+<p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/2_2.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p>$I(x) * F(x)$</p>
+<h3 id="Smoothing"><a href="#Smoothing" class="headerlink" title="Smoothing"></a>Smoothing</h3><ol>
+<li>降噪</li>
+<li>find details，subsampling</li>
+</ol>
+<p>*result: big structure of the image , return edges</p>
+<ul>
+<li>form : 00001210000</li>
+</ul>
+<h4 id="scale"><a href="#scale" class="headerlink" title="scale"></a>scale</h4><ul>
+<li>细小的边缘可能只是 “噪音”（无关紧要的小尺度结构）。我们只需要outline。</li>
+<li>较大尺度的边缘的检测更可靠，因为混乱的细节较少。</li>
+<li>粗尺边缘(coarse scale)的位置可以指导对细尺度边缘的搜索。更精细的边缘。更快、更稳健。</li>
+</ul>
+<h4 id="scale-effect"><a href="#scale-effect" class="headerlink" title="scale effect"></a>scale effect</h4><ul>
+<li>$\sigma$ small , middle of kernel is small   </li>
+<li>$\sigma$ bigger , take from a larger area(更boarder), smoothing lot more. bigger structure, bigger edges.</li>
+</ul>
+<p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/2_3.jpeg" srcset="/img/loading.gif" lazyload><br><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/2_4.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/2_5.jpeg" srcset="/img/loading.gif" lazyload><br>≈</p>
+<h3 id="Canny-Edge-Detector"><a href="#Canny-Edge-Detector" class="headerlink" title="Canny Edge Detector"></a>Canny Edge Detector</h3><h1 id="Week-3"><a href="#Week-3" class="headerlink" title="Week 3"></a>Week 3</h1><h2 id="Hough-Lines"><a href="#Hough-Lines" class="headerlink" title="Hough Lines"></a>Hough Lines</h2><h3 id="Cartesian-coordinates"><a href="#Cartesian-coordinates" class="headerlink" title="Cartesian coordinates"></a>Cartesian coordinates</h3><p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/3.jpeg" srcset="/img/loading.gif" lazyload></p>
+<ol>
+<li>y &#x3D; mx + c -&gt; c &#x3D; -xm + y</li>
+<li>(0,0) , (10,10) -&gt; c &#x3D; 10m + 10</li>
+<li>把所有线用c和m表示出来，threshold&gt;&#x3D;3 的话，经过3个点的那个点m &#x3D; -1，c &#x3D; 0. 所以y&#x3D;-x</li>
+</ol>
+<p>What if a line in our image is vertical? m &#x3D; 正无穷</p>
+<p>如果有线是vertical，m无限大，所以用Polar coordiates。</p>
+<h3 id="Polar-cooridates"><a href="#Polar-cooridates" class="headerlink" title="Polar cooridates"></a>Polar cooridates</h3><p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/4.jpeg" srcset="/img/loading.gif" lazyload><br>Point (0, 0), r &#x3D; 0 cos(θ) + 0 sin(θ) &#x3D; 0</p>
+<h3 id="Hough-Circles"><a href="#Hough-Circles" class="headerlink" title="Hough Circles"></a>Hough Circles</h3><p>求到点之后， (a − x)^2 + (b − y)^2 &#x3D; r^2<br><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/5.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p>A(Xc,Yc,s,$\theta$)</p>
+<h3 id="Generalised-Hough-Transform"><a href="#Generalised-Hough-Transform" class="headerlink" title="Generalised Hough Transform"></a>Generalised Hough Transform</h3><p>它还可以检测除了圆和线以外的形状</p>
+<p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/6.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p>xc &#x3D; x + r cos(α)<br>yc &#x3D; y + r sin(α)</p>
+<h1 id="Week-2"><a href="#Week-2" class="headerlink" title="Week 2"></a>Week 2</h1><h2 id="edges"><a href="#edges" class="headerlink" title="edges"></a>edges</h2><p>edges caused by </p>
+<ol>
+<li>depth discontinuity 深度不连续</li>
+<li>surface colour discontinuity 表面颜色不连续</li>
+<li>illumination discontinuity 光照不连续</li>
+</ol>
+<p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/1.jpeg" srcset="/img/loading.gif" lazyload><br>积分用来找edge<br><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/2.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h2 id="kernels"><a href="#kernels" class="headerlink" title="kernels"></a>kernels</h2><h3 id="Prewitt-Kernel"><a href="#Prewitt-Kernel" class="headerlink" title="Prewitt Kernel"></a>Prewitt Kernel</h3><pre><code class="hljs">vertical edges  
+-1 0 1  
+-1 0 1  
+-1 0 1
+
+horizontal edges  
+-1 -1 -1  
+0  0  0  
+1  1  1  
+</code></pre>
+<h3 id="Sobel-Kernel"><a href="#Sobel-Kernel" class="headerlink" title="Sobel Kernel"></a>Sobel Kernel</h3><p> 加了一个权重</p>
+<pre><code class="hljs">vertical edges
+-1 0 1
+-2 0 2
+-1 0 1
+
+horizontal edges
+-1  2 -1
+ 0  0  0
+ 1  2  1
+</code></pre>
+<h2 id="Selecting-Edge-Scale"><a href="#Selecting-Edge-Scale" class="headerlink" title="Selecting Edge Scale"></a>Selecting Edge Scale</h2><p>■ Edge detection at selected scale<br>高斯模糊</p>
+<p>■ Derivative of Gaussian filter<br>■ Laplacian of Gaussian</p>
+<h1 id="week4"><a href="#week4" class="headerlink" title="week4"></a>week4</h1><p>Univariate Normal (Gaussian) Distribution(单变量正太分布)</p>
+<p>A normal distribution is not good enough! Need a way to make more complex distributions</p>
+<p>Multivariate Normal Distribution (多变量正态分布)</p>
+<h2 id="Mixture-of-Gaussians-MoG-vs-EM"><a href="#Mixture-of-Gaussians-MoG-vs-EM" class="headerlink" title="Mixture of Gaussians(MoG) vs EM"></a>Mixture of Gaussians(MoG) vs EM</h2><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>Probabilistic Interpretation:  MoG 有a data point belonging to each cluster每个数据点分配一个聚类。</li>
+<li>Soft Assignments: MoG 点是以概率分配给每个cluster的，如果有的点在cluster是不确定的，这是很有用的。</li>
+<li>Generative Model: 不仅建模一存在数据，也创建新的数据点。</li>
+<li>Relatively Compact Storage: GMM 存放紧凑。</li>
+</ol>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li>Local Minima: 他保证了收敛性,</li>
+</ol>
+<h2 id="Week-6"><a href="#Week-6" class="headerlink" title="Week 6"></a>Week 6</h2><p>Window Function:<br>1 in window , 0 outside window</p>
+<p>Shifted Intensity:  </p>
+<p>Intensity:  </p>
+<p>$E(u, v) ≈ [u,v] M [u]^T\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ [v]$</p>
+<p>其中M是一个2x2矩阵，被称为结构张量或第二矩矩阵，由图像梯度组成：</p>
+<p>$M &#x3D; ∑_{x, y} w(x, y) * [Ix^2, IxIy \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ IxIy, Iy^2]$</p>
+<p>这里，Ix和Iy分别是图像强度在x和y方向的偏导数。</p>
+<p>这种提法简化了原来的变化度量，并使哈里斯角落检测器的计算效率提高，使其能够快速识别图像中的角落。</p>
+<p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/7.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p>Harris 特点: defines interest points. Precise localization ,High repeatability.</p>
+<p>Scale Invariant Region Selection : 两个相同大小不同的物体，他们的特征是一样的。</p>
+<p>Automatic Scale Selection :  选择对某一特定特征提供最有用或最独特信息的比例。</p>
+<p>Difference-of-Gaussian (DoG) Detector :  feature detection algorithm。</p>
+<h3 id="Naive-Approach-Exhaustive-Search-朴素方法：穷举搜索"><a href="#Naive-Approach-Exhaustive-Search-朴素方法：穷举搜索" class="headerlink" title="Naïve Approach: Exhaustive Search (朴素方法：穷举搜索)"></a>Naïve Approach: Exhaustive Search (朴素方法：穷举搜索)</h3><p>Multi-scale procedure: 从大到小逐渐搜索，先搜索全地图，在搜索房子，然后人。  </p>
+<p>Compare descriptors while varying the patch size: 局部的前一点。<br>Computationally inefficient: 消耗了大量的算力。</p>
+<p>Inefficient but possible for matching: 效率不高但也可以用。</p>
+<p>Prohibitive for retrieval in large databases: 大型数据中检索不利。</p>
+<p>Prohibitive for recognition: 识别不利。</p>
+<h3 id="Automatic-Scale-Selection-自动比例选择"><a href="#Automatic-Scale-Selection-自动比例选择" class="headerlink" title="Automatic Scale Selection (自动比例选择)"></a>Automatic Scale Selection (自动比例选择)</h3><p>意思就是mulit-scale procedure 的具体确定。</p>
+<p>Scale Invariant Function: 这个函数对两个不同比例但相同的图像会给定相同的输出。</p>
+<p>Function of Region Size: 一个函数，它的输出是一个区域的大小。 </p>
+<p>Take a Local Maximum: auto scale selection 的最后一步，找到最大值。  </p>
+<p>Normalize&#x2F; Rescale: 找到了最佳比例后，图像中周围的点都是一个固定的比例，使得目标点可以更好的比较。<br><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/8.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p>Scale Signature: 一个函数，描述的是图像中特定特征的意义，应该是稳健的，不被噪声或者微小变化干扰的，并且高效的。</p>
+<h3 id="Laplacian-of-an-Image"><a href="#Laplacian-of-an-Image" class="headerlink" title="Laplacian of an Image"></a>Laplacian of an Image</h3><p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/9.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p>sobel专注于梯度变化，对噪声的抵抗力相对较强，使它适合于高对比度的边缘。laplacian关注二阶导数变化，可以捕捉到sobel检测器可能错过的edge，但对噪声更敏感, laplacian 能够检测到强度在两个方向上都有变化的地方的边缘（比如从暗到亮再到暗的地方）。</p>
+<h3 id="Laplacian-of-Gaussian，-LOG"><a href="#Laplacian-of-Gaussian，-LOG" class="headerlink" title="Laplacian of Gaussian， LOG"></a>Laplacian of Gaussian， LOG</h3><p>很好的signature, 善于识别图像中的blob。</p>
+<ol>
+<li>Gaussian filter smooth the image. </li>
+<li>Compute the Laplacian of the smoothed image.</li>
+<li>LoG高的地方是blob的中心。</li>
+</ol>
+<h3 id="Harris-Lapace-method"><a href="#Harris-Lapace-method" class="headerlink" title="Harris-Lapace method"></a>Harris-Lapace method</h3><p>一种feature detector</p>
+<ol>
+<li>init, 用harris来寻找corner。</li>
+<li>Laplacian 来选择scale。</li>
+<li>用DoG替代LoG, 加速实现。LoG很昂贵，用Dos替代。</li>
+</ol>
+<h3 id="Difference-of-Gaussian-DOS"><a href="#Difference-of-Gaussian-DOS" class="headerlink" title="Difference-of-Gaussian DOS"></a>Difference-of-Gaussian DOS</h3><p>SIFT 等feature detecotor的基础。</p>
+<ol>
+<li>不需要二阶导。</li>
+<li>Gassian 都要计算的无论如何，所以如果有Gaussian pyramid, 计算DoG的基本数据已经有了，会更加快。 在高斯比例金字塔中，原始图像被递归地缩小，每次都被高斯滤波器平滑化。然后在金字塔中每一对相邻的平滑图像之间计算DoG。</li>
+</ol>
+<p>该算法在比例空间中搜索DoG的局部最大值以检测潜在的关键点或兴趣点。在检测到潜在的关键点后，它应用两个过滤器：</p>
+<p>低对比度阈值： 该算法放弃了对比度低于某个阈值的关键点。这有助于减少噪声的影响。</p>
+<p>边缘响应消除： 该算法还抛弃了位于边缘的关键点。这是因为DoG对边缘很敏感，会产生假阳性反应。</p>
+<p>更简单地说，哈里斯-拉普拉斯方法首先在不同的缩放级别上寻找角落，然后利用拉普拉斯选择每个角落的最佳缩放级别。然后，它使用高斯之差，如果你使用的是高斯金字塔，它的计算速度更快，而且已经是这个过程的一部分，来寻找图像中的关键点。该方法可以过滤掉对比度太低的点或位于边缘的点，以确保有一套强大的关键点。</p>
+<p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/10.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h3 id="summary-Scale-Invariant-Detection"><a href="#summary-Scale-Invariant-Detection" class="headerlink" title="summary: Scale Invariant Detection"></a>summary: Scale Invariant Detection</h3><p>● 给定： 同一场景的两幅图像，它们之间有很大的比例差异<br>差异。</p>
+<p>目标：在每张图像中独立地找到相同的兴趣点。</p>
+<p>● 解决方案： 搜索合适的函数在比例上的最大值<br>和空间上的适当函数的最大值（在图像上）。</p>
+<p>两种策略</p>
+<p>拉普拉斯高斯函数(LoG)</p>
+<p>高斯之差(DoG)作为一种快速近似方法</p>
+<p>这些方法既可以单独使用，也可以与以下方法组合使用单一尺度的关键点检测器（即Harris角落检测器）。</p>
+<h1 id="week-7-Local-Feature"><a href="#week-7-Local-Feature" class="headerlink" title="week 7 Local Feature"></a>week 7 Local Feature</h1><p>Feature detection。</p>
+<ol>
+<li>Invariant Detector : 不变的检测器。</li>
+<li>Find interest points : 寻找兴趣点。</li>
+<li>Remove effect of scale : 消除比例影响。</li>
+<li>Invariant descriptor : 不变的描述符,旋转，比例变化不产生影响。</li>
+</ol>
+<p>Local Feature </p>
+<p>feature detection</p>
+<p>Find Local Orientation: 对于一个patch，寻找到他的dominant direction(local orientation).</p>
+<p>Rotate Patch According to this angle: 找到angle之后，对他进行旋转，使得他的dominant direction和x轴对齐。</p>
+<h2 id="Scale-Invariant-Feature-Transform-SIFT"><a href="#Scale-Invariant-Feature-Transform-SIFT" class="headerlink" title="Scale Invariant Feature Transform (SIFT)"></a>Scale Invariant Feature Transform (SIFT)</h2><p>SIFT是一种识别关键点的方法，并以一种对比例和旋转不变的方式来描述它们，而且对视角和光照的变化也很稳健。可以处理大角度。</p>
+<h3 id="Feature-matching"><a href="#Feature-matching" class="headerlink" title="Feature matching"></a>Feature matching</h3><p>Given a feature in I1, how to find the best match in I2?</p>
+<ol>
+<li>Define distance function that compares two descriptors</li>
+<li>Test all the features in I2, find the one with min distancer</li>
+</ol>
+<p>简单方法SSD(f1,f2)<br>两个描述点之间的平方差和。</p>
+<p>更好的匹配: ratio distance &#x3D; SSD(f1,f2) &#x2F; SSD(f1,f2’)</p>
+<p>TP 是真正是别的匹配。</p>
+<p>FP 是错误匹配的。</p>
+<p>最大化TP增加召回率，最小化FP增加精准度之间找到平衡。</p>
+<p>Features are used for:<br>■ Image alignment (e.g., mosaics) 图像对准（例如，马赛克）。<br>■ 3D reconstruction  三维重建<br>■ Motion tracking  运动跟踪<br>■ Object recognition 物体识别<br>■ Indexing and database retrieval 索引和数据库检索<br>■ Robot navigation 机器人导航  </p>
+<h2 id="week-7-part2"><a href="#week-7-part2" class="headerlink" title="week 7 part2"></a>week 7 part2</h2><p>Depth with Stereo : 用两个相机来计算深度。用的是triangulation 三角测量法</p>
+<p>image I(x,y) Disparity map D(x,y) image I´(x´,y´)</p>
+<p>(x´,y´)&#x3D;(x+D(x,y), y)</p>
+<p>Finding Correspoinces: 容易识别的有趣的点。</p>
+<p>The Epipolar Constraint: 相机的位置是一致的，用这个来减少搜索空间。</p>
+<p>Matching Edges: edges是方便匹配的地方。</p>
+<p>Edge Detection: Canny detector. Multiple scale. Accurate.</p>
+<p>用edges的优缺点:</p>
+<ol>
+<li><p>代表了重要的结构，数量不多，可以用image feature来验证匹配。</p>
+</li>
+<li><p>可以准确定位他们。</p>
+</li>
+<li><p>Multi-scale location。</p>
+</li>
+<li><p>不是所有的重要结构都在边缘上。</p>
+</li>
+<li><p>边缘的大小特征可能匹配的不可靠。</p>
+</li>
+<li><p>近水平的edges不能提供良好的定位。</p>
+</li>
+</ol>
+<p>Moravec Poeratro Detector: 用于寻找corners。</p>
+<ol>
+<li>Non-linear filter</li>
+<li>5x5 </li>
+<li>不是旋转不变的，倾向于对edges做出强烈反应。</li>
+</ol>
+<p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/12.jpeg" srcset="/img/loading.gif" lazyload></p>
+<h1 id="week-8-stereo-visiion"><a href="#week-8-stereo-visiion" class="headerlink" title="week 8 stereo visiion"></a>week 8 stereo visiion</h1><h2 id="part-1"><a href="#part-1" class="headerlink" title="part 1"></a>part 1</h2><p>Triangulation: 三角测量法</p>
+<p>Epipolar Geometry: 通过这个平面来寻找depth information.</p>
+<p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/13.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p>Extrinsic Parameters: 描述相机的姿态。 R T</p>
+<p>Epipolar Constraint: 立体图像中的点总是对应epipolar lines。</p>
+<p>Epipole: 两个相机的中心点。是所有epipolar lines 的汇聚点。</p>
+<p>Disparity: 两个立体图像中的一个点的位置差异。与对应像素的depth成反比。</p>
+<p>Rectification: 立体图像的转换过程。</p>
+<p>Intrinsic Parameters: focal length, principal point, lens distortion coefficients….</p>
+<p>Essential Matrix: 封装了两个相机是图之间的几何形状，translation and rotation 的matrix。</p>
+<p>Sterio calibration: 立体校准，评估参数找到Intrinstic 和 extrinstic parameters.</p>
+<p>总体步骤:</p>
+<ol>
+<li>stereopsis 提供3D位置的精准测量。</li>
+<li>需要建立对应关系，比如Epipolar lines, Matching criteria(匹配标准比如edge，corners，interest points), Disparity computation。</li>
+<li>Constraints(Calibration立体校准从而获得内部参数和外部参数)</li>
+<li>Reconstruction by triangulation 三角测量进行三维重组。</li>
+</ol>
+<h2 id="part-2"><a href="#part-2" class="headerlink" title="part 2"></a>part 2</h2><p>Image Alignment 图像对准<br>Application: Image Stiching 图像拼接</p>
+<ul>
+<li>Euclidean &#x3D; (translation + rotation) </li>
+<li>Similarity &#x3D; (translation + rotation + scaling)</li>
+<li>Affine &#x3D; (translation + rotation + scaling + shear )</li>
+<li>Projective &#x3D; (homography)</li>
+</ul>
+<h3 id="RANSAC"><a href="#RANSAC" class="headerlink" title="RANSAC"></a>RANSAC</h3><ol>
+<li>Randomly select a minimal set of points. 能适合模型最小的可能大小，比如一条线需要2个点。</li>
+<li>为这个子集计算模型的参数，比如tranformation</li>
+<li>inliers: 用这个模型来测试所有的数据，如果数据点与模型的距离小于某个阈值，就认为它是一个inlier。</li>
+<li>把数据分成inliers and outliers, inliers就是好的，outliers就是坏的。</li>
+<li>如果inliers显著的大，就用inliers重新测量，得到精炼模型。</li>
+<li>重放1-4次。</li>
+<li>找到最大inliers的模型作为最终模型。</li>
+<li>优点在于即使存在大量的outliers，也能找到好的模型。尤其是outliers大于50%的时候，也能通过N来确定模型。</li>
+</ol>
+<p>找到这个变换的异常值： 在估计出一个模型后，RANSAC根据所选择的距离度量将其余的数据分类为离群值和异常值。异常值是指与估计模型契合度高的点（即它们与模型的距离低于某个阈值），而异常值则不是。</p>
+<p>如果离群点的数量足够大，就在所有离群点上重新计算最小二乘法的变换估计： 如果离群值的数量足够大，RANSAC使用所有离群值重新估计模型参数，并得到一个精炼的模型。</p>
+<p>重复N次： 步骤1-4重复N次，N是该算法的一个参数。每次迭代都有可能产生一组不同的异常值和模型参数。</p>
+<p>保留具有最大数量离群值的变换： 在所有迭代之后，RANSAC会选择具有最大离群值的模型作为最终模型。</p>
+<p>RANSAC的优点在于，即使数据中存在大量的异常值，它也能够找到正确的模型。然而，它并不能保证一个最佳的解决方案，特别是当异常值的比例非常高时（&gt;50%）。迭代次数（N）和确定异常值的阈值是能够影响RANSAC性能的关键参数。</p>
+<h3 id="总体步骤"><a href="#总体步骤" class="headerlink" title="总体步骤"></a>总体步骤</h3><p>Given two (or more) images:</p>
+<ul>
+<li>Step 1: Detect features, 在全景图像拼接中，通常首选SIFT（尺度不变特征变换）</li>
+<li>Step 2: Match features  ssd 或者 ssd1&#x2F;ssd2</li>
+<li>Step 3: Compute a homography using RANSAC</li>
+<li>Step 4: Combine the images together (image blending) : Iblend &#x3D; αIleft + (1-α)Iright alpha blending</li>
+</ul>
+<p>好的window是什么样的？<br>avoid seams, avoid ghosting. 避免接缝和重影。</p>
+<h1 id="week-9-object-recognition-with-local-feature"><a href="#week-9-object-recognition-with-local-feature" class="headerlink" title="week 9 object recognition with local feature"></a>week 9 object recognition with local feature</h1><h3 id="Indexing-with-Local-Features"><a href="#Indexing-with-Local-Features" class="headerlink" title="Indexing with Local Features"></a>Indexing with Local Features</h3><p>Inverted File Index: 倒置文件，一种数据结构，存放着visual features的索引。用于快速检索特定的特征。</p>
+<p>Visual Words: SIFT等来识别出的特征corner，edge, blob 等。</p>
+<p>Visual Vocabulary Construction : 用k-means来构建visual vocabulary。visual words的集合。</p>
+<p>Use for Content-Based Image&#x2F;Video Retrieval: 一旦我们有了Inverted File Index和Visual Words 我们就可以提取所有视觉词，找到包含相同词的图像或者视频。相同的共同词越多我们约我认为他们相似。</p>
+<h3 id="Object-Categorization"><a href="#Object-Categorization" class="headerlink" title="Object Categorization"></a>Object Categorization</h3><p>Object Categorization Revisited: 重新审视物体分类。比如狗，汽车，把检测的物体装进大集合里面。</p>
+<p>More Exact Task Definition: 更精准的任务定义。比如给定一个图像，判断它是否包含一个特定的特征，比如颜色，大小。不仅仅是识别物体的类型是什么。</p>
+<p>basic Level Catergories: 对物体进行分类，比如狗为一个大类，相对于哺乳动物或者狮子狗来说。</p>
+<p>Category Representations: cv中如何表现类别，最常见的是vector of features。每一个特征是类别中的某些方面，比如颜色，形状。</p>
+<h3 id="BoG-Bag-of-Words-Representations"><a href="#BoG-Bag-of-Words-Representations" class="headerlink" title="BoG (Bag-of-Words) Representations"></a>BoG (Bag-of-Words) Representations</h3><p>BoG Representations: 用于图像分类的一种表示，其中图像被视为单词的集合，而不是像素的集合。这种表示通常用于图像分类，其中图像被视为单词的集合，而不是像素的集合。这种表示通常用于图像分类，其中图像被视为单词的集合，而不是像素的集合。这种表示通常用于图像分类，其中图像被视为单词的集合，而不是像素的集合。这种表示通常用于图像分类，其中图像被视为单词的集合，而不是像素的集合。这种表示通常用于图像分类，其中图像被视为单词的集合，而不是像素的集合。这种表示通常用于图像分类，其中图像被视为单词的集合，而不是像素的集合。这种表示通常用于图像分类，其中图像被视为单词的集合，而不是像素的集合。这种表示通常用于图像分类，其中图像被视为单词的集合，而不是像素的集合。<br><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/14.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p>优点: </p>
+<ol>
+<li>Flexible to geometry&#x2F;deformations&#x2F;viewpoint: BoW模型对空间排列不敏感，因此可以处理物体的变形，旋转和不同的视角。</li>
+<li>Compact summary of image content: BoW模型是图像内容的紧凑摘要，因此可以处理大量的图像。</li>
+<li>Povides vector representation for sets: 每幅图像可以被表示为高维空间中的一个向量，其中每个维度都对应着一个 “视觉词”。这允许对图像进行有效的比较和分类。</li>
+<li>简单且表现良好。</li>
+</ol>
+<p>缺点:</p>
+<ol>
+<li>忽略了geometry，忽略了几何学。重大限制，不过可以在BoW匹配之后执行一个集合验证步骤来解决。</li>
+<li>BoW覆盖整个图像，background和foreground 都被考虑进去了。这可能会导致噪音和不相干的特征被包含在bag中，会导致性能降低。</li>
+<li>Interest Points or sampling: 不能保证物体层面的部分。</li>
+<li>Optimal vocabulary formation remains unclear: 不同方法适用于不同的任务和数据集，没有一个公用的。</li>
+</ol>
+<h1 id="Feature-Detection-Application-Drone-Self-localisation"><a href="#Feature-Detection-Application-Drone-Self-localisation" class="headerlink" title="Feature Detection Application - Drone Self-localisation"></a>Feature Detection Application - Drone Self-localisation</h1><h3 id="GPS"><a href="#GPS" class="headerlink" title="GPS"></a>GPS</h3><p>GPS 问题: </p>
+<ol>
+<li>复杂地形不行</li>
+<li>GPS容易被spoofing欺骗</li>
+<li>GPS signal blocking 高于卫星信号发射信号防止他们被接收</li>
+</ol>
+<h3 id="Face-Detection"><a href="#Face-Detection" class="headerlink" title="Face Detection"></a>Face Detection</h3><p>Decisiion Trees and Random Forest: 构建大量的decision trees，每个tree都是一个分类器，最终结果是所有分类器的投票结果。</p>
+<p>AdaBoost : ml算法，结合表现不佳的分类器来构建一个强大的分类器。</p>
+<p>Viola-Jones Face Detector: 用于检测人脸的ml算法，基于AdaBoost，通过AdaBoost来提高分类器准确性。</p>
+<p>OpenCV: 题哦给你了CascadeClassifer， 可以用来创建Viola-Jones检测器。</p>
+<h1 id="LAST-DANCE"><a href="#LAST-DANCE" class="headerlink" title="LAST DANCE"></a>LAST DANCE</h1><h2 id="Hough"><a href="#Hough" class="headerlink" title="Hough"></a>Hough</h2><ol>
+<li>edge detection : canny</li>
+<li>parameter space : (p,theta)  或者 (x,y)</li>
+<li>accumulator space : voting 累积每一个经过的点</li>
+<li>line detection : 投票过的点坐标作为在最终图像中的线。</li>
+</ol>
+<h3 id="Generalized-Hough-Tranform-GHT"><a href="#Generalized-Hough-Tranform-GHT" class="headerlink" title="Generalized Hough Tranform(GHT)"></a>Generalized Hough Tranform(GHT)</h3><p><img src="/2023/01/30/cv-%E7%AC%94%E8%AE%B0/6.jpeg" srcset="/img/loading.gif" lazyload></p>
+<p>where r is the distance from the reference point to the boundary point and<br>θ is the angle</p>
+<h2 id="一些基本概念"><a href="#一些基本概念" class="headerlink" title="一些基本概念:"></a>一些基本概念:</h2><ul>
+<li><p>PCA: 种通过压制较弱的模式来带出数据集中的强势模式的方法，使数据更容易被可视化、理解和被后续算法处理。它通常被用于探索性数据分析和制作预测模型</p>
+</li>
+<li><p>ASM (Active Shape Model)<br>物体形状的统计模型，手动标注了地标点，用来构建模型。</p>
+</li>
+<li><p>local feature 猫的耳朵。。。小特征</p>
+</li>
+<li><p>3D Reconstruction: 三维重建</p>
+</li>
+<li><p>Image Compositing: 图像合成 , 把两个图像合二为一融合起来。</p>
+</li>
+<li><p>Segmentation and grouping : 分割是将图像划分为多个片段或 “区域 “的过程，其目的是简 图像和&#x2F;或将其表现形式改变为更有意义的东西</p>
+<ul>
+<li>Gestalt principles: 花花草草为一组，树木为一组。。。</li>
+<li>Image segmentation: 一般要使用颜色的分割，边缘检测。。。</li>
+</ul>
+</li>
+<li><p>EM,GM ,K-means: random initialization, 和 K-means++ 两种初始化方法,GMM + EM &#x3D; 每一个cluster要遵循高斯分布, soft clustering, K-means 反之是hard clustering</p>
+</li>
+<li><p>Harris vs SIFT</p>
+<ol>
+<li>Scale-Invariance, Harris 在不同尺度下才能显示出的corner Harris发现不了。SIFT通过difference of Gaussian approach 做到了这一点。</li>
+<li>Rotation-Invariance, 物体旋转Harris检测不出，SIFT可以</li>
+<li>descriptor, harris自己是没有descriptor的需要结合别的方法，他只有keypoints。</li>
+<li>SIFT耗时久，如果只关注corner或者需要高效，Harris是个好选择。</li>
+<li>Harris: 使用图像强度的二阶导数矩阵来观察每个像素周围的图像局部结构。这个矩阵的特征值给出了图像中该点的边缘或角落的强度的测量，这个矩阵被用来创建一个触发角落的响应函数。</li>
+<li>SIFT:<ul>
+<li>Contrast threshold:</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>BoW(Bag of Words): </p>
+<ol>
+<li>Feature extraction(特征提取): SIFT, ORB….</li>
+<li>Clustering: k-means, GMM … ,每一个cluster都是一个visual words</li>
+<li>Histogram creation: 每一个 visual words的出现频率</li>
+<li>Naive Bayes classifier:</li>
+</ol>
+</li>
+<li><p>Image Alignment 图像对准   Application: Image Stiching</p>
+<ol>
+<li>Camera calibration : Extrinsic parameters(Rotate matrix ,Translate Vector). ntrinsic parameters(focal length, original offset(原点偏移),  Pixel size(像素大小))</li>
+<li>Feature extraction and matching: SIFT…. </li>
+<li>Rectification: 对其两张图像，相同的点位于同一水平线上</li>
+<li>Disparity computation :两张图片找到差异的点，作为x移动的坐标</li>
+<li>Depth estimation：用disparities三角测量，来算每个点的深度Z &#x3D; fB&#x2F;d。</li>
+</ol>
+</li>
+</ul>
+
+              
+            </div>
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>cv_笔记</div>
+      <div>http://example.com/2023/01/30/cv-笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>Author</div>
+          <div>Chenxi Qu</div>
+        </div>
+      
+      
+      
+      <div class="license-meta-item">
+        <div>Licensed under</div>
+        <div>
+          
+            
+            
+              <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+              <span class="hint--top hint--rounded" aria-label="BY - Attribution">
+                <i class="iconfont icon-by"></i>
+              </span>
+              </a>
+            
+          
+        </div>
+      </div>
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="../../../04/24/Cyber-security/" title="Cyber_security">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Cyber_security</span>
+                        <span class="visible-mobile">Previous</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="../../25/ux-review/" title="ux_review">
+                        <span class="hidden-mobile">ux_review</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="http://dotafs.github.io" target="_blank" rel="nofollow noopener"><span>------到底啦------</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="../../../../js/events.js" ></script>
+<script  src="../../../../js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+  
+    <script  src="../../../../js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      headingSelector : CONFIG.toc.headingSelector || 'h1,h2,h3,h4,h5,h6',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      collapseDepth   : CONFIG.toc.collapseDepth || 0,
+      scrollSmooth    : true,
+      headingsOffset  : -boardTop
+    });
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+  });
+</script>
+
+
+  <script>
+  (function() {
+    var enableLang = CONFIG.code_language.enable && CONFIG.code_language.default;
+    var enableCopy = CONFIG.copy_btn;
+    if (!enableLang && !enableCopy) {
+      return;
+    }
+
+    function getBgClass(ele) {
+      return Fluid.utils.getBackgroundLightness(ele) >= 0 ? 'code-widget-light' : 'code-widget-dark';
+    }
+
+    var copyTmpl = '';
+    copyTmpl += '<div class="code-widget">';
+    copyTmpl += 'LANG';
+    copyTmpl += '</div>';
+    jQuery('.markdown-body pre').each(function() {
+      var $pre = jQuery(this);
+      if ($pre.find('code.mermaid').length > 0) {
+        return;
+      }
+      if ($pre.find('span.line').length > 0) {
+        return;
+      }
+
+      var lang = '';
+
+      if (enableLang) {
+        lang = CONFIG.code_language.default;
+        if ($pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2 && $pre.children().hasClass('hljs')) {
+          lang = $pre[0].children[0].classList[1];
+        } else if ($pre[0].getAttribute('data-language')) {
+          lang = $pre[0].getAttribute('data-language');
+        } else if ($pre.parent().hasClass('sourceCode') && $pre[0].children.length > 0 && $pre[0].children[0].classList.length >= 2) {
+          lang = $pre[0].children[0].classList[1];
+          $pre.parent().addClass('code-wrapper');
+        } else if ($pre.parent().hasClass('markdown-body') && $pre[0].classList.length === 0) {
+          $pre.wrap('<div class="code-wrapper"></div>');
+        }
+        lang = lang.toUpperCase().replace('NONE', CONFIG.code_language.default);
+      }
+      $pre.append(copyTmpl.replace('LANG', lang).replace('code-widget">',
+        getBgClass($pre[0]) + (enableCopy ? ' code-widget copy-btn" data-clipboard-snippet><i class="iconfont icon-copy"></i>' : ' code-widget">')));
+
+      if (enableCopy) {
+        Fluid.utils.createScript('https://lib.baomitu.com/clipboard.js/2.0.10/clipboard.min.js', function() {
+          var clipboard = new window.ClipboardJS('.copy-btn', {
+            target: function(trigger) {
+              var nodes = trigger.parentNode.childNodes;
+              for (var i = 0; i < nodes.length; i++) {
+                if (nodes[i].tagName === 'CODE') {
+                  return nodes[i];
+                }
+              }
+            }
+          });
+          clipboard.on('success', function(e) {
+            e.clearSelection();
+            e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-copy', 'icon-success');
+            setTimeout(function() {
+              e.trigger.innerHTML = e.trigger.innerHTML.replace('icon-success', 'icon-copy');
+            }, 2000);
+          });
+        });
+      }
+    });
+  })();
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="../../../../js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="../../../../js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
+  </noscript>
+<!-- hexo injector body_end start -->
+  <script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/hexo-github-calendar@1.21/hexo_githubcalendar.js"></script>
+  <script data-pjax>
+        function GithubCalendarConfig(){
+            var git_githubapiurl ="https://python-github-calendar-api.vercel.app/api?dotafs";
+            var git_color =['#ebedf0', '#f1f8ff', '#dbedff', '#c8e1ff', '#79b8ff', '#2188ff', '#0366d6', '#005cc5', '#044289', '#032f62', '#05264c'];
+            var git_user ="dotafs";
+            var parent_div_git = document.getElementsByClassName('container')[2];
+            var git_div_html = '<div id="github-calendar" style="width:100%;height:auto;padding:10px;margin-bottom:20px"><div id="github_loading" style="width:10%;height:100%;margin:0 auto;display: block"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  viewBox="0 0 50 50" style="enable-background:new 0 0 50 50" xml:space="preserve"><path fill="#d0d0d0" d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z" transform="rotate(275.098 25 25)"><animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 25 25" to="360 25 25" dur="0.6s" repeatCount="indefinite"></animateTransform></path></svg></div><div id="github_container"></div></div>';
+            if(parent_div_git && location.pathname =='/about/'){
+                console.log('已挂载github calendar')
+                // parent_div_git.innerHTML=git_div_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",git_div_html) // 有报错，但不影响使用(支持pjax跳转)
+            };
+            GithubCalendar(git_githubapiurl,git_color,git_user)
+        }
+        if(document.getElementsByClassName('container')[2]){
+            GithubCalendarConfig()
+        }
+    </script>
+    <style>#github_container{min-height:200px}@media screen and (max-width:650px) {#github_container{background-image:;min-height:0px}}</style>
+    <style>#github_container > .position-relative > .border{border:0!important}#github-calendar{position: relative;margin-top: -2rem;background-color: var(--board-bg-color);transition: background-color 0.2s ease-in-out;border-radius: 0.5rem;z-index: 3;-webkit-box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);box-shadow: 0 12px 15px 0 rgb(0 0 0 / 24%), 0 17px 50px 0 rgb(0 0 0 / 19%);}</style><!-- hexo injector body_end end --></body>
+</html>
