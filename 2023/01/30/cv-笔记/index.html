@@ -46,7 +46,7 @@
 <meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/14.jpeg">
 <meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/6.jpeg">
 <meta property="article:published_time" content="2023-01-30T14:51:11.674Z">
-<meta property="article:modified_time" content="2023-05-23T17:49:57.787Z">
+<meta property="article:modified_time" content="2023-05-23T23:11:18.985Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/1_1.jpeg">
@@ -613,7 +613,9 @@ horizontal edges
 <li>SIFT耗时久，如果只关注corner或者需要高效，Harris是个好选择。</li>
 <li>Harris: 使用图像强度的二阶导数矩阵来观察每个像素周围的图像局部结构。这个矩阵的特征值给出了图像中该点的边缘或角落的强度的测量，这个矩阵被用来创建一个触发角落的响应函数。</li>
 <li>SIFT:<ul>
-<li>Contrast threshold:</li>
+<li>Contrast threshold: 一个过滤器，删除那些由于对比度低而不太可能被正确匹配的点。</li>
+<li>Curvature Threshold: 消除具有高边缘响应的关键点。这是因为边缘往往可以有很高的对比度。该算法可以将重点放在角落、大块和其他更有可能被稳健匹配的区域。</li>
+<li>Dimensionality of Feature vector:  SIFT中特征向量的维度是指为每个关键点创建的方向直方图中的宾格数量。这些方向直方图代表了关键点周围不同子区域的梯度（即方向）分布。</li>
 </ul>
 </li>
 </ol>
