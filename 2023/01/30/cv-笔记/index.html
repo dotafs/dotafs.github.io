@@ -46,7 +46,7 @@
 <meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/14.jpeg">
 <meta property="og:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/6.jpeg">
 <meta property="article:published_time" content="2023-01-30T14:51:11.674Z">
-<meta property="article:modified_time" content="2023-05-24T05:39:14.849Z">
+<meta property="article:modified_time" content="2023-05-24T12:06:28.335Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2023/01/30/cv-%E7%AC%94%E8%AE%B0/1_1.jpeg">
@@ -236,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          11k words
+          12k words
         
       </span>
     
@@ -428,7 +428,7 @@ horizontal edges
 <li>Laplacian 来选择scale。</li>
 <li>用DoG替代LoG, 加速实现。LoG很昂贵，用Dos替代。</li>
 </ol>
-<h3 id="Difference-of-Gaussian-DOS"><a href="#Difference-of-Gaussian-DOS" class="headerlink" title="Difference-of-Gaussian DOS"></a>Difference-of-Gaussian DOS</h3><p>SIFT 等feature detecotor的基础。</p>
+<h3 id="Difference-of-Gaussian-DOG"><a href="#Difference-of-Gaussian-DOG" class="headerlink" title="Difference-of-Gaussian DOG"></a>Difference-of-Gaussian DOG</h3><p>SIFT 等feature detecotor的基础。</p>
 <ol>
 <li>不需要二阶导。</li>
 <li>Gassian 都要计算的无论如何，所以如果有Gaussian pyramid, 计算DoG的基本数据已经有了，会更加快。 在高斯比例金字塔中，原始图像被递归地缩小，每次都被高斯滤波器平滑化。然后在金字塔中每一对相邻的平滑图像之间计算DoG。</li>
@@ -616,6 +616,13 @@ horizontal edges
 <li>Contrast threshold: 一个过滤器，删除那些由于对比度低而不太可能被正确匹配的点。</li>
 <li>Curvature Threshold: 消除具有高边缘响应的关键点。这是因为边缘往往可以有很高的对比度。该算法可以将重点放在角落、大块和其他更有可能被稳健匹配的区域。</li>
 <li>Dimensionality of Feature vector:  SIFT中特征向量的维度是指为每个关键点创建的方向直方图中的宾格数量。这些方向直方图代表了关键点周围不同子区域的梯度（即方向）分布。</li>
+<li>steps: <ol>
+<li>scale-space extrema detection: 通过scale-space pyramid 寻找intrest points</li>
+<li>keypoint localization: 通过两个threshold减少第一步选择的keypoints。</li>
+<li>give an orientation to the keypoints.</li>
+<li>keypoint descriptor:  表示为一个vector。</li>
+</ol>
+</li>
 </ul>
 </li>
 </ol>
@@ -635,6 +642,13 @@ horizontal edges
 <li>Rectification: 对其两张图像，相同的点位于同一水平线上</li>
 <li>Disparity computation :两张图片找到差异的点，作为x移动的坐标</li>
 <li>Depth estimation：用disparities三角测量，来算每个点的深度Z &#x3D; fB&#x2F;d。</li>
+</ol>
+</li>
+<li><p>Stereo: </p>
+<ol>
+<li>Window Size, 小只能包含像素差异，大会包含区域差异。</li>
+<li>sparse, 只考虑部分特征，比如SIFT。需要方法确定哪些特征是重要或者相关的。</li>
+<li>dense, 用每个像素点来计算，但是计算量大，三维重建游泳，缺乏纹理或者细节区域效果不好。图像视角非常不同的时候，dense也不能用。</li>
 </ol>
 </li>
 </ul>
