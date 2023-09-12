@@ -4,11 +4,24 @@
   
   
   <entry>
+    <title>CS5010-notes</title>
+    <link href="/2023/09/12/CS5010-notes/"/>
+    <url>/2023/09/12/CS5010-notes/</url>
+    
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CS5800 notes</title>
     <link href="/2023/09/11/CS5800-notes/"/>
     <url>/2023/09/11/CS5800-notes/</url>
     
-    <content type="html"><![CDATA[<h1 id="week-1"><a href="#week-1" class="headerlink" title="week 1"></a>week 1</h1><h2 id="1-1-linear-x2F-chunk-x2F-binear-search"><a href="#1-1-linear-x2F-chunk-x2F-binear-search" class="headerlink" title="1.1 linear&#x2F;chunk&#x2F;binear  search"></a>1.1 linear&#x2F;chunk&#x2F;binear  search</h2><p>这三种方法都是有序查找使用的</p><h3 id="chunk"><a href="#chunk" class="headerlink" title="chunk"></a>chunk</h3><p>分割成一堆block，每一个block都是一个linear<br><img src="/2023/09/11/CS5800-notes/1.jpg"></p><p>Chunk的复杂度 $O(\frac{n}{c} + c)$,把所有的循环都走一边，再走一遍步长。</p><p>让$O(\frac{n}{c} + c)$尽可能的小，也就是$\frac{n}{c}$ &#x3D;&#x3D; $c$ </p><p>最终得到时间复杂度为 $O(\sqrt{n})$</p><h3 id="binary"><a href="#binary" class="headerlink" title="binary"></a>binary</h3><p>经典二分<br><img src="/2023/09/11/CS5800-notes/2.jpg"><br>时间复杂度用递归法(recursive algorithm)，<br>$T(n) &#x3D; T(\frac{n}{2})+1 , T(1) &#x3D; 1$<br>最终为 $O(log_2n)$</p><h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2><ul><li>Linear time  ep. $O(1)$</li><li>Logarithmic time ep. $O(logn)$</li><li>Polynamial time ep. $O(n^1+n^2+n^3)$</li><li>Exponential time ep. $$O(2^n)$$</li></ul>]]></content>
+    <content type="html"><![CDATA[<h1 id="week-1"><a href="#week-1" class="headerlink" title="week 1"></a>week 1</h1><h2 id="1-1-linear-x2F-chunk-x2F-binear-search"><a href="#1-1-linear-x2F-chunk-x2F-binear-search" class="headerlink" title="1.1 linear&#x2F;chunk&#x2F;binear  search"></a>1.1 linear&#x2F;chunk&#x2F;binear  search</h2><p>这三种方法都是有序查找使用的</p><h3 id="chunk"><a href="#chunk" class="headerlink" title="chunk"></a>chunk</h3><p>分割成一堆block，每一个block都是一个linear<br><img src="/2023/09/11/CS5800-notes/1.jpg"></p><p>Chunk的复杂度 $O(\frac{n}{c} + c)$,把所有的循环都走一边，再走一遍步长。</p><p>让$O(\frac{n}{c} + c)$尽可能的小，也就是$\frac{n}{c}$ &#x3D;&#x3D; $c$ </p><p>最终得到时间复杂度为 $O(\sqrt{n})$</p><h3 id="binary"><a href="#binary" class="headerlink" title="binary"></a>binary</h3><p>经典二分<br><img src="/2023/09/11/CS5800-notes/2.jpg"><br>时间复杂度用递归法(recursive algorithm)，<br>$T(n) &#x3D; T(\frac{n}{2})+1 , T(1) &#x3D; 1$<br>最终为 $O(log_2n)$</p><h2 id="1-2"><a href="#1-2" class="headerlink" title="1.2"></a>1.2</h2><ul><li>Linear time  ep. $O(1)$</li><li>Logarithmic time ep. $O(logn)$</li><li>Polynamial time ep. $O(n^1+n^2+n^3)$</li><li>Exponential time ep. $$O(2^n)$$</li><li>factorial time ep. $O(n!)$ 5! &#x3D; 5x4x3x2x1</li></ul><p>不考虑constants</p><ul><li>big-$O$ : upper bound</li><li>big-$\Omega$ : lower bound</li><li>big-$\Theta$ : tight bound</li></ul><h2 id="lecture"><a href="#lecture" class="headerlink" title="lecture"></a>lecture</h2><ul><li>efficiency Time and Space 消耗</li><li>effectiness 证明是对的</li></ul>]]></content>
     
     
     
