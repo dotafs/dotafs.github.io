@@ -16,15 +16,15 @@
   <meta name="author" content="Chenxi Qu">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Chapter 1">
+    <meta name="description" content="Chapter 1 setupcollaborate with others: LFSThe feature I find most useful in UE5 is multi-user editing. It’s similar to Minecraft in that everyone involved can see changes being made in real-time.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="my journey of UE5">
 <meta property="og:url" content="http://example.com/2023/09/10/my-journey-of-UE5/index.html">
 <meta property="og:site_name" content="dotafs">
-<meta property="og:description" content="Chapter 1">
+<meta property="og:description" content="Chapter 1 setupcollaborate with others: LFSThe feature I find most useful in UE5 is multi-user editing. It’s similar to Minecraft in that everyone involved can see changes being made in real-time.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-09-10T15:04:34.034Z">
-<meta property="article:modified_time" content="2023-09-11T14:11:38.791Z">
+<meta property="article:modified_time" content="2023-09-13T15:50:16.057Z">
 <meta property="article:author" content="Chenxi Qu">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -213,7 +213,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          8 words
+          414 words
         
       </span>
     
@@ -263,7 +263,8 @@
               <ul>
 <li></li>
 </ul>
-<h1 id="Chapter-1"><a href="#Chapter-1" class="headerlink" title="Chapter 1"></a>Chapter 1</h1>
+<h1 id="Chapter-1-setup"><a href="#Chapter-1-setup" class="headerlink" title="Chapter 1 setup"></a>Chapter 1 setup</h1><h2 id="collaborate-with-others-LFS"><a href="#collaborate-with-others-LFS" class="headerlink" title="collaborate with others: LFS"></a>collaborate with others: LFS</h2><p>The feature I find most useful in UE5 is <strong>multi-user editing</strong>. It’s similar to Minecraft in that everyone involved can see changes being made in real-time. However, I’m currently located in the United States, and my friends are spread out across different countries. Because of this, setting up a stable server can be challenging. As an alternative, I’ve decided to use other tools like <strong>GitHub Large File Storage (LFS)</strong>. Below are the steps for my setup.</p>
+
               
             </div>
             <hr/>
@@ -382,6 +383,12 @@
 
 
   
+
+
+  
+  
+
+
 
 
 
@@ -614,6 +621,44 @@
 
 
   <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        MathJax = {
+          tex    : {
+            inlineMath: { '[+]': [['$', '$']] }
+          },
+          loader : {
+            load: ['ui/lazy']
+          },
+          options: {
+            renderActions: {
+              findScript    : [10, doc => {
+                document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                  const display = !!node.type.match(/; *mode=display/);
+                  const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                  const text = document.createTextNode('');
+                  node.parentNode.replaceChild(text, node);
+                  math.start = { node: text, delim: '', n: 0 };
+                  math.end = { node: text, delim: '', n: 0 };
+                  doc.math.push(math);
+                });
+              }, '', false],
+              insertedScript: [200, () => {
+                document.querySelectorAll('mjx-container').forEach(node => {
+                  let target = node.parentNode;
+                  if (target.nodeName.toLowerCase() === 'li') {
+                    target.parentNode.classList.add('has-jax');
+                  }
+                });
+              }, '', false]
+            }
+          }
+        };
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.1/es5/tex-mml-chtml.js" ></script>
 
   <script  src="../../../../js/local-search.js" ></script>
 

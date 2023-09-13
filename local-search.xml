@@ -8,7 +8,7 @@
     <link href="/2023/09/12/CS5010-notes/"/>
     <url>/2023/09/12/CS5010-notes/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h1 id="week-1"><a href="#week-1" class="headerlink" title="week 1"></a>week 1</h1><h2 id="lecture"><a href="#lecture" class="headerlink" title="lecture"></a>lecture</h2><ul><li>getters and setters:</li></ul>]]></content>
     
     
     
@@ -34,7 +34,7 @@
     <link href="/2023/09/10/my-journey-of-UE5/"/>
     <url>/2023/09/10/my-journey-of-UE5/</url>
     
-    <content type="html"><![CDATA[<ul><li></li></ul><h1 id="Chapter-1"><a href="#Chapter-1" class="headerlink" title="Chapter 1"></a>Chapter 1</h1>]]></content>
+    <content type="html"><![CDATA[<ul><li></li></ul><h1 id="Chapter-1-setup"><a href="#Chapter-1-setup" class="headerlink" title="Chapter 1 setup"></a>Chapter 1 setup</h1><h2 id="collaborate-with-others-LFS"><a href="#collaborate-with-others-LFS" class="headerlink" title="collaborate with others: LFS"></a>collaborate with others: LFS</h2><p>The feature I find most useful in UE5 is <strong>multi-user editing</strong>. It’s similar to Minecraft in that everyone involved can see changes being made in real-time. However, I’m currently located in the United States, and my friends are spread out across different countries. Because of this, setting up a stable server can be challenging. As an alternative, I’ve decided to use other tools like <strong>GitHub Large File Storage (LFS)</strong>. Below are the steps for my setup.</p>]]></content>
     
     
     
