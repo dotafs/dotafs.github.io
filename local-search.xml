@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>30days_review_algorithm</title>
+    <link href="/2023/09/17/30days-review-algorithm/"/>
+    <url>/2023/09/17/30days-review-algorithm/</url>
+    
+    <content type="html"><![CDATA[<h1 id="week-1"><a href="#week-1" class="headerlink" title="week 1"></a>week 1</h1><h2 id="sep-18-binary-search"><a href="#sep-18-binary-search" class="headerlink" title="sep 18 binary search"></a>sep 18 binary search</h2><p>questions: q33 q74 q69</p><ol><li>complete tree and balanced tree:<br>former is balanced but not complete. balanced should in the whole tree not each subtree<br><img src="/2023/09/17/30days-review-algorithm/1.jpg"></li></ol>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>CS5010-notes</title>
     <link href="/2023/09/12/CS5010-notes/"/>
     <url>/2023/09/12/CS5010-notes/</url>
