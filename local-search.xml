@@ -8,7 +8,7 @@
     <link href="/2023/09/17/30days-review-algorithm/"/>
     <url>/2023/09/17/30days-review-algorithm/</url>
     
-    <content type="html"><![CDATA[<h1 id="week-1"><a href="#week-1" class="headerlink" title="week 1"></a>week 1</h1><h2 id="sep-18-binary-search"><a href="#sep-18-binary-search" class="headerlink" title="sep 18 binary search"></a>sep 18 binary search</h2><p>questions: q33 q74 q69</p><ol><li>complete tree and balanced tree:<br>former is balanced but not complete. balanced should in the whole tree not each subtree<br><img src="/2023/09/17/30days-review-algorithm/1.jpg"></li></ol>]]></content>
+    <content type="html"><![CDATA[<h2 id="sep-18-binary-search"><a href="#sep-18-binary-search" class="headerlink" title="sep 18 binary search"></a>sep 18 binary search</h2><p>q33 q74 q69</p><ol><li>complete tree and balanced tree:<br>former is balanced but not complete. balanced should in the whole tree not each subtree<br><img src="/2023/09/17/30days-review-algorithm/1.jpg"></li></ol><h2 id="sep-19-binary-search"><a href="#sep-19-binary-search" class="headerlink" title="sep 19 binary search"></a>sep 19 binary search</h2><p>*q287 q240 q275 q378 q387 q268</p><h2 id="sep20-hashmap"><a href="#sep20-hashmap" class="headerlink" title="sep20 hashmap"></a>sep20 hashmap</h2><p>q49 q451 q73</p><h2 id="sep21-hashmap"><a href="#sep21-hashmap" class="headerlink" title="sep21 hashmap"></a>sep21 hashmap</h2><p>q17 q128 q142 *q105 </p><h2 id="sep23-dp"><a href="#sep23-dp" class="headerlink" title="sep23 dp"></a>sep23 dp</h2><p>q70 q118 q119 q121 q338</p>]]></content>
     
     
     
